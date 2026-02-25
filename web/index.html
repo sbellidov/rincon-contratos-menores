@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contratos Menores | Rincón de la Victoria</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="background-blob"></div>
+    <div class="background-blob secondary"></div>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">
+                <i data-lucide="search" class="icon-accent"></i>
+                <span>Rincón <strong>Transparente</strong></span>
+            </div>
+            <div class="nav-links">
+                <a href="#dashboard" class="active">Panel</a>
+                <a href="#contracts">Contratos</a>
+                <a href="#about">Sobre el proyecto</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Análisis de Contratos Menores</h1>
+            <p>Visualización independiente de los datos de contratación pública del Ayuntamiento de Rincón de la
+                Victoria.</p>
+        </header>
+
+        <section id="dashboard">
+            <div class="stats-grid" id="summary-cards">
+                <!-- Cards will be injected by JS -->
+            </div>
+
+            <div class="charts-grid">
+                <div class="card chart-container">
+                    <h3>Gasto por Área (Top 15)</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="areaChart"></canvas>
+                    </div>
+                </div>
+                <div class="card chart-container">
+                    <h3>Inversión por Año</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="yearChart"></canvas>
+                    </div>
+                </div>
+                <div class="card chart-container">
+                    <h3>Tipología de Contratos</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contracts" class="mt-4">
+            <div class="view-tabs">
+                <button class="tab-btn active" data-view="table">
+                    <i data-lucide="list"></i> Lista de Contratos
+                </button>
+                <button class="tab-btn" data-view="contractors">
+                    <i data-lucide="users"></i> Ranking Contratistas
+                </button>
+            </div>
+
+            <div id="tableView" class="view-content active">
+                <div class="section-header">
+                    <h2>Buscador de Contratos</h2>
+                    <div class="search-bar">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar por adjudicatario, objeto, área...">
+                    </div>
+                </div>
+
+                <div class="card table-container">
+                    <table id="contractsTable">
+                        <thead>
+                            <tr>
+                                <th class="sortable" data-sort="fecha_adjudicacion">Fecha <i
+                                        data-lucide="arrow-up-down"></i></th>
+                                <th class="sortable" data-sort="adjudicatario_unificado">Adjudicatario <i
+                                        data-lucide="arrow-up-down"></i></th>
+                                <th class="sortable" data-sort="cif">CIF <i data-lucide="arrow-up-down"></i></th>
+                                <th>Objeto</th>
+                                <th class="sortable" data-sort="area">Área <i data-lucide="arrow-up-down"></i></th>
+                                <th class="sortable text-right" data-sort="importe">Importe <i
+                                        data-lucide="arrow-up-down"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody id="contractsBody">
+                            <!-- Rows will be injected by JS -->
+                        </tbody>
+                    </table>
+                    <div id="pagination" class="pagination"></div>
+                </div>
+            </div>
+
+            <div id="contractorsView" class="view-content">
+                <div class="section-header">
+                    <h2>Contratistas por Volumen</h2>
+                    <div class="search-bar">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="contractorSearch" placeholder="Filtrar contratistas...">
+                    </div>
+                </div>
+                <div id="contractorsList" class="contractors-grid">
+                    <!-- Contractor cards will be injected by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container text-center py-4">
+        <p>&copy; 2026 Portal de Transparencia Ciudadana - Rincón de la Victoria</p>
+        <p class="text-muted small">Datos obtenidos del Portal de Transparencia oficial.</p>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+</body>
+
+</html>

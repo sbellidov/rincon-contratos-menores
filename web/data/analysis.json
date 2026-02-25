@@ -1,0 +1,161 @@
+{
+  "summary": {
+    "total_contracts": 3020,
+    "total_amount": 11024665.74,
+    "avg_amount": 3650.551569536424,
+    "min_date": "2024-01-05T00:00:00",
+    "max_date": "2025-12-30T00:00:00"
+  },
+  "by_area": {
+    "Deportes (APAL)": {
+      "sum": 1841297.76,
+      "count": 770
+    },
+    "Ferias y Fiestas": {
+      "sum": 1177316.37,
+      "count": 187
+    },
+    "Obras y Servicios Generales": {
+      "sum": 1157972.11,
+      "count": 206
+    },
+    "Cultura": {
+      "sum": 675602.64,
+      "count": 281
+    },
+    "Turismo": {
+      "sum": 610140.44,
+      "count": 205
+    },
+    "Políticas Sociales": {
+      "sum": 560789.45,
+      "count": 165
+    },
+    "Bienestar Social": {
+      "sum": 382001.35,
+      "count": 78
+    },
+    "Cueva del Tesoro": {
+      "sum": 376739.76,
+      "count": 94
+    },
+    "Playas": {
+      "sum": 349749.65,
+      "count": 62
+    },
+    "Nuevas Tecnologías": {
+      "sum": 291525.97,
+      "count": 39
+    },
+    "Urbanismo": {
+      "sum": 251203.19,
+      "count": 25
+    },
+    "Sostenibilidad Medioambiental": {
+      "sum": 225349.5,
+      "count": 45
+    },
+    "Seguridad Ciudadana": {
+      "sum": 217298.53,
+      "count": 36
+    },
+    "Educación": {
+      "sum": 203215.27,
+      "count": 44
+    },
+    "Juventud": {
+      "sum": 197242.53,
+      "count": 91
+    }
+  },
+  "top_adjudicatarios": {
+    "Mª del Mar Martín Castillo": {
+      "sum": 707745.58,
+      "count": 13
+    },
+    "Sonotestaudio SL": {
+      "sum": 357166.55,
+      "count": 127
+    },
+    "Leyna 2018 SL": {
+      "sum": 321417.83999999997,
+      "count": 11
+    },
+    "Copesol, S.L.": {
+      "sum": 290620.59,
+      "count": 21
+    },
+    "Grupo Aml&Apimma Events SL": {
+      "sum": 204953.01,
+      "count": 35
+    },
+    "Excavaciones y Materiales de Construcción JOMA, S.L.": {
+      "sum": 186888.4,
+      "count": 18
+    },
+    "Ingeniería y Obras Obracsa SL": {
+      "sum": 163670.72,
+      "count": 8
+    },
+    "Pinturas Manuel Arévalo SL": {
+      "sum": 159699.21,
+      "count": 11
+    },
+    "UTE Rincón de la Victoria": {
+      "sum": 148863.82,
+      "count": 6
+    },
+    "Turismo García, S.L.": {
+      "sum": 145473.57,
+      "count": 85
+    },
+    "Indumálaga SL": {
+      "sum": 128457.2,
+      "count": 44
+    },
+    "Mayorprint Industrias Gráficas": {
+      "sum": 127263.92,
+      "count": 75
+    },
+    "Grupo de Medios Gastronómicos, S.L.": {
+      "sum": 119390.7,
+      "count": 11
+    },
+    "Indagrafic, S.L.": {
+      "sum": 107068.18,
+      "count": 69
+    },
+    "Gestión Proyectos y Obras del Sur, S.L.": {
+      "sum": 96673.61,
+      "count": 2
+    }
+  },
+  "by_year": {
+    "2024": {
+      "sum": 6323153.0,
+      "count": 1611
+    },
+    "2025": {
+      "sum": 4701512.74,
+      "count": 1409
+    }
+  },
+  "by_type": {
+    "Obras": {
+      "sum": 1650010.13,
+      "count": 87
+    },
+    "Otros": {
+      "sum": 17734.64,
+      "count": 5
+    },
+    "Servicio": {
+      "sum": 6577557.17,
+      "count": 1819
+    },
+    "Suministro": {
+      "sum": 2779363.8,
+      "count": 1109
+    }
+  }
+}

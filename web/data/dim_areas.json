@@ -1,0 +1,378 @@
+[
+  {
+    "id": 1,
+    "nombre": "Agricultura, Ganadería y Pesca"
+  },
+  {
+    "id": 2,
+    "nombre": "Alcaldía"
+  },
+  {
+    "id": 3,
+    "nombre": "Bienestar Social"
+  },
+  {
+    "id": 4,
+    "nombre": "Bienestar Social "
+  },
+  {
+    "id": 5,
+    "nombre": "Bienestar Social (CMIM)"
+  },
+  {
+    "id": 6,
+    "nombre": "Bienestar Social0"
+  },
+  {
+    "id": 7,
+    "nombre": "Cementerio"
+  },
+  {
+    "id": 8,
+    "nombre": "Cementerios"
+  },
+  {
+    "id": 9,
+    "nombre": "Cementerios y Servicios Funerarios"
+  },
+  {
+    "id": 10,
+    "nombre": "Cementerios y Servicios Fúnebres"
+  },
+  {
+    "id": 11,
+    "nombre": "Cementterios y Servicios Fúnebres"
+  },
+  {
+    "id": 12,
+    "nombre": "Comercio"
+  },
+  {
+    "id": 13,
+    "nombre": "Comercio "
+  },
+  {
+    "id": 14,
+    "nombre": "Comunicacion"
+  },
+  {
+    "id": 15,
+    "nombre": "Comunicación"
+  },
+  {
+    "id": 16,
+    "nombre": "Comunicación "
+  },
+  {
+    "id": 17,
+    "nombre": "Contratación"
+  },
+  {
+    "id": 18,
+    "nombre": "Cueva del Tesoro"
+  },
+  {
+    "id": 19,
+    "nombre": "Cueval del Tesosro"
+  },
+  {
+    "id": 20,
+    "nombre": "Cultrura"
+  },
+  {
+    "id": 21,
+    "nombre": "Cultura"
+  },
+  {
+    "id": 22,
+    "nombre": "Cultura, Feria y Fiestas"
+  },
+  {
+    "id": 23,
+    "nombre": "De"
+  },
+  {
+    "id": 24,
+    "nombre": "Delegación de Relaciones con los Vecinos de Benagalbón"
+  },
+  {
+    "id": 25,
+    "nombre": "Deportes"
+  },
+  {
+    "id": 26,
+    "nombre": "Deportes (APAL)"
+  },
+  {
+    "id": 27,
+    "nombre": "Economia y Hacienda"
+  },
+  {
+    "id": 28,
+    "nombre": "Economía"
+  },
+  {
+    "id": 29,
+    "nombre": "Economía y Hacienda"
+  },
+  {
+    "id": 30,
+    "nombre": "Educacion"
+  },
+  {
+    "id": 31,
+    "nombre": "Educación"
+  },
+  {
+    "id": 32,
+    "nombre": "Educación "
+  },
+  {
+    "id": 33,
+    "nombre": "Empleo"
+  },
+  {
+    "id": 34,
+    "nombre": "Estadística"
+  },
+  {
+    "id": 35,
+    "nombre": "Feria y Fiestas"
+  },
+  {
+    "id": 36,
+    "nombre": "Ferias y Fiestas"
+  },
+  {
+    "id": 37,
+    "nombre": "Ferias y Fiestas "
+  },
+  {
+    "id": 38,
+    "nombre": "Formación y Empleo"
+  },
+  {
+    "id": 39,
+    "nombre": "Formación y empleo"
+  },
+  {
+    "id": 40,
+    "nombre": "Infraestructura"
+  },
+  {
+    "id": 41,
+    "nombre": "Infraestructuras"
+  },
+  {
+    "id": 42,
+    "nombre": "Ingfraestructuras"
+  },
+  {
+    "id": 43,
+    "nombre": "Intervención"
+  },
+  {
+    "id": 44,
+    "nombre": "Juventud"
+  },
+  {
+    "id": 45,
+    "nombre": "Limpieza Edificios municipales"
+  },
+  {
+    "id": 46,
+    "nombre": "Limpieza de edificios"
+  },
+  {
+    "id": 47,
+    "nombre": "Medio Ambiente"
+  },
+  {
+    "id": 48,
+    "nombre": "Movilidad y Transporte"
+  },
+  {
+    "id": 49,
+    "nombre": "Nuevas Tecnologías"
+  },
+  {
+    "id": 50,
+    "nombre": "Nuevas tecnologías"
+  },
+  {
+    "id": 51,
+    "nombre": "Obars y Servicios Generales"
+  },
+  {
+    "id": 52,
+    "nombre": "Obras y Servicios Generales"
+  },
+  {
+    "id": 53,
+    "nombre": "Padrón"
+  },
+  {
+    "id": 54,
+    "nombre": "Parques y Jardines"
+  },
+  {
+    "id": 55,
+    "nombre": "Patrimonio"
+  },
+  {
+    "id": 56,
+    "nombre": "Planes Estratégicos"
+  },
+  {
+    "id": 57,
+    "nombre": "Playas"
+  },
+  {
+    "id": 58,
+    "nombre": "Políticas Sociales"
+  },
+  {
+    "id": 59,
+    "nombre": "Presidencia"
+  },
+  {
+    "id": 60,
+    "nombre": "Promoción Tercera Edad"
+  },
+  {
+    "id": 61,
+    "nombre": "Promoción de la Tercera Edad"
+  },
+  {
+    "id": 62,
+    "nombre": "Protección Civil"
+  },
+  {
+    "id": 63,
+    "nombre": "Protección Civil "
+  },
+  {
+    "id": 64,
+    "nombre": "Protección civil"
+  },
+  {
+    "id": 65,
+    "nombre": "Protocolo"
+  },
+  {
+    "id": 66,
+    "nombre": "Radio Municipal"
+  },
+  {
+    "id": 67,
+    "nombre": "Recursos Humanos"
+  },
+  {
+    "id": 68,
+    "nombre": "Relación con los Vecinos del Núcleo de Benagalbón"
+  },
+  {
+    "id": 69,
+    "nombre": "Régimen Interior"
+  },
+  {
+    "id": 70,
+    "nombre": "Régimen Interior, Recursos Humanos, Protocolo, Protección Civil, Relaciones Consorcio Bomberos"
+  },
+  {
+    "id": 71,
+    "nombre": "Sanidad"
+  },
+  {
+    "id": 72,
+    "nombre": "Sanidad Y consumo"
+  },
+  {
+    "id": 73,
+    "nombre": "Sanidad y Consumo"
+  },
+  {
+    "id": 74,
+    "nombre": "Seguridad Ciudadana"
+  },
+  {
+    "id": 75,
+    "nombre": "Servicios Operativos"
+  },
+  {
+    "id": 76,
+    "nombre": "Servicios Sociales Comunitarios"
+  },
+  {
+    "id": 77,
+    "nombre": "Sostenibilidad Medioambiental"
+  },
+  {
+    "id": 78,
+    "nombre": "Transparencia"
+  },
+  {
+    "id": 79,
+    "nombre": "Transparencia y Participación Ciudadana"
+  },
+  {
+    "id": 80,
+    "nombre": "Transporte"
+  },
+  {
+    "id": 81,
+    "nombre": "Transportes"
+  },
+  {
+    "id": 82,
+    "nombre": "Turismo"
+  },
+  {
+    "id": 83,
+    "nombre": "Urbanismo"
+  },
+  {
+    "id": 84,
+    "nombre": "Villa Antiiopa"
+  },
+  {
+    "id": 85,
+    "nombre": "Villa Antiopa"
+  },
+  {
+    "id": 86,
+    "nombre": "Villa Antiopa "
+  },
+  {
+    "id": 87,
+    "nombre": "Villa Antiíopa"
+  },
+  {
+    "id": 88,
+    "nombre": "Villa Antíopa"
+  },
+  {
+    "id": 89,
+    "nombre": "Villa Antíopa y Cueva del Tesoro"
+  },
+  {
+    "id": 90,
+    "nombre": "Villa Romana"
+  },
+  {
+    "id": 91,
+    "nombre": "Vía Pública"
+  },
+  {
+    "id": 92,
+    "nombre": "cultura"
+  },
+  {
+    "id": 93,
+    "nombre": "playas"
+  },
+  {
+    "id": 94,
+    "nombre": "turismo"
+  }
+]

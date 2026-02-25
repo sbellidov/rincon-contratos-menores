@@ -1,0 +1,10 @@
+{
+  "total_checked": 3020,
+  "total_anomalies": 76,
+  "by_type": {
+    "CIF Inválido": 51,
+    "Fecha Inválida/Faltante": 23,
+    "Importe Elevado": 1,
+    "Importe Cero/Negativo": 1
+  }
+}
