@@ -281,6 +281,22 @@ def contratos_sin_cif() -> pd.DataFrame:
     """)
 
 
+def calidad_por_anio() -> pd.DataFrame:
+    return _sql("""
+        SELECT
+            year                                                        AS año,
+            COUNT(*)                                                    AS total,
+            SUM(CASE WHEN cif IS NULL OR cif = '' THEN 1 ELSE 0 END)   AS sin_cif,
+            SUM(CASE WHEN fecha_adjudicacion IS NULL THEN 1 ELSE 0 END) AS sin_fecha,
+            SUM(CASE WHEN area_id IS NULL THEN 1 ELSE 0 END)            AS sin_area,
+            SUM(CASE WHEN importe = 0 THEN 1 ELSE 0 END)                AS importe_cero,
+            ROUND(SUM(importe), 2)                                      AS importe_total
+        FROM contratos
+        GROUP BY year
+        ORDER BY year
+    """)
+
+
 def contratos_importe_alto() -> pd.DataFrame:
     return _sql("""
         SELECT c.fecha_adjudicacion               AS fecha,
@@ -601,6 +617,37 @@ elif pagina == "⚠️ Calidad de datos":
                   delta=f"{pct(issues['sin_expediente'])} del total", delta_color="inverse")
         st.metric("Sin objeto / descripción",  issues["sin_objeto"],
                   delta=f"{pct(issues['sin_objeto'])} del total", delta_color="inverse")
+
+    st.divider()
+    st.subheader("Resumen por año")
+
+    df_qa = calidad_por_anio()
+    # Columnas de porcentaje calculadas
+    df_qa["% sin CIF"]   = (df_qa["sin_cif"]   / df_qa["total"] * 100).round(1)
+    df_qa["% sin fecha"] = (df_qa["sin_fecha"]  / df_qa["total"] * 100).round(1)
+    df_qa["% sin área"]  = (df_qa["sin_area"]   / df_qa["total"] * 100).round(1)
+
+    st.dataframe(
+        df_qa.rename(columns={
+            "año": "Año", "total": "Contratos", "importe_total": "Inversión (€)",
+            "sin_cif": "Sin CIF", "sin_fecha": "Sin fecha", "sin_area": "Sin área",
+            "importe_cero": "Importe = 0 €",
+        }),
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Año":          st.column_config.NumberColumn(width="small", format="%d"),
+            "Contratos":    st.column_config.NumberColumn(width="small"),
+            "Inversión (€)": st.column_config.NumberColumn(format="%.2f €"),
+            "Sin CIF":      st.column_config.NumberColumn(width="small"),
+            "% sin CIF":    st.column_config.ProgressColumn(format="%.1f%%", min_value=0, max_value=100, width="medium"),
+            "Sin fecha":    st.column_config.NumberColumn(width="small"),
+            "% sin fecha":  st.column_config.ProgressColumn(format="%.1f%%", min_value=0, max_value=100, width="medium"),
+            "Sin área":     st.column_config.NumberColumn(width="small"),
+            "% sin área":   st.column_config.ProgressColumn(format="%.1f%%", min_value=0, max_value=100, width="medium"),
+            "Importe = 0 €": st.column_config.NumberColumn(width="small"),
+        },
+    )
 
     st.divider()
 

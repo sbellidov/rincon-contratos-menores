@@ -116,6 +116,227 @@ def find_header_row(df_raw):
             return i
     return None
 
+def parse_adj_dom_cif(combined):
+    """
+    Parses the 2022 format: 'NOMBRE. NIF/CIF CÓDIGO. DIRECCIÓN'
+    Handles typos and variants: NNIF, NIE, CIFF, CIF: CIF. CIF- and comma/space before label.
+    Returns (name, cif_code, address).
+    """
+    if pd.isna(combined):
+        return "", "", ""
+    s = str(combined).strip()
+    # Primary: labeled NIF/NIE/CIF with various separators before and after
+    m = re.search(
+        r'[.,\s]\s*(?:N{1,2}IF|NIE|CIF{1,2})[:\s\.\-]+([\w.\-]{8,12})[\.,]?\s*(.*)',
+        s, re.IGNORECASE
+    )
+    if m:
+        name = s[:m.start()].strip().rstrip('.,')
+        cif_raw = re.sub(r'[^A-Z0-9]', '', m.group(1).upper())
+        if len(cif_raw) == 9:
+            address = m.group(2).strip().rstrip('.')
+            return name, cif_raw, address
+    # Fallback: unlabeled CIF pattern after separator (e.g. 'NOMBRE. Q-2866001-G DIRECCIÓN')
+    m2 = re.search(r'[.,]\s+([A-Z][0-9]{7}[A-Z0-9]|[A-Z]-[0-9]{7}-[A-Z])\s+(.*)', s, re.IGNORECASE)
+    if m2:
+        name = s[:m2.start()].strip().rstrip('.,')
+        cif_raw = re.sub(r'[^A-Z0-9]', '', m2.group(1).upper())
+        if len(cif_raw) == 9:
+            address = m2.group(2).strip().rstrip('.')
+            return name, cif_raw, address
+    return s, "", ""
+
+
+# ── Normalización de áreas ─────────────────────────────────────────────────
+# Estructura oficial del Ayuntamiento de Rincón de la Victoria (12 áreas).
+# Las ~119 variantes del Excel se mapean a ~30 nombres canónicos.
+AREA_MAP = {
+    # ── Presidencia ──────────────────────────────────────────────────────────
+    "Presidencia":                                        "Presidencia",
+    "Alcaldía":                                           "Presidencia",
+    "Contratación":                                       "Presidencia",
+    "Planes Estratégicos":                                "Presidencia",
+    "Planes estratégicos":                                "Presidencia",
+    "Relación con los Vecinos del Núcleo de Benagalbón":  "Presidencia",
+    "Delegación de Relaciones con los Vecinos de Benagalbón": "Presidencia",
+
+    # ── Comunicación ─────────────────────────────────────────────────────────
+    "Comunicación":    "Comunicación",
+    "Comunicacion":    "Comunicación",
+    "Radio Municipal": "Comunicación",
+
+    # ── Sostenibilidad Medioambiental ─────────────────────────────────────────
+    "Sostenibilidad Medioambiental": "Sostenibilidad Medioambiental",
+    "Sosteniblidad Medioambiental":  "Sostenibilidad Medioambiental",
+    "Medio Ambiente":                "Sostenibilidad Medioambiental",
+
+    # ── Régimen Interior ──────────────────────────────────────────────────────
+    "Régimen Interior":   "Régimen Interior",
+    "Secretaría":         "Régimen Interior",
+    "Intervención":       "Régimen Interior",
+    "Estadística":        "Régimen Interior",
+    "Padrón":             "Régimen Interior",
+    "Régimen Interior, Recursos Humanos, Protocolo, Protección Civil, Relaciones Consorcio Bomberos": "Régimen Interior",
+
+    # ── Recursos Humanos ──────────────────────────────────────────────────────
+    "Recursos Humanos": "Recursos Humanos",
+
+    # ── Protocolo ────────────────────────────────────────────────────────────
+    "Protocolo": "Protocolo",
+
+    # ── Protección Civil ──────────────────────────────────────────────────────
+    "Protección Civil":  "Protección Civil",
+    "Protección civil":  "Protección Civil",
+
+    # ── Economía y Hacienda ───────────────────────────────────────────────────
+    "Economía y Hacienda": "Economía y Hacienda",
+    "Economia y Hacienda": "Economía y Hacienda",
+    "Economía":            "Economía y Hacienda",
+
+    # ── Cultura ───────────────────────────────────────────────────────────────
+    "Cultura":               "Cultura",
+    "cultura":               "Cultura",
+    "Cultrura":              "Cultura",
+    "Cultura, Feria y Fiestas": "Cultura",
+
+    # ── Ferias y Fiestas ──────────────────────────────────────────────────────
+    "Ferias y Fiestas": "Ferias y Fiestas",
+    "Feria y Fiestas":  "Ferias y Fiestas",
+
+    # ── Turismo ───────────────────────────────────────────────────────────────
+    "Turismo":              "Turismo",
+    "turismo":              "Turismo",
+    "Cueva del Tesoro-Turismo": "Turismo",
+
+    # ── Cueva del Tesoro ──────────────────────────────────────────────────────
+    "Cueva del Tesoro":   "Cueva del Tesoro",
+    "Cueval del Tesosro": "Cueva del Tesoro",
+
+    # ── Villa Romana Antíopa ──────────────────────────────────────────────────
+    "Villa Antiopa":                    "Villa Romana Antíopa",
+    "Villa Antíopa":                    "Villa Romana Antíopa",
+    "Villa Antiiopa":                   "Villa Romana Antíopa",
+    "Villa Antiíopa":                   "Villa Romana Antíopa",
+    "Villa Antiiopa":                   "Villa Romana Antíopa",
+    "Villa Antíopa y Cueva del Tesoro": "Villa Romana Antíopa",
+    "Villa Romana":                     "Villa Romana Antíopa",
+    "Villa Antiiopa":                   "Villa Romana Antíopa",
+
+    # ── Urbanismo ─────────────────────────────────────────────────────────────
+    "Urbanismo":               "Urbanismo",
+    "Urbanismo - APAL Deportes": "Urbanismo",
+    "Patrimonio":              "Urbanismo",
+
+    # ── Infraestructuras ──────────────────────────────────────────────────────
+    "Infraestructuras":  "Infraestructuras",
+    "Infraestructura":   "Infraestructuras",
+    "Ingfraestructuras": "Infraestructuras",
+
+    # ── Obras y Servicios Generales ───────────────────────────────────────────
+    "Obras y Servicios Generales":           "Obras y Servicios Generales",
+    "Obars y Servicios Generales":           "Obras y Servicios Generales",
+    "Servicios Generales":                   "Obras y Servicios Generales",
+    "Servicios Operativos":                  "Obras y Servicios Generales",
+    "Servicos Operativos":                   "Obras y Servicios Generales",
+    "SSOO con destino Educación":            "Obras y Servicios Generales",
+    "Servicios Operativos destino Apal de Deportes": "Obras y Servicios Generales",
+    "Servicios Operativos destino Juventud": "Obras y Servicios Generales",
+    "Servicios Operativos/Ferias y Fiestas": "Obras y Servicios Generales",
+    "Limpieza Edificios municipales":        "Obras y Servicios Generales",
+    "Limpieza de edificios":                 "Obras y Servicios Generales",
+
+    # ── Playas ────────────────────────────────────────────────────────────────
+    "Playas": "Playas",
+    "playas": "Playas",
+
+    # ── Parques y Jardines ────────────────────────────────────────────────────
+    "Parques y Jardines": "Parques y Jardines",
+
+    # ── Cementerios y Servicios Fúnebres ─────────────────────────────────────
+    "Cementerios y Servicios Fúnebres":   "Cementerios y Servicios Fúnebres",
+    "Cementerios y Servicios Funerarios": "Cementerios y Servicios Fúnebres",
+    "Cementterios y Servicios Fúnebres":  "Cementerios y Servicios Fúnebres",
+    "Cementerios":                         "Cementerios y Servicios Fúnebres",
+    "Cementerio":                          "Cementerios y Servicios Fúnebres",
+
+    # ── Seguridad Ciudadana ───────────────────────────────────────────────────
+    "Seguridad Ciudadana": "Seguridad Ciudadana",
+    "Policía Local":       "Seguridad Ciudadana",
+
+    # ── Bienestar Social ──────────────────────────────────────────────────────
+    "Bienestar Social":              "Bienestar Social",
+    "Bienestar Social (CMIM)":       "Bienestar Social",
+    "Bienestar Social0":             "Bienestar Social",
+    "Políticas Sociales":            "Bienestar Social",
+    "Politicas Sociales":            "Bienestar Social",
+    "Servicios Sociales Comunitarios": "Bienestar Social",
+
+    # ── Educación ─────────────────────────────────────────────────────────────
+    "Educación":  "Educación",
+    "Educacion":  "Educación",
+
+    # ── Formación y Empleo ────────────────────────────────────────────────────
+    "Formación y Empleo":      "Formación y Empleo",
+    "Formación y empleo":      "Formación y Empleo",
+    "Empleo":                  "Formación y Empleo",
+    "Agricultura, Ganadería y Pesca": "Formación y Empleo",
+
+    # ── Juventud ──────────────────────────────────────────────────────────────
+    "Juventud": "Juventud",
+
+    # ── Promoción de la Tercera Edad ──────────────────────────────────────────
+    "Promoción de la Tercera Edad": "Promoción de la Tercera Edad",
+    "Promoción Tercera Edad":       "Promoción de la Tercera Edad",
+
+    # ── Comercio ──────────────────────────────────────────────────────────────
+    "Comercio":  "Comercio",
+    "comercio":  "Comercio",
+
+    # ── Vía Pública ───────────────────────────────────────────────────────────
+    "Vía Pública": "Vía Pública",
+
+    # ── Sanidad y Consumo ─────────────────────────────────────────────────────
+    "Sanidad y Consumo": "Sanidad y Consumo",
+    "Sanidad Y consumo": "Sanidad y Consumo",
+    "Sanidad":           "Sanidad y Consumo",
+
+    # ── Nuevas Tecnologías y Transparencia ────────────────────────────────────
+    "Nuevas Tecnologías":                    "Nuevas Tecnologías y Transparencia",
+    "Nuevas tecnologías":                    "Nuevas Tecnologías y Transparencia",
+    "Transparencia y Participación Ciudadana": "Nuevas Tecnologías y Transparencia",
+    "Transparencia y Participación":         "Nuevas Tecnologías y Transparencia",
+    "Transparencia":                         "Nuevas Tecnologías y Transparencia",
+
+    # ── Movilidad y Transportes ───────────────────────────────────────────────
+    "Transportes":            "Movilidad y Transportes",
+    "Transporte":             "Movilidad y Transportes",
+    "Transporte Público Urbano": "Movilidad y Transportes",
+    "Movilidad":              "Movilidad y Transportes",
+    "Movilidad y Transporte": "Movilidad y Transportes",
+
+    # ── Deportes (APAL) ───────────────────────────────────────────────────────
+    "Deportes (APAL)": "Deportes (APAL)",
+    "Deportes":        "Deportes (APAL)",
+
+    # ── Errores / sin área legible ────────────────────────────────────────────
+    "De":        None,   # valor truncado, sin área
+    "Suministro": None,  # tipo de contrato, no área
+}
+
+
+def normalize_area(area):
+    """Normaliza el nombre de un área al canónico definido en AREA_MAP."""
+    if pd.isna(area) or area is None:
+        return None
+    stripped = str(area).strip()
+    if stripped in AREA_MAP:
+        return AREA_MAP[stripped]
+    # Área genuinamente nueva no contemplada: mantenerla y avisarla
+    import warnings
+    warnings.warn(f"Área no mapeada: {repr(stripped)}", stacklevel=2)
+    return stripped
+
+
 def sanitize_text(text):
     if not text or pd.isna(text): return ""
     # Remove anomalous characters, extra dots, commas and normalize spaces
@@ -161,6 +382,12 @@ def process_files():
                 df['raw_row'] = df.apply(lambda row: " || ".join([str(val).strip() for val in row.values]), axis=1)
                 df['source_file'] = filename
                 df.columns = [str(c).replace('\n', ' ').strip() for c in df.columns]
+                # 2022 format: combined 'ADJUDICATARIO/DOMICILIO/CIF' → split into standard columns
+                if 'ADJUDICATARIO/DOMICILIO/CIF' in df.columns:
+                    parsed = df['ADJUDICATARIO/DOMICILIO/CIF'].apply(parse_adj_dom_cif)
+                    df['ADJUDICATARIO'] = parsed.apply(lambda x: x[0])
+                    df['CIF/DOMICILIO'] = parsed.apply(lambda x: x[1])
+                    df.drop(columns=['ADJUDICATARIO/DOMICILIO/CIF'], inplace=True)
                 rename_dict = {}
                 for col in df.columns:
                     for possible, internal in column_mapping.items():
@@ -171,6 +398,11 @@ def process_files():
                 valid_cols = [c for c in df.columns if c in list(column_mapping.values()) + ['raw_row', 'source_file']]
                 df = df[valid_cols]
                 if df.empty: continue
+                # Ensure required columns exist (older files may lack them)
+                if 'fecha_adjudicacion' not in df.columns:
+                    df['fecha_adjudicacion'] = pd.NaT
+                if 'area' not in df.columns:
+                    df['area'] = None
                 df['importe'] = df['importe'].apply(clean_amount)
                 df['fecha_adjudicacion'] = pd.to_datetime(df['fecha_adjudicacion'], errors='coerce')
                 if not df.empty:
@@ -197,6 +429,9 @@ def process_files():
         final_df = pd.concat(all_data, ignore_index=True)
         final_df = final_df.dropna(subset=['adjudicatario', 'objeto'], how='all')
         
+        # Normalizar nombres de área
+        final_df['area'] = final_df['area'].apply(normalize_area)
+
         # Propagating CIFs and Unifying Names
         print("Unifying and Propagating...")
         name_to_cif = {}

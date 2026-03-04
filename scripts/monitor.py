@@ -184,7 +184,7 @@ def monitor(dry_run: bool = False, force: bool = False) -> None:
     log.info(f"Trimestres en DB: {sorted(ya_procesados)}")
 
     # 2. Trimestres que deberían existir
-    esperados = expected_quarters()
+    esperados = expected_quarters(since_year=2022)
     log.info(f"Trimestres esperados: {sorted(esperados)}")
 
     # 3. Pendientes (esperados pero no en DB)
