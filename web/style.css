@@ -694,6 +694,26 @@ td {
     color: var(--text-primary);
 }
 
+/* ── Quality view ─────────────────────────────────────────────────── */
+.quality-ok {
+    color: #4ade80;
+}
+
+.quality-warn {
+    color: #fb923c;
+}
+
+.quality-pct {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+.quality-warn-cell {
+    color: #fb923c;
+    font-weight: 600;
+}
+
 /* ── Media queries ────────────────────────────────────────────────── */
 @media (max-width: 768px) {
     .hero h1 {

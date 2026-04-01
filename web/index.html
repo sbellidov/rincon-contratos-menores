@@ -71,6 +71,9 @@
                 <button class="tab-btn" data-view="contractors">
                     <i data-lucide="users"></i> Ranking Contratistas
                 </button>
+                <button class="tab-btn" data-view="quality">
+                    <i data-lucide="shield-alert"></i> Calidad de datos
+                </button>
             </div>
 
             <div id="tableView" class="view-content active">
@@ -138,6 +141,31 @@
                 </div>
                 <div id="contractorsList" class="contractors-grid">
                     <!-- Contractor cards will be injected by JS -->
+                </div>
+            </div>
+            <div id="qualityView" class="view-content">
+                <div class="section-header">
+                    <h2>Calidad de datos</h2>
+                </div>
+                <div class="stats-grid" id="qualityCards"></div>
+                <div class="card" style="margin-top: 1.5rem">
+                    <h3 style="margin-bottom: 1.25rem">Detalle por año</h3>
+                    <div class="table-container">
+                        <table id="qualityTable">
+                            <thead>
+                                <tr>
+                                    <th>Año</th>
+                                    <th class="text-right">Contratos</th>
+                                    <th class="text-right">Inversión</th>
+                                    <th class="text-right">Sin CIF</th>
+                                    <th class="text-right">Sin fecha</th>
+                                    <th class="text-right">Imp. = 0 €</th>
+                                    <th class="text-right">Imp. &gt; 50k €</th>
+                                </tr>
+                            </thead>
+                            <tbody id="qualityTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </section>

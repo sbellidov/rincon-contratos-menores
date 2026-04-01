@@ -1,5 +1,6 @@
 let allContracts = [];
 let analysisData = {};
+let auditData = {};
 let contractorsSummary = [];
 let filteredContracts = [];
 let filteredContractors = [];
@@ -13,15 +14,17 @@ let activeFilters = { anio: '', trimestre: '', area: '', tipo: '', texto: '' };
 
 async function init() {
     try {
-        const [contractsRes, analysisRes, summaryRes] = await Promise.all([
+        const [contractsRes, analysisRes, summaryRes, auditRes] = await Promise.all([
             fetch('data/contracts.json?v=' + Date.now()),
             fetch('data/analysis.json?v=' + Date.now()),
-            fetch('data/contractors_summary.json?v=' + Date.now())
+            fetch('data/contractors_summary.json?v=' + Date.now()),
+            fetch('data/audit_summary.json?v=' + Date.now()),
         ]);
 
         allContracts = await contractsRes.json();
         analysisData = await analysisRes.json();
         contractorsSummary = await summaryRes.json();
+        auditData = await auditRes.json();
 
         filteredContracts = [...allContracts];
         filteredContractors = [...contractorsSummary];
@@ -31,6 +34,7 @@ async function init() {
         renderCharts();
         renderTable();
         renderContractors();
+        renderQuality();
         populateFilters();
         setupSearch();
         setupSorting();
@@ -125,6 +129,40 @@ window.toggleContractor = (cif) => {
         card.classList.remove('expanded');
     }
 };
+
+function renderQuality() {
+    const { total_checked, by_type = {}, by_year = [] } = auditData;
+
+    const kpis = [
+        { label: 'CIF inválido o faltante', value: (by_type['CIF Inválido'] || 0) + (by_type['CIF Faltante'] || 0), icon: 'fingerprint' },
+        { label: 'Fecha inválida o faltante', value: by_type['Fecha Inválida/Faltante'] || 0, icon: 'calendar-x' },
+        { label: 'Importe = 0 €', value: by_type['Importe Cero/Negativo'] || 0, icon: 'circle-off' },
+        { label: 'Importe > 50.000 €', value: by_type['Importe Elevado'] || 0, icon: 'triangle-alert' },
+    ];
+
+    document.getElementById('qualityCards').innerHTML = kpis.map(k => `
+        <div class="card stat-card">
+            <div style="display:flex;justify-content:space-between;align-items:start">
+                <h4>${k.label}</h4>
+                <div class="icon-circle"><i data-lucide="${k.icon}" style="width:16px;height:16px"></i></div>
+            </div>
+            <div class="value ${k.value > 0 ? 'quality-warn' : 'quality-ok'}">${k.value.toLocaleString('es-ES')}</div>
+            <div class="quality-pct">${total_checked ? ((k.value / total_checked) * 100).toFixed(1) + '% del total' : ''}</div>
+        </div>
+    `).join('');
+
+    document.getElementById('qualityTableBody').innerHTML = by_year.map(row => `
+        <tr>
+            <td><strong>${row.year}</strong></td>
+            <td class="text-right">${row.total.toLocaleString('es-ES')}</td>
+            <td class="text-right">${formatCurrency(row.importe_total)}</td>
+            <td class="text-right ${row.sin_cif > 0 ? 'quality-warn-cell' : ''}">${row.sin_cif}</td>
+            <td class="text-right ${row.sin_fecha > 0 ? 'quality-warn-cell' : ''}">${row.sin_fecha}</td>
+            <td class="text-right ${row.importe_cero > 0 ? 'quality-warn-cell' : ''}">${row.importe_cero}</td>
+            <td class="text-right ${row.importe_alto > 0 ? 'quality-warn-cell' : ''}">${row.importe_alto}</td>
+        </tr>
+    `).join('');
+}
 
 function renderDashboard() {
     const summary = analysisData.summary;
