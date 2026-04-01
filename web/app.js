@@ -496,6 +496,8 @@ function setupSearch() {
         applyFilters();
     });
 
+    document.getElementById('downloadCsv').addEventListener('click', downloadCSV);
+
     const contractorSearch = document.getElementById('contractorSearch');
     contractorSearch.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
@@ -505,6 +507,30 @@ function setupSearch() {
         );
         renderContractors();
     });
+}
+
+function downloadCSV() {
+    const headers = ['Fecha', 'Adjudicatario', 'CIF', 'Tipo entidad', 'Objeto', 'Área', 'Tipo contrato', 'Importe (€)', 'Expediente'];
+    const rows = filteredContracts.map(c => [
+        c.fecha_adjudicacion || '',
+        c.adjudicatario_unificado || c.adjudicatario || '',
+        c.cif || '',
+        c.tipo_entidad || '',
+        (c.objeto || '').replace(/"/g, '""'),
+        c.area || '',
+        c.tipo_contrato_limpio || '',
+        c.importe != null ? c.importe : '',
+        c.expediente || '',
+    ].map(v => `"${v}"`).join(','));
+
+    const csv = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'contratos-rincon.csv';
+    a.click();
+    URL.revokeObjectURL(url);
 }
 
 function formatCurrency(val) {

@@ -683,6 +683,34 @@ td {
     height: 16px;
 }
 
+.btn-download {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.3s, border-color 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-download:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.btn-download i {
+    width: 15px;
+    height: 15px;
+}
+
 .results-count {
     font-size: 0.85rem;
     color: var(--text-secondary);
