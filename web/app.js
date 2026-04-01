@@ -170,7 +170,7 @@ function renderDashboard() {
         { label: 'Total Contratos', value: summary.total_contracts, icon: 'file-text' },
         { label: 'Inversión Total', value: formatCurrency(summary.total_amount), icon: 'euro' },
         { label: 'Media por Contrato', value: formatCurrency(summary.avg_amount), icon: 'trending-up' },
-        { label: 'Contratista Principal', value: contractorsSummary[0].nombre.split(' ')[0] + '...', icon: 'award' }
+        { label: 'Contratistas únicos', value: contractorsSummary.length.toLocaleString('es-ES'), icon: 'building-2' }
     ];
 
     const container = document.getElementById('summary-cards');
