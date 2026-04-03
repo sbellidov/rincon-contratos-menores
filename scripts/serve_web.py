@@ -3,7 +3,7 @@ import socketserver
 import os
 
 PORT = 8000
-DIRECTORY = "web"
+DIRECTORY = "docs"
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):

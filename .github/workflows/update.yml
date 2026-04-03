@@ -29,14 +29,14 @@ jobs:
           python scripts/analyze_data.py
           python scripts/audit_data.py
 
-      - name: Sincronizar JSONs a web/data/
-        run: cp data/processed/*.json web/data/
+      - name: Sincronizar JSONs a docs/data/
+        run: cp data/processed/*.json docs/data/
 
       - name: Commit y push si hay datos nuevos
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add web/data/
+          git add docs/data/
           if git diff --cached --quiet; then
             echo "Sin cambios en los datos. Nada que commitear."
           else
