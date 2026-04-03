@@ -1,64 +1,84 @@
 # rincon-contratos-menores
 
-Transparency portal for visualizing and analyzing public minor contracts from the Ayuntamiento de Rincón de la Victoria. Python 3.9 ETL pipeline + vanilla JS/HTML frontend served as static files.
+Portal de transparencia de contratos menores del Ayuntamiento de Rincón de la Victoria.
+Stack: ETL Python 3.9 + frontend estático vanilla JS desplegado en GitHub Pages.
 
-## Setup
+**URL producción:** https://rincontransparente.com
+**Repo:** https://github.com/sbellidov/rincon-contratos-menores
+
+## Setup local
 
 ```bash
 cd dev/rincon-contratos-menores
 source .venv/bin/activate
 ```
 
-All scripts must be run from the project root (`dev/rincon-contratos-menores`), not from the `scripts/` directory, as paths are relative to the project root.
+Todos los scripts deben ejecutarse desde la raíz del proyecto.
 
-## Data pipeline (run in order)
+## Pipeline ETL (en orden)
 
 ```bash
-# 1. Download raw Excel files from the municipal transparency portal
+# 1. Descarga los Excel del portal municipal
 python scripts/download_data.py
 
-# 2. Parse, normalize, and produce structured JSON + CSV
+# 2. Procesa y genera JSONs + CSV
 python scripts/process_data.py
 
-# 3. Sync processed data to the web app
-cp data/processed/*.json docs/data/
+# 3. Genera analysis.json (incluye by_quarter y by_year)
+python scripts/analyze_data.py
 
-# 4. Audit data quality and generate anomaly report
+# 4. Genera audit_summary.json (calidad de datos, desglose por año)
 python scripts/audit_data.py
 
-# 5. (Optional) Generate aggregated analysis JSON
-python scripts/analyze_data.py
+# 5. Sincroniza JSONs al frontend
+cp data/processed/*.json docs/data/
 ```
 
-## Local development server
+El pipeline completo se ejecuta automáticamente cada día a las 06:00 UTC
+via `.github/workflows/update.yml`. Solo hace commit si hay datos nuevos.
+
+## Servidor local
 
 ```bash
 python scripts/serve_web.py
-# Opens at http://localhost:8000
+# Abre en http://localhost:8000
 ```
 
-## Architecture
+## Arquitectura
 
-**ETL (`scripts/process_data.py`)** — The core pipeline:
-- Reads quarterly `.xls` files from `data/raw/` (filenames follow `{YYYY}_Q{N}.xls` convention)
-- Detects the header row dynamically (looks for `OBJETO` + `ADJUDICATARIO` keywords)
-- Extracts and validates Spanish tax IDs (NIF/CIF) from a combined `CIF/DOMICILIO` column using `validate_spanish_id()`
-- Propagates CIFs across records with the same adjudicatario name, then builds a canonical name per CIF using mode
-- Outputs a star-schema structure:
-  - `fact_contracts.json` — one row per contract
-  - `dim_contractors.json` — deduplicated contractors (canonical name, address, entity type)
-  - `dim_areas.json` / `dim_types.json` — dimension tables
-  - `contractors_summary.json` — aggregated per-contractor view with nested contracts (used by the web app)
-  - `contracts.csv` / `contracts.json` — flat exports
+### ETL (`scripts/`)
+- `download_data.py` — descarga Excel trimestrales del portal municipal
+- `process_data.py` — pipeline principal: normaliza, valida CIFs, genera star-schema JSON
+- `analyze_data.py` — agrega por área, año, trimestre (`by_quarter`) y tipo
+- `audit_data.py` — detecta anomalías y genera `audit_summary.json` con desglose por año
+- `serve_web.py` — servidor HTTP local apuntando a `docs/`
 
-**Frontend (`docs/`)** — Single-page app, no build step:
-- `index.html` + `style.css` (glassmorphism design) + `app.js`
-- Loads JSON from `docs/data/` (a copy of `data/processed/`)
-- Uses Chart.js for charts and Lucide Icons
+### Outputs del ETL (`data/processed/`)
+- `contracts.json` / `contracts.csv` — un registro por contrato (campos: year, quarter, cif, tipo_entidad, área, etc.)
+- `contractors_summary.json` — contratistas agregados con contratos anidados
+- `analysis.json` — resumen global + `by_area`, `by_year`, `by_quarter`, `by_type`
+- `audit_summary.json` — anomalías globales + `by_year` con métricas de calidad por año
+- `fact_contracts.json`, `dim_contractors.json`, `dim_areas.json`, `dim_types.json` — star schema
 
-**Data quality (`scripts/audit_data.py`)** — Generates `data/processed/audit_report.csv` flagging: missing CIFs, invalid/missing dates, amounts > €50k or = €0, missing object descriptions.
+### Frontend (`docs/`)
+SPA sin build step. Carga JSONs desde `docs/data/`.
 
-## Key data rules
-- Raw files cover 2024–2025 (quarterly); dates outside 2020–2026 are nulled
-- Entity type is inferred from the CIF's first character (e.g. `B` → SL, `A` → SA, digits/X/Y/Z → Autónomo)
-- Contract type is normalized from free text: Servicio / Suministro / Obras / Otros
+- `index.html` + `style.css` (glassmorphism dark) + `app.js`
+- **Dashboard:** 4 KPI cards (contratos, inversión, media, contratistas únicos) + gráficos (área, trimestral, tipo)
+- **Contratos:** tabla paginada con filtros dropdown (año, trimestre, área, tipo) + búsqueda libre + descarga CSV
+- **Contratistas:** ranking expandible con contratos anidados
+- **Calidad de datos:** KPI cards de anomalías + tabla por año
+
+Librerías: Chart.js (gráficos), Lucide (iconos).
+
+### Infraestructura
+- **GitHub Pages** — rama `main`, carpeta `/docs`
+- **Cloudflare** — proxy activo, SSL Full, HTTPS forzado, Security Level Medium, Bot Fight Mode ON
+- **Google Analytics 4** — propiedad independiente, ID: `G-RX99FF0RJR`
+- **Dominio** — `rincontransparente.com` (Cloudflare), CNAME → `sbellidov.github.io`
+
+## Reglas de datos
+- Ficheros raw: trimestrales `{YYYY}_Q{N}.xls` en `data/raw/`
+- Fechas fuera del rango 2020–2026 se nulifican
+- Tipo de entidad inferido del primer carácter del CIF (B→SL, A→SA, dígitos/X/Y/Z→Autónomo)
+- Tipo de contrato normalizado desde texto libre: Servicio / Suministro / Obras / Otros
