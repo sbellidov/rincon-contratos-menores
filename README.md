@@ -1,8 +1,12 @@
 # Contratos Menores · Rincón de la Victoria
 
-Portal de transparencia para visualizar y analizar los contratos menores del Ayuntamiento de Rincón de la Victoria. Inspirado en el trabajo de [Jaime Gómez-Obregón](https://twitter.com/jaime_gomez) sobre transparencia pública.
+Portal de transparencia para visualizar y analizar los contratos menores del Ayuntamiento de Rincón de la Victoria.
 
-Los datos se obtienen directamente del [portal de contratación municipal](https://www.rincondelavictoria.es/areas/contratacion/relaciones-de-contratos-menores), se procesan y normalizan, y se almacenan en una base de datos SQLite local.
+🌐 **[rincontransparente.com](https://rincontransparente.com)**
+
+Inspirado en el trabajo de [Jaime Gómez-Obregón](https://github.com/jaimeobregon) sobre transparencia pública.
+
+---
 
 ## Arquitectura
 
@@ -10,113 +14,79 @@ Los datos se obtienen directamente del [portal de contratación municipal](https
 rincon-contratos-menores/
 ├── data/
 │   ├── raw/                  # Excel originales descargados (gitignored)
-│   ├── processed/            # JSON intermedios del ETL (gitignored)
-│   └── contratos.db          # Base de datos SQLite (gitignored)
+│   └── processed/            # JSONs intermedios del ETL (gitignored)
 ├── scripts/
-│   ├── monitor.py            # Detecta, descarga y procesa nuevos trimestres
+│   ├── download_data.py      # Descarga los XLS trimestrales del portal municipal
 │   ├── process_data.py       # ETL: limpieza, normalización, validación de CIFs
-│   ├── init_db.py            # Inicializa el schema SQLite
-│   ├── migrate_to_db.py      # Migración inicial desde JSON a SQLite
-│   ├── download_data.py      # Descarga manual de XLS (uso puntual)
-│   └── audit_data.py         # Auditoría de calidad de datos
-├── app.py                    # Aplicación Streamlit (portal web)
-├── db.py                     # Módulo de base de datos (schema + helpers)
-└── .streamlit/config.toml    # Tema visual
+│   ├── analyze_data.py       # Agrega por área, año, trimestre y tipo
+│   ├── audit_data.py         # Detecta anomalías y genera audit_summary.json
+│   └── serve_web.py          # Servidor HTTP local para desarrollo
+├── docs/                     # Frontend estático (GitHub Pages)
+│   ├── index.html
+│   ├── style.css
+│   ├── app.js
+│   └── data/                 # JSONs sincronizados desde data/processed/
+└── .github/workflows/
+    └── update.yml            # Cron diario 06:00 UTC: ETL + commit si hay datos nuevos
 ```
 
 ## Stack
 
 - **ETL**: Python 3.9 + pandas + xlrd/openpyxl
-- **Base de datos**: SQLite (via `db.py`)
-- **Web**: Streamlit + Plotly
-- **Scraping**: requests + BeautifulSoup4
+- **Frontend**: HTML + CSS + JavaScript (vanilla) + Chart.js
+- **Despliegue**: GitHub Pages (rama `main`, carpeta `/docs`)
+- **CDN / DNS**: Cloudflare (proxy activo, SSL Full)
+- **Analítica**: Google Analytics 4
 
-## Instalación
+## Instalación local
 
 ```bash
 git clone https://github.com/sbellidov/rincon-contratos-menores.git
 cd rincon-contratos-menores
 python -m venv .venv
 source .venv/bin/activate
-pip install pandas xlrd openpyxl requests beautifulsoup4 streamlit plotly
+pip install -r requirements.txt
 ```
 
-## Primer uso (carga inicial de datos)
+## Pipeline ETL
 
 ```bash
-# 1. Inicializar la base de datos
-python scripts/init_db.py
-
-# 2. Descargar todos los Excel disponibles en el portal
+# 1. Descarga los Excel del portal municipal
 python scripts/download_data.py
 
-# 3. Procesar, normalizar y cargar en SQLite
+# 2. Procesa y genera JSONs + CSV
 python scripts/process_data.py
 
-# 4. Lanzar el portal web
-streamlit run app.py
+# 3. Genera analysis.json (agrega por área, año, trimestre, tipo)
+python scripts/analyze_data.py
+
+# 4. Genera audit_summary.json (calidad de datos)
+python scripts/audit_data.py
+
+# 5. Sincroniza JSONs al frontend
+cp data/processed/*.json docs/data/
 ```
 
-## Actualización de datos
+El pipeline completo se ejecuta automáticamente cada día a las 06:00 UTC
+vía `.github/workflows/update.yml`. Solo hace commit si hay datos nuevos.
 
-### Manual
+## Servidor local
 
 ```bash
-python scripts/monitor.py
+python scripts/serve_web.py
+# Abre en http://localhost:8000
 ```
-
-El monitor:
-1. Consulta la DB para saber qué trimestres están procesados.
-2. Raspa el portal del ayuntamiento buscando ficheros XLS nuevos.
-3. Descarga los que faltan a `data/raw/`.
-4. Relanza el ETL completo (idempotente: no genera duplicados).
-
-Opciones disponibles:
-
-```bash
-python scripts/monitor.py --dry-run   # Muestra qué descargaría, sin actuar
-python scripts/monitor.py --force     # Re-descarga aunque ya esté en DB
-```
-
-### Automática con cron
-
-Para mantener el portal actualizado sin intervención manual, añade una tarea cron que ejecute el monitor periódicamente. Los contratos se publican trimestralmente (normalmente 1-2 meses después del fin de cada trimestre), así que con comprobarlo una vez por semana es más que suficiente:
-
-```bash
-# Abrir el editor de cron
-crontab -e
-```
-
-```cron
-# Comprobar nuevos contratos todos los lunes a las 9:00
-0 9 * * 1 cd /ruta/al/proyecto && .venv/bin/python scripts/monitor.py >> logs/monitor.log 2>&1
-```
-
-Ajusta `/ruta/al/proyecto` a la ruta real del proyecto en tu máquina.
-
-Si quieres que el log no crezca indefinidamente, añade también una rotación semanal:
-
-```cron
-# Rotar log del monitor cada domingo a las 23:59
-59 23 * * 0 cp /ruta/al/proyecto/logs/monitor.log /ruta/al/proyecto/logs/monitor.log.bak && > /ruta/al/proyecto/logs/monitor.log
-```
-
-## Modelo de datos (SQLite)
-
-| Tabla | Descripción |
-|---|---|
-| `contratos` | Tabla de hechos: un registro por contrato |
-| `contratistas` | Dimensión: contratistas unificados por CIF |
-| `areas` | Dimensión: áreas/departamentos municipales |
-| `tipos_contrato` | Dimensión: Servicio / Suministro / Obras / Otros |
-| `trimestres` | Tracking de descargas y procesados |
 
 ## Calidad de datos
 
 Los Excel del ayuntamiento contienen errores frecuentes: CIFs inválidos, fechas mal formateadas, nombres del mismo contratista escritos de formas distintas, áreas con nombres inconsistentes, etc.
 
-El ETL aplica correcciones automáticas (propagación de CIFs, modo estadístico para nombres canónicos), pero siempre quedará trabajo manual de depuración. La sección **Calidad de datos** de la app Streamlit muestra en todo momento los registros pendientes de revisión.
+El ETL aplica correcciones automáticas:
+- Propagación de CIFs por nombre de contratista
+- Nombre canónico por moda estadística por CIF
+- Normalización de 94 variantes de área a 31 áreas canónicas
+- Validación de NIFs/CIFs según algoritmo oficial
 
 ---
 
-*Datos públicos obtenidos del portal de transparencia del Ayuntamiento de Rincón de la Victoria.*
+*Datos públicos obtenidos del [portal de transparencia](https://www.rincondelavictoria.es/areas/contratacion/relaciones-de-contratos-menores) del Ayuntamiento de Rincón de la Victoria.*
