@@ -528,9 +528,16 @@ def process_files():
         with open(os.path.join(processed_dir, 'contractors_summary.json'), 'w', encoding='utf-8') as f:
             json.dump(summary, f, indent=2, ensure_ascii=False, default=default_ser)
         
-        # Keep original contracts.json for backward compatibility or direct use
+        # contracts.json: solo los campos que usa el frontend
+        frontend_cols = [
+            'fecha_adjudicacion', 'adjudicatario', 'cif', 'tipo_entidad',
+            'objeto', 'area', 'importe', 'year', 'quarter',
+            'tipo_contrato_limpio', 'expediente', 'contrato_id',
+        ]
+        existing_cols = [c for c in frontend_cols if c in final_df.columns]
+        contracts_frontend = final_df[existing_cols].replace({pd.NA: None, pd.NaT: None})
         with open(os.path.join(processed_dir, 'contracts.json'), 'w', encoding='utf-8') as f:
-            json.dump(final_df.replace({pd.NA: None, pd.NaT: None}).to_dict('records'), f, indent=2, ensure_ascii=False, default=default_ser)
+            json.dump(contracts_frontend.to_dict('records'), f, indent=2, ensure_ascii=False, default=default_ser)
             
         print(f"Extraction complete. {len(final_df)} records processed.")
 
