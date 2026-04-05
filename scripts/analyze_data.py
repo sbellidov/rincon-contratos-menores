@@ -24,7 +24,7 @@ def analyze():
             'max_date': max_date.isoformat() if max_date is not None else None,
             'last_updated': max_date.strftime('%d/%m/%Y') if max_date is not None else None,
         },
-        'by_area': df.groupby('area')['importe'].agg(['sum', 'count']).sort_values('sum', ascending=False).head(15).to_dict('index'),
+        'by_area': df.groupby('area')['importe'].agg(['sum', 'count']).sort_values('sum', ascending=False).to_dict('index'),
         'top_adjudicatarios': df.groupby('adjudicatario_final')['importe'].agg(['sum', 'count']).sort_values('sum', ascending=False).head(15).to_dict('index'),
         'by_year': df.groupby('year')['importe'].agg(['sum', 'count']).to_dict('index'),
         'by_quarter': (
@@ -37,7 +37,8 @@ def analyze():
             [['year', 'quarter', 'periodo', 'importe', 'contratos']]
             .to_dict('records')
         ),
-        'by_type': df.groupby('tipo_contrato_limpio')['importe'].agg(['sum', 'count']).to_dict('index')
+        'by_type': df.groupby('tipo_contrato_limpio')['importe'].agg(['sum', 'count']).to_dict('index'),
+        'by_entity_type': df.groupby('tipo_entidad')['importe'].agg(['sum', 'count']).sort_values('sum', ascending=False).to_dict('index'),
     }
 
     # Deep clean of the analysis dictionary to replace any NaN with None
