@@ -33,7 +33,7 @@ rincon-contratos-menores/
 ## Stack
 
 - **ETL**: Python 3.9 + pandas + xlrd/openpyxl
-- **Frontend**: HTML + CSS + JavaScript (vanilla) + Chart.js
+- **Frontend**: HTML + CSS + JavaScript (vanilla) + Chart.js · tipografía Inter · tema claro · mobile-first
 - **Despliegue**: GitHub Pages (rama `main`, carpeta `/docs`)
 - **CDN / DNS**: Cloudflare (proxy activo, SSL Full)
 - **Analítica**: Google Analytics 4
@@ -76,6 +76,10 @@ vía `.github/workflows/update.yml`. Solo hace commit si hay datos nuevos.
 python scripts/serve_web.py
 # Abre en http://localhost:8000
 ```
+
+## Frontend
+
+SPA sin build step. Cuatro pestañas: **Contratos** (buscador + tabla paginada con filtros colapsables en móvil), **Contratistas** (ranking expandible), **Análisis** (gráficos Chart.js, carga lazy) y **Calidad de datos**.
 
 ## Calidad de datos
 
