@@ -12,7 +12,7 @@ Inspirado en el trabajo de [Jaime Gómez-Obregón](https://github.com/jaimeobreg
 
 Los contratos menores son adjudicaciones directas sin concurso público, con un límite legal de 15.000 € en servicios y 40.000 € en obras. Este portal permite a cualquier ciudadano explorar **quién contrata**, **cuánto gasta** cada área municipal y **con qué frecuencia** se adjudica al mismo proveedor.
 
-**Cobertura de datos:** 2022 · 2023 · 2024 · 2025 (actualización semanal automática)
+**Cobertura de datos:** 2022 · 2023 · 2024 · 2025 · 2026 (actualización semanal automática)
 
 ---
 
