@@ -31,7 +31,7 @@ async function init() {
 
         sortData();
         renderDashboard();
-        renderCharts();
+        // renderCharts() se llama de forma lazy al activar la pestaña Análisis
         renderTable();
         renderContractors();
         renderQuality();
@@ -39,6 +39,8 @@ async function init() {
         setupSearch();
         setupSorting();
         setupTabs();
+        setupFiltersToggle();
+        displayLastUpdated();
         updateResultsCount();
         lucide.createIcons();
     } catch (err) {
@@ -46,11 +48,31 @@ async function init() {
     }
 }
 
+function displayLastUpdated() {
+    const el = document.getElementById('lastUpdated');
+    if (el && analysisData.summary?.last_updated) {
+        el.textContent = `Datos actualizados a ${analysisData.summary.last_updated}`;
+    }
+}
+
+function setupFiltersToggle() {
+    const btn   = document.getElementById('filtersToggle');
+    const panel = document.getElementById('filtersPanel');
+    if (!btn || !panel) return;
+    btn.addEventListener('click', () => {
+        panel.classList.toggle('open');
+        btn.classList.toggle('active');
+    });
+}
+
+let chartsRendered = false;
+
 function setupTabs() {
     const tabs = document.querySelectorAll('.tab-btn');
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             const view = tab.getAttribute('data-view');
+            if (!view) return;
 
             // UI Update
             tabs.forEach(t => t.classList.remove('active'));
@@ -60,6 +82,13 @@ function setupTabs() {
                 content.classList.remove('active');
             });
             document.getElementById(`${view}View`).classList.add('active');
+
+            // Lazy: renderizar gráficos solo la primera vez que se abre la pestaña
+            if (view === 'analysis' && !chartsRendered) {
+                renderCharts();
+                chartsRendered = true;
+                lucide.createIcons();
+            }
         });
     });
 }
@@ -193,6 +222,12 @@ function renderCharts() {
     const areaLabels = Object.keys(analysisData.by_area);
     const areaValues = areaLabels.map(l => analysisData.by_area[l].sum);
 
+    const chartDefaults = {
+        grid:  'rgba(0,0,0,0.06)',
+        ticks: '#94a3b8',
+        font:  { size: 11, family: "'Inter', sans-serif" },
+    };
+
     new Chart(areaCtx, {
         type: 'bar',
         data: {
@@ -200,10 +235,10 @@ function renderCharts() {
             datasets: [{
                 label: 'Euros (€)',
                 data: areaValues,
-                backgroundColor: 'rgba(56, 189, 248, 0.4)',
-                borderColor: '#38bdf8',
-                borderWidth: 1,
-                borderRadius: 4
+                backgroundColor: 'rgba(37, 99, 235, 0.12)',
+                borderColor: '#2563eb',
+                borderWidth: 1.5,
+                borderRadius: 3,
             }]
         },
         options: {
@@ -212,8 +247,12 @@ function renderCharts() {
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-                x: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8', font: { size: 10 } } },
-                y: { grid: { display: false }, ticks: { color: '#94a3b8', font: { size: 10 } } }
+                x: {
+                    grid: { color: chartDefaults.grid },
+                    ticks: { color: chartDefaults.ticks, font: chartDefaults.font,
+                             callback: v => '€' + (v/1000).toLocaleString('es-ES') + 'k' }
+                },
+                y: { grid: { display: false }, ticks: { color: chartDefaults.ticks, font: chartDefaults.font } }
             }
         }
     });
@@ -223,18 +262,16 @@ function renderCharts() {
     const yearValues = yearLabels.map(l => analysisData.by_year[l].sum);
 
     new Chart(yearCtx, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: yearLabels,
             datasets: [{
-                label: 'Inversión',
+                label: 'Inversión (€)',
                 data: yearValues,
-                borderColor: '#38bdf8',
-                backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                fill: true,
-                tension: 0.4,
-                pointRadius: 4,
-                pointBackgroundColor: '#38bdf8'
+                backgroundColor: 'rgba(37, 99, 235, 0.12)',
+                borderColor: '#2563eb',
+                borderWidth: 1.5,
+                borderRadius: 4,
             }]
         },
         options: {
@@ -242,8 +279,12 @@ function renderCharts() {
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: {
-                x: { grid: { display: false }, ticks: { color: '#94a3b8' } },
-                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#94a3b8' } }
+                x: { grid: { display: false }, ticks: { color: chartDefaults.ticks, font: chartDefaults.font } },
+                y: {
+                    grid: { color: chartDefaults.grid },
+                    ticks: { color: chartDefaults.ticks, font: chartDefaults.font,
+                             callback: v => '€' + (v/1000).toLocaleString('es-ES') + 'k' }
+                }
             }
         }
     });
@@ -258,14 +299,9 @@ function renderCharts() {
             labels: typeLabels,
             datasets: [{
                 data: typeValues,
-                backgroundColor: [
-                    'rgba(56, 189, 248, 0.6)',
-                    'rgba(139, 92, 246, 0.6)',
-                    'rgba(245, 158, 11, 0.6)',
-                    'rgba(239, 68, 68, 0.6)'
-                ],
-                borderColor: 'rgba(255, 255, 255, 0.1)',
-                borderWidth: 2
+                backgroundColor: ['#2563eb', '#7c3aed', '#d97706', '#64748b'],
+                borderColor: '#fff',
+                borderWidth: 3,
             }]
         },
         options: {
@@ -274,7 +310,13 @@ function renderCharts() {
             plugins: {
                 legend: {
                     position: 'bottom',
-                    labels: { color: '#94a3b8', font: { size: 10 } }
+                    labels: {
+                        color: '#64748b',
+                        font: chartDefaults.font,
+                        padding: 16,
+                        usePointStyle: true,
+                        pointStyleWidth: 10,
+                    }
                 }
             }
         }

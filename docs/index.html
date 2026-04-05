@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contratos Menores | Rincón de la Victoria</title>
+    <title>Contratos Menores · Rincón de la Victoria</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap" rel="stylesheet">
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RX99FF0RJR"></script>
     <script>
@@ -18,177 +18,189 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="background-blob"></div>
-    <div class="background-blob secondary"></div>
 
-    <nav>
-        <div class="container nav-content">
-            <div class="logo">
-                <i data-lucide="search" class="icon-accent"></i>
-                <span>Rincón <strong>Transparente</strong></span>
-            </div>
-            <div class="nav-links">
-                <a href="#dashboard" class="active">Panel</a>
-                <a href="#contracts">Contratos</a>
-                <a href="#about">Sobre el proyecto</a>
-            </div>
+    <!-- ══ HEADER ══════════════════════════════════════════════════════ -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg viewBox="0 0 20 20" fill="none" class="logo-icon" aria-hidden="true">
+                    <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.75"/>
+                    <line x1="12.8" y1="12.8" x2="17.5" y2="17.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"/>
+                </svg>
+                Rincón <strong>Transparente</strong>
+            </a>
+            <a href="#about" class="nav-about">Sobre el proyecto</a>
         </div>
-    </nav>
+    </header>
 
     <main class="container">
-        <header class="hero">
-            <h1>Análisis de Contratos Menores</h1>
-            <p>Visualización independiente de los datos de contratación pública del Ayuntamiento de Rincón de la
-                Victoria.</p>
-        </header>
 
-        <section id="dashboard">
-            <div class="stats-grid" id="summary-cards">
-                <!-- Cards will be injected by JS -->
-            </div>
-
-            <div class="charts-grid">
-                <div class="card chart-container">
-                    <h3>Gasto por Área (Top 15)</h3>
-                    <div class="canvas-wrapper">
-                        <canvas id="areaChart"></canvas>
-                    </div>
-                </div>
-                <div class="card chart-container">
-                    <h3>Inversión por Año</h3>
-                    <div class="canvas-wrapper">
-                        <canvas id="yearChart"></canvas>
-                    </div>
-                </div>
-                <div class="card chart-container">
-                    <h3>Tipología de Contratos</h3>
-                    <div class="canvas-wrapper">
-                        <canvas id="typeChart"></canvas>
-                    </div>
-                </div>
-            </div>
+        <!-- ══ HERO ════════════════════════════════════════════════════ -->
+        <section class="hero">
+            <h1>Contratos Menores
+                <span class="hero-place">Ayuntamiento de Rincón de la Victoria</span>
+            </h1>
+            <p class="hero-desc">
+                Visualización ciudadana e independiente de la contratación pública municipal.
+                Datos del <a href="https://www.rincondelavictoria.es/areas/contratacion/relaciones-de-contratos-menores" target="_blank" rel="noopener">portal oficial de transparencia</a>.
+            </p>
+            <p class="last-updated" id="lastUpdated"></p>
         </section>
 
-        <section id="contracts" class="mt-4">
-            <div class="view-tabs">
-                <button class="tab-btn active" data-view="table">
-                    <i data-lucide="list"></i> Lista de Contratos
-                </button>
-                <button class="tab-btn" data-view="contractors">
-                    <i data-lucide="users"></i> Ranking Contratistas
-                </button>
-                <button class="tab-btn" data-view="quality">
-                    <i data-lucide="shield-alert"></i> Calidad de datos
-                </button>
-            </div>
+        <!-- ══ KPIs ═════════════════════════════════════════════════════ -->
+        <div class="kpi-row" id="summary-cards"></div>
 
-            <div id="tableView" class="view-content active">
-                <div class="section-header">
-                    <h2>Buscador de Contratos</h2>
+        <!-- ══ TABS ═════════════════════════════════════════════════════ -->
+        <div class="tabs-bar">
+            <button class="tab-btn active" data-view="table">
+                <i data-lucide="file-text"></i><span class="tab-label">Contratos</span>
+            </button>
+            <button class="tab-btn" data-view="contractors">
+                <i data-lucide="users"></i><span class="tab-label">Contratistas</span>
+            </button>
+            <button class="tab-btn" data-view="analysis">
+                <i data-lucide="bar-chart-2"></i><span class="tab-label">Análisis</span>
+            </button>
+            <button class="tab-btn" data-view="quality">
+                <i data-lucide="shield-alert"></i><span class="tab-label">Calidad</span>
+            </button>
+        </div>
+
+        <!-- ══ TAB: CONTRATOS ══════════════════════════════════════════ -->
+        <div id="tableView" class="view-content active">
+
+            <div class="filters-header">
+                <div class="search-wrap">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar por contratista, objeto, CIF…" autocomplete="off">
                 </div>
-
-                <div class="filters-bar">
-                    <div class="search-bar">
-                        <i data-lucide="search"></i>
-                        <input type="text" id="searchInput" placeholder="Contratista, objeto, CIF…">
-                    </div>
-                    <select id="filterAnio" class="filter-select">
-                        <option value="">Todos los años</option>
-                    </select>
-                    <select id="filterTrimestre" class="filter-select">
-                        <option value="">Trimestre</option>
-                        <option value="1">T1</option>
-                        <option value="2">T2</option>
-                        <option value="3">T3</option>
-                        <option value="4">T4</option>
-                    </select>
-                    <select id="filterArea" class="filter-select filter-select--wide">
-                        <option value="">Todas las áreas</option>
-                    </select>
-                    <select id="filterTipo" class="filter-select">
-                        <option value="">Todos los tipos</option>
-                    </select>
-                    <button id="clearFilters" class="btn-clear" title="Limpiar filtros">
-                        <i data-lucide="x-circle"></i>
+                <div class="filter-actions">
+                    <button class="btn-filters-toggle" id="filtersToggle">
+                        <i data-lucide="sliders-horizontal"></i>
+                        <span>Filtros</span>
                     </button>
-                    <button id="downloadCsv" class="btn-download" title="Descargar CSV">
+                    <button class="btn-icon" id="clearFilters" title="Limpiar filtros">
+                        <i data-lucide="x"></i>
+                    </button>
+                    <button class="btn-secondary" id="downloadCsv">
                         <i data-lucide="download"></i> CSV
                     </button>
                 </div>
-                <p id="resultsCount" class="results-count"></p>
+            </div>
 
-                <div class="card table-container">
+            <div class="filters-panel" id="filtersPanel">
+                <select id="filterAnio" class="filter-select">
+                    <option value="">Todos los años</option>
+                </select>
+                <select id="filterTrimestre" class="filter-select">
+                    <option value="">Trimestre</option>
+                    <option value="1">T1 · Ene–Mar</option>
+                    <option value="2">T2 · Abr–Jun</option>
+                    <option value="3">T3 · Jul–Sep</option>
+                    <option value="4">T4 · Oct–Dic</option>
+                </select>
+                <select id="filterArea" class="filter-select filter-select--wide">
+                    <option value="">Todas las áreas</option>
+                </select>
+                <select id="filterTipo" class="filter-select">
+                    <option value="">Todos los tipos</option>
+                </select>
+            </div>
+
+            <p id="resultsCount" class="results-count"></p>
+
+            <div class="table-card">
+                <div class="table-scroll">
                     <table id="contractsTable">
                         <thead>
                             <tr>
-                                <th class="sortable" data-sort="fecha_adjudicacion">Fecha <i
-                                        data-lucide="arrow-up-down"></i></th>
-                                <th class="sortable" data-sort="adjudicatario_unificado">Adjudicatario <i
-                                        data-lucide="arrow-up-down"></i></th>
-                                <th class="sortable" data-sort="cif">CIF <i data-lucide="arrow-up-down"></i></th>
-                                <th>Objeto</th>
-                                <th class="sortable" data-sort="area">Área <i data-lucide="arrow-up-down"></i></th>
-                                <th class="sortable text-right" data-sort="importe">Importe <i
-                                        data-lucide="arrow-up-down"></i></th>
+                                <th class="sortable" data-sort="fecha_adjudicacion">Fecha <i data-lucide="arrow-up-down"></i></th>
+                                <th class="sortable" data-sort="adjudicatario_unificado">Adjudicatario <i data-lucide="arrow-up-down"></i></th>
+                                <th class="col-cif hide-mobile">CIF</th>
+                                <th>Objeto del contrato</th>
+                                <th class="sortable hide-mobile" data-sort="area">Área <i data-lucide="arrow-up-down"></i></th>
+                                <th class="sortable text-right" data-sort="importe">Importe <i data-lucide="arrow-up-down"></i></th>
                             </tr>
                         </thead>
-                        <tbody id="contractsBody">
-                            <!-- Rows will be injected by JS -->
-                        </tbody>
+                        <tbody id="contractsBody"></tbody>
                     </table>
-                    <div id="pagination" class="pagination"></div>
                 </div>
+                <div id="pagination" class="pagination"></div>
             </div>
+        </div>
 
-            <div id="contractorsView" class="view-content">
-                <div class="section-header">
-                    <h2>Contratistas por Volumen</h2>
-                    <div class="search-bar">
-                        <i data-lucide="search"></i>
-                        <input type="text" id="contractorSearch" placeholder="Filtrar contratistas...">
-                    </div>
+        <!-- ══ TAB: CONTRATISTAS ═══════════════════════════════════════ -->
+        <div id="contractorsView" class="view-content">
+            <div class="contractors-search">
+                <i data-lucide="search" class="search-icon"></i>
+                <input type="text" id="contractorSearch" placeholder="Filtrar por nombre o CIF…" autocomplete="off">
+            </div>
+            <div id="contractorsList" class="contractors-list"></div>
+        </div>
+
+        <!-- ══ TAB: ANÁLISIS ═══════════════════════════════════════════ -->
+        <div id="analysisView" class="view-content">
+            <div class="charts-grid">
+                <div class="chart-card chart-card--wide">
+                    <p class="chart-label">Gasto por área · Top 15</p>
+                    <div class="canvas-wrapper canvas-wrapper--tall"><canvas id="areaChart"></canvas></div>
                 </div>
-                <div id="contractorsList" class="contractors-grid">
-                    <!-- Contractor cards will be injected by JS -->
+                <div class="chart-card">
+                    <p class="chart-label">Inversión anual</p>
+                    <div class="canvas-wrapper"><canvas id="yearChart"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <p class="chart-label">Tipología de contratos</p>
+                    <div class="canvas-wrapper"><canvas id="typeChart"></canvas></div>
                 </div>
             </div>
-            <div id="qualityView" class="view-content">
-                <div class="section-header">
-                    <h2>Calidad de datos</h2>
-                </div>
-                <div class="stats-grid" id="qualityCards"></div>
-                <div class="card" style="margin-top: 1.5rem">
-                    <h3 style="margin-bottom: 1.25rem">Detalle por año</h3>
-                    <div class="table-container">
-                        <table id="qualityTable">
-                            <thead>
-                                <tr>
-                                    <th>Año</th>
-                                    <th class="text-right">Contratos</th>
-                                    <th class="text-right">Inversión</th>
-                                    <th class="text-right">Sin CIF</th>
-                                    <th class="text-right">Sin fecha</th>
-                                    <th class="text-right">Imp. = 0 €</th>
-                                    <th class="text-right">Imp. &gt; 50k €</th>
-                                </tr>
-                            </thead>
-                            <tbody id="qualityTableBody"></tbody>
-                        </table>
-                    </div>
+        </div>
+
+        <!-- ══ TAB: CALIDAD ════════════════════════════════════════════ -->
+        <div id="qualityView" class="view-content">
+            <div class="kpi-row" id="qualityCards"></div>
+            <div class="table-card" style="margin-top:1.25rem">
+                <p class="table-card-title">Detalle por año</p>
+                <div class="table-scroll">
+                    <table id="qualityTable">
+                        <thead>
+                            <tr>
+                                <th>Año</th>
+                                <th class="text-right">Contratos</th>
+                                <th class="text-right">Inversión</th>
+                                <th class="text-right">Sin CIF</th>
+                                <th class="text-right">Sin fecha</th>
+                                <th class="text-right">Imp. = 0 €</th>
+                                <th class="text-right">Imp. &gt; 50k €</th>
+                            </tr>
+                        </thead>
+                        <tbody id="qualityTableBody"></tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+
+        <!-- ══ SOBRE EL PROYECTO ═══════════════════════════════════════ -->
+        <section id="about" class="about-section">
+            <h2>Sobre el proyecto</h2>
+            <!-- TODO: rellena este texto cuando estés inspirado -->
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
         </section>
+
     </main>
 
-    <footer class="container text-center py-4">
-        <p>&copy; 2026 Portal de Transparencia Ciudadana - Rincón de la Victoria</p>
-        <p class="text-muted small">Datos obtenidos del Portal de Transparencia oficial.</p>
+    <!-- ══ FOOTER ══════════════════════════════════════════════════════ -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <span>© 2026 Portal de Transparencia Ciudadana · Rincón de la Victoria</span>
+            <span>Datos del <a href="https://www.rincondelavictoria.es/areas/contratacion/relaciones-de-contratos-menores" target="_blank" rel="noopener">portal oficial de contratación municipal</a></span>
+        </div>
     </footer>
 
     <script src="app.js" type="module"></script>
 </body>
-
 </html>
