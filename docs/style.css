@@ -679,8 +679,9 @@ td { color: var(--text); }
     margin-bottom: 1.25rem;
 }
 
-.canvas-wrapper       { position: relative; height: 260px; }
-.canvas-wrapper--tall { position: relative; height: 340px; }
+.canvas-wrapper        { position: relative; height: 260px; }
+.canvas-wrapper--tall  { position: relative; height: 340px; }
+.canvas-wrapper--areas { position: relative; height: 700px; }
 
 /* ── About ──────────────────────────────────────────────────────────── */
 .about-section {

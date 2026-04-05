@@ -17,6 +17,7 @@
         gtag('config', 'G-RX99FF0RJR');
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -144,17 +145,21 @@
         <!-- ══ TAB: ANÁLISIS ═══════════════════════════════════════════ -->
         <div id="analysisView" class="view-content">
             <div class="charts-grid">
-                <div class="chart-card chart-card--wide">
-                    <p class="chart-label">Gasto por área · Top 15</p>
-                    <div class="canvas-wrapper canvas-wrapper--tall"><canvas id="areaChart"></canvas></div>
-                </div>
                 <div class="chart-card">
-                    <p class="chart-label">Inversión anual</p>
+                    <p class="chart-label">Gasto anual</p>
                     <div class="canvas-wrapper"><canvas id="yearChart"></canvas></div>
                 </div>
                 <div class="chart-card">
                     <p class="chart-label">Tipología de contratos</p>
                     <div class="canvas-wrapper"><canvas id="typeChart"></canvas></div>
+                </div>
+                <div class="chart-card chart-card--wide">
+                    <p class="chart-label">Gasto por área</p>
+                    <div class="canvas-wrapper canvas-wrapper--areas"><canvas id="areaChart"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <p class="chart-label">Perfil de contratista</p>
+                    <div class="canvas-wrapper"><canvas id="entityChart"></canvas></div>
                 </div>
             </div>
         </div>

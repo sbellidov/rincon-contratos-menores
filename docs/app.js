@@ -218,15 +218,99 @@ function renderDashboard() {
 }
 
 function renderCharts() {
-    const areaCtx = document.getElementById('areaChart').getContext('2d');
-    const areaLabels = Object.keys(analysisData.by_area);
-    const areaValues = areaLabels.map(l => analysisData.by_area[l].sum);
+    const COLORS_MAIN  = ['#2563eb', '#7c3aed', '#d97706', '#059669', '#dc2626', '#0891b2'];
+    const COLORS_ENTITY = ['#2563eb', '#7c3aed', '#d97706', '#059669', '#dc2626', '#0891b2', '#64748b'];
 
     const chartDefaults = {
         grid:  'rgba(0,0,0,0.06)',
         ticks: '#94a3b8',
         font:  { size: 11, family: "'Inter', sans-serif" },
     };
+
+    // ── Gasto anual ──────────────────────────────────────────────────────
+    const yearCtx = document.getElementById('yearChart').getContext('2d');
+    const yearLabels = Object.keys(analysisData.by_year).sort();
+    const yearValues = yearLabels.map(l => analysisData.by_year[l].sum);
+
+    new Chart(yearCtx, {
+        type: 'bar',
+        data: {
+            labels: yearLabels,
+            datasets: [{
+                label: 'Gasto (€)',
+                data: yearValues,
+                backgroundColor: 'rgba(37, 99, 235, 0.12)',
+                borderColor: '#2563eb',
+                borderWidth: 1.5,
+                borderRadius: 4,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                datalabels: { display: false },
+            },
+            scales: {
+                x: { grid: { display: false }, ticks: { color: chartDefaults.ticks, font: chartDefaults.font } },
+                y: {
+                    grid: { color: chartDefaults.grid },
+                    ticks: { color: chartDefaults.ticks, font: chartDefaults.font,
+                             callback: v => '€' + (v / 1000).toLocaleString('es-ES') + 'k' }
+                }
+            }
+        }
+    });
+
+    // ── Tipología de contratos ───────────────────────────────────────────
+    const typeCtx = document.getElementById('typeChart').getContext('2d');
+    const typeLabels = Object.keys(analysisData.by_type);
+    const typeValues = typeLabels.map(l => analysisData.by_type[l].sum);
+    const typeTotal = typeValues.reduce((a, b) => a + b, 0);
+
+    new Chart(typeCtx, {
+        type: 'doughnut',
+        plugins: [ChartDataLabels],
+        data: {
+            labels: typeLabels,
+            datasets: [{
+                data: typeValues,
+                backgroundColor: COLORS_MAIN,
+                borderColor: '#fff',
+                borderWidth: 3,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        color: '#374151',
+                        font: { size: 13, family: "'Inter', sans-serif" },
+                        padding: 20,
+                        usePointStyle: true,
+                        pointStyleWidth: 12,
+                    }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: { size: 13, weight: 'bold', family: "'Inter', sans-serif" },
+                    formatter: (value) => {
+                        const pct = Math.round(value / typeTotal * 100);
+                        return pct >= 3 ? pct + '%' : '';
+                    },
+                },
+            }
+        }
+    });
+
+    // ── Gasto por área (todas) ────────────────────────────────────────────
+    const areaCtx = document.getElementById('areaChart').getContext('2d');
+    const areaLabels = Object.keys(analysisData.by_area);
+    const areaValues = areaLabels.map(l => analysisData.by_area[l].sum);
 
     new Chart(areaCtx, {
         type: 'bar',
@@ -245,61 +329,36 @@ function renderCharts() {
             responsive: true,
             indexAxis: 'y',
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: {
+                legend: { display: false },
+                datalabels: { display: false },
+            },
             scales: {
                 x: {
                     grid: { color: chartDefaults.grid },
                     ticks: { color: chartDefaults.ticks, font: chartDefaults.font,
-                             callback: v => '€' + (v/1000).toLocaleString('es-ES') + 'k' }
+                             callback: v => '€' + (v / 1000).toLocaleString('es-ES') + 'k' }
                 },
-                y: { grid: { display: false }, ticks: { color: chartDefaults.ticks, font: chartDefaults.font } }
+                y: { grid: { display: false }, ticks: { color: chartDefaults.ticks, font: { size: 11, family: "'Inter', sans-serif" } } }
             }
         }
     });
 
-    const yearCtx = document.getElementById('yearChart').getContext('2d');
-    const yearLabels = Object.keys(analysisData.by_year).sort();
-    const yearValues = yearLabels.map(l => analysisData.by_year[l].sum);
+    // ── Perfil de contratista ─────────────────────────────────────────────
+    const entityCtx = document.getElementById('entityChart').getContext('2d');
+    const entityRaw = analysisData.by_entity_type || {};
+    const entityLabels = Object.keys(entityRaw);
+    const entityValues = entityLabels.map(l => entityRaw[l].sum);
+    const entityTotal = entityValues.reduce((a, b) => a + b, 0);
 
-    new Chart(yearCtx, {
-        type: 'bar',
-        data: {
-            labels: yearLabels,
-            datasets: [{
-                label: 'Inversión (€)',
-                data: yearValues,
-                backgroundColor: 'rgba(37, 99, 235, 0.12)',
-                borderColor: '#2563eb',
-                borderWidth: 1.5,
-                borderRadius: 4,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                x: { grid: { display: false }, ticks: { color: chartDefaults.ticks, font: chartDefaults.font } },
-                y: {
-                    grid: { color: chartDefaults.grid },
-                    ticks: { color: chartDefaults.ticks, font: chartDefaults.font,
-                             callback: v => '€' + (v/1000).toLocaleString('es-ES') + 'k' }
-                }
-            }
-        }
-    });
-
-    const typeCtx = document.getElementById('typeChart').getContext('2d');
-    const typeLabels = Object.keys(analysisData.by_type);
-    const typeValues = typeLabels.map(l => analysisData.by_type[l].sum);
-
-    new Chart(typeCtx, {
+    new Chart(entityCtx, {
         type: 'doughnut',
+        plugins: [ChartDataLabels],
         data: {
-            labels: typeLabels,
+            labels: entityLabels,
             datasets: [{
-                data: typeValues,
-                backgroundColor: ['#2563eb', '#7c3aed', '#d97706', '#64748b'],
+                data: entityValues,
+                backgroundColor: COLORS_ENTITY,
                 borderColor: '#fff',
                 borderWidth: 3,
             }]
@@ -309,15 +368,33 @@ function renderCharts() {
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    position: 'bottom',
+                    position: 'right',
                     labels: {
-                        color: '#64748b',
-                        font: chartDefaults.font,
+                        color: '#374151',
+                        font: { size: 13, family: "'Inter', sans-serif" },
                         padding: 16,
                         usePointStyle: true,
-                        pointStyleWidth: 10,
+                        pointStyleWidth: 12,
+                        generateLabels: (chart) => {
+                            const data = chart.data;
+                            return data.labels.map((label, i) => ({
+                                text: `${label}  ${formatCurrency(data.datasets[0].data[i])}`,
+                                fillStyle: data.datasets[0].backgroundColor[i],
+                                strokeStyle: data.datasets[0].backgroundColor[i],
+                                pointStyle: 'circle',
+                                index: i,
+                            }));
+                        },
                     }
-                }
+                },
+                datalabels: {
+                    color: '#fff',
+                    font: { size: 13, weight: 'bold', family: "'Inter', sans-serif" },
+                    formatter: (value) => {
+                        const pct = Math.round(value / entityTotal * 100);
+                        return pct >= 3 ? pct + '%' : '';
+                    },
+                },
             }
         }
     });
@@ -561,7 +638,7 @@ function downloadCSV() {
         (c.objeto || '').replace(/"/g, '""'),
         c.area || '',
         c.tipo_contrato_limpio || '',
-        c.importe != null ? c.importe : '',
+        c.importe != null ? c.importe.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '',
         c.expediente || '',
     ].map(v => `"${v}"`).join(','));
 
@@ -576,7 +653,10 @@ function downloadCSV() {
 }
 
 function formatCurrency(val) {
-    return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(val);
+    return new Intl.NumberFormat('es-ES', {
+        style: 'currency', currency: 'EUR',
+        useGrouping: true, minimumFractionDigits: 2, maximumFractionDigits: 2,
+    }).format(val);
 }
 
 function formatDate(dateStr) {
