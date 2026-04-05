@@ -4,6 +4,7 @@ import re
 import xlrd
 import json
 import hashlib
+from datetime import datetime
 
 def clean_amount(val):
     if pd.isna(val): return 0.0
@@ -409,7 +410,8 @@ def process_files():
                 df['importe'] = df['importe'].apply(clean_amount)
                 df['fecha_adjudicacion'] = pd.to_datetime(df['fecha_adjudicacion'], errors='coerce')
                 if not df.empty:
-                    df.loc[(df['fecha_adjudicacion'].dt.year < 2020) | (df['fecha_adjudicacion'].dt.year > 2026), 'fecha_adjudicacion'] = pd.NaT
+                    _max_year = datetime.now().year + 1
+                    df.loc[(df['fecha_adjudicacion'].dt.year < 2020) | (df['fecha_adjudicacion'].dt.year > _max_year), 'fecha_adjudicacion'] = pd.NaT
                 
                 # Pre-clean names in the raw dataframe
                 df['adjudicatario'] = df['adjudicatario'].apply(sanitize_text)
