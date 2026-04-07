@@ -433,8 +433,8 @@ function renderTable() {
         <tr>
             <td class="text-muted" style="width: 100px">${formatDate(c.fecha_adjudicacion)}</td>
             <td style="width: 25%"><strong>${c.adjudicatario_unificado || c.adjudicatario || '---'}</strong></td>
-            <td style="width: 140px">
-                <div class="cif-container" style="display: flex; align-items: center; gap: 0.5rem">
+            <td class="hide-mobile" style="width: 90px">
+                <div class="cif-cell">
                     <span class="cif-tag">${c.cif || '---'}</span>
                     ${c.tipo_entidad && c.tipo_entidad !== 'Desconocido' ? `<span class="entity-type type-${getEntityClass(c.tipo_entidad)}">${c.tipo_entidad}</span>` : ''}
                 </div>
