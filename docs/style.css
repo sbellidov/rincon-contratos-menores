@@ -363,13 +363,19 @@ a:hover { text-decoration: underline; }
 .btn-secondary i { width: 14px; height: 14px; }
 .btn-secondary:hover { border-color: var(--border-strong); color: var(--text); }
 
-/* filters panel */
+/* filters panel — desktop: una sola línea sin saltos */
 .filters-panel {
     display: flex;
     gap: 0.5rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    align-items: center;
     margin-bottom: 0.75rem;
+    overflow-x: auto;          /* safety net si la ventana es muy estrecha */
+    scrollbar-width: none;     /* ocultar scrollbar en Firefox */
 }
+.filters-panel::-webkit-scrollbar { display: none; }
+.filters-panel .filter-select { flex-shrink: 1; min-width: 0; }
+.filters-panel .filter-select--wide { flex: 1 1 auto; min-width: 130px; }
 
 .filter-select {
     background: var(--surface);
@@ -790,6 +796,7 @@ td { color: var(--text); }
     .filters-panel {
         display: none;
         flex-direction: column;
+        flex-wrap: nowrap;
         padding: 0.875rem;
         background: var(--surface);
         border: 1px solid var(--border);
@@ -797,9 +804,13 @@ td { color: var(--text); }
         margin-bottom: 0.75rem;
         box-shadow: var(--sh-xs);
         gap: 0.5rem;
+        overflow-x: visible;
     }
     .filters-panel.open { display: flex; animation: fadeIn .15s ease; }
-    .filters-panel .filter-select { width: 100%; }
+    .filters-panel .filter-select,
+    .filters-panel .slicer-group { width: 100%; }
+    .filters-panel .slicer-input[type="date"],
+    .filters-panel .slicer-input[type="number"] { flex: 1; width: auto; }
 
     /* Hide non-essential table cols */
     .hide-mobile { display: none; }
