@@ -109,6 +109,19 @@
                 <select id="filterTipo" class="filter-select">
                     <option value="">Todos los tipos</option>
                 </select>
+                <select id="filterEntidad" class="filter-select">
+                    <option value="">Tipo empresa</option>
+                </select>
+                <div class="slicer-group" title="Rango de fechas">
+                    <input type="date" id="filterFechaDesde" class="slicer-input" title="Fecha desde">
+                    <span class="slicer-sep">–</span>
+                    <input type="date" id="filterFechaHasta" class="slicer-input" title="Fecha hasta">
+                </div>
+                <div class="slicer-group" title="Rango de importe">
+                    <input type="number" id="filterImporteMin" class="slicer-input" placeholder="Min €" min="0" step="100">
+                    <span class="slicer-sep">–</span>
+                    <input type="number" id="filterImporteMax" class="slicer-input" placeholder="Max €" min="0" step="100">
+                </div>
             </div>
 
             <p id="resultsCount" class="results-count"></p>

@@ -394,6 +394,43 @@ a:hover { text-decoration: underline; }
 .filter-select option { background: var(--surface); color: var(--text); }
 .filter-select--wide { min-width: 170px; }
 
+/* Slicer groups: dos inputs con separador "–" (fecha y importe) */
+.slicer-group {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: 0 0.5rem;
+    height: 35px;
+    flex-shrink: 0;
+    transition: border-color .15s, box-shadow .15s;
+}
+.slicer-group:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+}
+
+.slicer-sep {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    flex-shrink: 0;
+}
+
+.slicer-input {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: var(--font);
+    font-size: 0.83rem;
+    color: var(--text);
+    width: 120px;
+    padding: 0.2rem 0;
+}
+.slicer-input[type="number"] { width: 80px; }
+.slicer-input::placeholder { color: var(--text-light); }
+
 .results-count {
     font-size: 0.82rem;
     color: var(--text-muted);

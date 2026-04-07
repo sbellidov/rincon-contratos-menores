@@ -24,7 +24,7 @@ const ITEMS_PER_PAGE = 20;
 let sortKey = 'fecha_adjudicacion';
 let sortOrder = 'desc';
 
-let activeFilters = { anio: '', trimestre: '', area: '', tipo: '', texto: '' };
+let activeFilters = { anio: '', trimestre: '', area: '', tipo: '', entidad: '', fechaDesde: '', fechaHasta: '', importeMin: '', importeMax: '', texto: '' };
 
 
 // ── 2. Inicialización ────────────────────────────────────────
@@ -575,15 +575,37 @@ function populateFilters() {
         opt.textContent = t;
         tipoSel.appendChild(opt);
     });
+
+    const entidades = [...new Set(allContracts.map(c => c.tipo_entidad).filter(e => e && e !== 'Desconocido'))].sort((a, b) => a.localeCompare(b, 'es'));
+    const entidadSel = document.getElementById('filterEntidad');
+    entidades.forEach(e => {
+        const opt = document.createElement('option');
+        opt.value = e;
+        opt.textContent = e;
+        entidadSel.appendChild(opt);
+    });
 }
 
 function applyFilters() {
-    const { anio, trimestre, area, tipo, texto } = activeFilters;
+    const { anio, trimestre, area, tipo, entidad, fechaDesde, fechaHasta, importeMin, importeMax, texto } = activeFilters;
     filteredContracts = allContracts.filter(c => {
         if (anio && String(c.year) !== anio) return false;
         if (trimestre && String(c.quarter) !== trimestre) return false;
         if (area && c.area !== area) return false;
         if (tipo && c.tipo_contrato_limpio !== tipo) return false;
+        if (entidad && c.tipo_entidad !== entidad) return false;
+        if (fechaDesde || fechaHasta) {
+            const fecha = new Date(c.fecha_adjudicacion);
+            if (isNaN(fecha)) return false;
+            if (fechaDesde && fecha < new Date(fechaDesde)) return false;
+            if (fechaHasta) {
+                const hasta = new Date(fechaHasta);
+                hasta.setHours(23, 59, 59);
+                if (fecha > hasta) return false;
+            }
+        }
+        if (importeMin !== '' && c.importe < parseFloat(importeMin)) return false;
+        if (importeMax !== '' && c.importe > parseFloat(importeMax)) return false;
         if (texto) {
             const q = texto.toLowerCase();
             return (
@@ -634,13 +656,43 @@ function setupSearch() {
         applyFilters();
     });
 
+    document.getElementById('filterEntidad').addEventListener('change', e => {
+        activeFilters.entidad = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('filterFechaDesde').addEventListener('change', e => {
+        activeFilters.fechaDesde = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('filterFechaHasta').addEventListener('change', e => {
+        activeFilters.fechaHasta = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('filterImporteMin').addEventListener('input', e => {
+        activeFilters.importeMin = e.target.value;
+        applyFilters();
+    });
+
+    document.getElementById('filterImporteMax').addEventListener('input', e => {
+        activeFilters.importeMax = e.target.value;
+        applyFilters();
+    });
+
     document.getElementById('clearFilters').addEventListener('click', () => {
-        activeFilters = { anio: '', trimestre: '', area: '', tipo: '', texto: '' };
+        activeFilters = { anio: '', trimestre: '', area: '', tipo: '', entidad: '', fechaDesde: '', fechaHasta: '', importeMin: '', importeMax: '', texto: '' };
         document.getElementById('searchInput').value = '';
         document.getElementById('filterAnio').value = '';
         document.getElementById('filterTrimestre').value = '';
         document.getElementById('filterArea').value = '';
         document.getElementById('filterTipo').value = '';
+        document.getElementById('filterEntidad').value = '';
+        document.getElementById('filterFechaDesde').value = '';
+        document.getElementById('filterFechaHasta').value = '';
+        document.getElementById('filterImporteMin').value = '';
+        document.getElementById('filterImporteMax').value = '';
         applyFilters();
     });
 
