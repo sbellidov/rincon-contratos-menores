@@ -144,6 +144,7 @@ function miniTableHeaders(cif) {
         ${th('Fecha', 'fecha_adjudicacion')}
         ${th('Objeto', 'objeto')}
         ${th('Área', 'area')}
+        ${th('Tipo', 'tipo_contrato_limpio')}
         ${th('Expediente', 'expediente')}
         ${th('Importe', 'importe', ' text-right')}
     </tr>`;
@@ -155,6 +156,7 @@ function miniTableRows(contratos, cif) {
             <td class="text-muted" style="white-space:nowrap">${formatDate(contract.fecha_adjudicacion)}</td>
             <td>${contract.objeto}</td>
             <td class="text-muted">${contract.area || '—'}</td>
+            <td>${contract.tipo_contrato_limpio ? `<small class="tipo-tag ${contract.tipo_contrato_limpio.toLowerCase()}">${contract.tipo_contrato_limpio}</small>` : '—'}</td>
             <td class="text-muted">${contract.expediente || '---'}</td>
             <td class="text-right"><strong>${formatCurrency(contract.importe)}</strong></td>
         </tr>
