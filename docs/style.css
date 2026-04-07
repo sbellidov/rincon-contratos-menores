@@ -703,6 +703,14 @@ td { color: var(--text); }
 .mini-contracts-table td { padding: 0.55rem 0.75rem; }
 .mini-contracts-table tbody tr:last-child td { border-bottom: none; }
 
+.sortable-mini {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: color .15s;
+}
+.sortable-mini:hover { color: var(--accent); }
+
 /* ── Charts ─────────────────────────────────────────────────────────── */
 .charts-grid {
     display: grid;

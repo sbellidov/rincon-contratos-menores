@@ -24,6 +24,9 @@ const ITEMS_PER_PAGE = 20;
 let sortKey = 'fecha_adjudicacion';
 let sortOrder = 'desc';
 
+// Estado de ordenación de mini-tablas por contratista: { cif: { key, order } }
+const contractorSortState = {};
+
 let activeFilters = { anio: '', trimestre: '', area: '', tipo: '', entidad: '', fechaDesde: '', fechaHasta: '', importeMin: '', importeMax: '', texto: '' };
 
 
@@ -115,6 +118,69 @@ function setupTabs() {
 
 // ── 3. Renderizado ───────────────────────────────────────────
 
+// ── Helpers mini-tabla contratistas ──────────────────────────
+
+function sortedContratos(contratos, cif) {
+    const { key, order } = contractorSortState[cif] || { key: 'fecha_adjudicacion', order: 'desc' };
+    return [...contratos].sort((a, b) => {
+        let valA = a[key] ?? null, valB = b[key] ?? null;
+        if (valA == null && valB == null) return 0;
+        if (valA == null) return 1;
+        if (valB == null) return -1;
+        if (typeof valA === 'string') {
+            const res = valA.localeCompare(valB, 'es', { sensitivity: 'base' });
+            return order === 'asc' ? res : -res;
+        }
+        return order === 'asc' ? valA - valB : valB - valA;
+    });
+}
+
+function miniTableHeaders(cif) {
+    const { key: sk, order: so } = contractorSortState[cif] || { key: 'fecha_adjudicacion', order: 'desc' };
+    const ind = k => sk === k ? (so === 'asc' ? ' ↑' : ' ↓') : '';
+    const th = (label, k, cls = '') =>
+        `<th class="sortable-mini${cls}" onclick="sortContractorBy('${cif}', '${k}')">${label}${ind(k)}</th>`;
+    return `<tr>
+        ${th('Fecha', 'fecha_adjudicacion')}
+        ${th('Objeto', 'objeto')}
+        ${th('Área', 'area')}
+        ${th('Expediente', 'expediente')}
+        ${th('Importe', 'importe', ' text-right')}
+    </tr>`;
+}
+
+function miniTableRows(contratos, cif) {
+    return sortedContratos(contratos, cif).map(contract => `
+        <tr>
+            <td class="text-muted" style="white-space:nowrap">${formatDate(contract.fecha_adjudicacion)}</td>
+            <td>${contract.objeto}</td>
+            <td class="text-muted">${contract.area || '—'}</td>
+            <td class="text-muted">${contract.expediente || '---'}</td>
+            <td class="text-right"><strong>${formatCurrency(contract.importe)}</strong></td>
+        </tr>
+    `).join('');
+}
+
+function renderContractorMiniTable(cif) {
+    const contractor = filteredContractors.find(c => c.cif === cif);
+    if (!contractor) return;
+    const card = document.getElementById(`contractor-${cif}`);
+    if (!card) return;
+    card.querySelector('.mini-contracts-thead').innerHTML = miniTableHeaders(cif);
+    card.querySelector('.mini-contracts-tbody').innerHTML = miniTableRows(contractor.contratos, cif);
+}
+
+window.sortContractorBy = (cif, key) => {
+    const current = contractorSortState[cif] || { key: 'fecha_adjudicacion', order: 'desc' };
+    contractorSortState[cif] = {
+        key,
+        order: current.key === key ? (current.order === 'asc' ? 'desc' : 'asc') : (key === 'importe' ? 'desc' : 'asc'),
+    };
+    renderContractorMiniTable(cif);
+};
+
+// ── Renderizado contratistas ──────────────────────────────────
+
 function renderContractors() {
     const container = document.getElementById('contractorsList');
     container.innerHTML = filteredContractors.map((c, idx) => `
@@ -144,24 +210,8 @@ function renderContractors() {
             <div class="contractor-expanded">
                 <div class="expanded-content">
                     <table class="mini-contracts-table">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Objeto</th>
-                                <th>Expediente</th>
-                                <th class="text-right">Importe</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${c.contratos.map(contract => `
-                                <tr>
-                                    <td class="text-muted">${formatDate(contract.fecha_adjudicacion)}</td>
-                                    <td>${contract.objeto}</td>
-                                    <td class="text-muted">${contract.expediente || '---'}</td>
-                                    <td class="text-right"><strong>${formatCurrency(contract.importe)}</strong></td>
-                                </tr>
-                            `).join('')}
-                        </tbody>
+                        <thead class="mini-contracts-thead">${miniTableHeaders(c.cif)}</thead>
+                        <tbody class="mini-contracts-tbody">${miniTableRows(c.contratos, c.cif)}</tbody>
                     </table>
                 </div>
             </div>
@@ -173,12 +223,7 @@ function renderContractors() {
 // Expuesto en window para poder llamarlo desde el onclick inline del HTML
 window.toggleContractor = (cif) => {
     const card = document.getElementById(`contractor-${cif}`);
-    const isExpanded = card.classList.contains('expanded');
-    if (!isExpanded) {
-        card.classList.add('expanded');
-    } else {
-        card.classList.remove('expanded');
-    }
+    card.classList.toggle('expanded');
 };
 
 function renderQuality() {
