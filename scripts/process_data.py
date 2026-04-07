@@ -580,7 +580,7 @@ def process_files():
             contractor_row = dim_contractors[dim_contractors['cif'] == cif]
             if contractor_row.empty: continue
             contractor_info = contractor_row.iloc[0].to_dict()
-            contract_cols = ['fecha_adjudicacion', 'objeto', 'expediente', 'importe']
+            contract_cols = ['fecha_adjudicacion', 'objeto', 'expediente', 'importe', 'area']
             contracts_list = (
                 group[contract_cols]
                 .sort_values('fecha_adjudicacion', ascending=False)
