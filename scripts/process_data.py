@@ -435,9 +435,9 @@ def sanitize_text(text):
 
 # ── Pipeline principal ───────────────────────────────────────
 
-def process_files():
-    """Lee todos los Excel de data/raw/, normaliza y valida los datos,
-    y genera el star schema completo en data/processed/.
+def process_files(raw_dir='data/raw', processed_dir='data/processed'):
+    """Lee todos los Excel de raw_dir, normaliza y valida los datos,
+    y genera el star schema completo en processed_dir.
 
     Pasos internos:
       1. Detectar cabecera y leer cada hoja relevante del Excel
@@ -448,8 +448,6 @@ def process_files():
       5. Construir dimensiones (contratistas, áreas, tipos) y tabla de hechos
       6. Generar contracts.json reducido solo con los campos del frontend
     """
-    raw_dir = 'data/raw'
-    processed_dir = 'data/processed'
     all_data = []
 
     # Mapeo de nombres de columna del Excel → nombres internos
