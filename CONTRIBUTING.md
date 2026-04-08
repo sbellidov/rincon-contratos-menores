@@ -4,7 +4,7 @@
 
 ## Requisitos previos
 
-- Python 3.9+
+- Python 3.10+
 - Git
 
 ## Configuración del entorno local
