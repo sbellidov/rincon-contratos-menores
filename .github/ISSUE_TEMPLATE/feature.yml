@@ -1,0 +1,45 @@
+name: "✨ Nueva funcionalidad"
+description: Propuesta de mejora o nueva característica
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por tu propuesta. Cuanto más detalle aportes, más fácil es valorarla.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: ¿Qué problema resuelve?
+      description: Explica el contexto. ¿Qué no puedes hacer ahora que quisieras poder hacer?
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Solución propuesta
+      description: Describe cómo te imaginas la funcionalidad.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: ¿Qué parte afecta?
+      options:
+        - Frontend — pestaña Contratos
+        - Frontend — pestaña Contratistas
+        - Frontend — pestaña Análisis
+        - Frontend — pestaña Calidad
+        - ETL / datos
+        - Infraestructura / CI
+        - Otra
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+      description: ¿Has pensado en otras formas de resolver el problema?

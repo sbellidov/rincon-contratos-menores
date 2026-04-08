@@ -1,0 +1,38 @@
+name: "📊 Error en los datos"
+description: Un contrato, importe, NIF o área parece incorrecto
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Los datos provienen directamente del portal oficial del ayuntamiento.
+        Si el error está en la fuente, lo documentamos pero no podemos corregirlo.
+        Si es un error de procesamiento nuestro, lo arreglamos.
+
+  - type: input
+    id: contract
+    attributes:
+      label: Contrato o contratista afectado
+      placeholder: "Ej: expediente EXP-2024-001 / contratista EMPRESA SL"
+    validations:
+      required: true
+
+  - type: textarea
+    id: error
+    attributes:
+      label: ¿Qué dato parece incorrecto?
+      description: Indica el valor que ves y el que esperarías ver.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: ¿Está el error también en el portal oficial?
+      description: Comprueba en rincondelavictoria.es/areas/contratacion/relaciones-de-contratos-menores
+      options:
+        - "Sí, el error viene de origen"
+        - "No, el portal oficial tiene el dato correcto"
+        - "No lo he comprobado"
+    validations:
+      required: true

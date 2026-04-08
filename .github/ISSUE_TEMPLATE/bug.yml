@@ -1,0 +1,48 @@
+name: "🐛 Bug report"
+description: Algo no funciona como debería
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportar el bug. Rellena los campos con el mayor detalle posible.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del problema
+      description: ¿Qué ocurre? ¿Qué esperabas que ocurriera?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducirlo
+      placeholder: |
+        1. Ir a la pestaña '...'
+        2. Aplicar filtro '...'
+        3. Ver el error
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: ¿Dónde ocurre?
+      options:
+        - Frontend (web)
+        - ETL (scripts Python)
+        - GitHub Actions / CI
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno
+      placeholder: |
+        - Navegador: Chrome 123 / Safari 17 / Firefox 125
+        - SO: macOS 14 / Windows 11
+        - Python: 3.9 (solo para bugs de ETL)
