@@ -532,10 +532,18 @@ function renderTable() {
 function getEntityClass(type) {
     if (!type) return 'otros';
     const t = type.toLowerCase();
-    if (t.includes('sl')) return 'sl';
-    if (t.includes('sa')) return 'sa';
+    if (t === 'sl') return 'sl';
+    if (t === 'sa') return 'sa';
     if (t.includes('autónomo')) return 'autonomo';
     if (t.includes('pública')) return 'admin';
+    if (t === 'asociación') return 'asociacion';
+    if (t === 'cooperativa') return 'cooperativa';
+    if (t === 'ute') return 'ute';
+    if (t.includes('extranjera')) return 'extranjera';
+    if (t.includes('religiosa')) return 'religiosa';
+    if (t.includes('bienes')) return 'otros';
+    if (t.includes('civil')) return 'otros';
+    if (t.includes('otras')) return 'otros';
     return 'otros';
 }
 

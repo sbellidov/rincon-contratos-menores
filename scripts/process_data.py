@@ -123,24 +123,40 @@ def extract_cif_address(combined):
 
 
 def get_entity_type(cif):
-    """Infiere el tipo de entidad a partir del primer carácter del CIF.
+    """Infiere el tipo de entidad a partir del primer carácter del NIF.
 
-    Regla oficial del Registro Mercantil:
-      - Dígito / X, Y, Z → persona física (Autónomo o extranjero)
-      - A → Sociedad Anónima, B/N → Sociedad Limitada
-      - G → Asociación, P/Q/S → Administración Pública, etc.
+    Mapa completo AEAT (personas jurídicas):
+      A=SA, B=SL, C/D/H/V=Otras sociedades, E=Com.Bienes,
+      F=Cooperativa, G=Asociación, J=Soc.Civil,
+      P/Q/S=Adm.Pública, R=Entidad religiosa, U=UTE,
+      N/W=Entidad extranjera.
+    Personas físicas: dígito=DNI, X/Y/Z=NIE, K/L/M=otros especiales.
     """
     if not cif: return "Desconocido"
     cif = str(cif).upper()
     first_char = cif[0]
-    if first_char.isdigit() or first_char in ['X', 'Y', 'Z']: return "Autónomo"
+    if first_char.isdigit() or first_char in ['X', 'Y', 'Z', 'K', 'L', 'M']:
+        return "Autónomo"
     mapping = {
-        'A': 'SA', 'B': 'SL', 'N': 'SL', 'G': 'Asociación',
-        'P': 'Adm. Pública', 'Q': 'Adm. Pública', 'S': 'Adm. Pública',
-        'U': 'UTE', 'E': 'Comunidad de Bienes', 'F': 'Cooperativa',
-        'J': 'Sociedad Civil', 'V': 'Sociedad Agraria de Transformación'
+        'A': 'SA',
+        'B': 'SL',
+        'C': 'Otras sociedades',
+        'D': 'Otras sociedades',
+        'E': 'Comunidad de Bienes',
+        'F': 'Cooperativa',
+        'G': 'Asociación',
+        'H': 'Otras sociedades',
+        'J': 'Sociedad Civil',
+        'N': 'Entidad extranjera',
+        'P': 'Adm. Pública',
+        'Q': 'Adm. Pública',
+        'R': 'Entidad religiosa',
+        'S': 'Adm. Pública',
+        'U': 'UTE',
+        'V': 'Otras sociedades',
+        'W': 'Entidad extranjera',
     }
-    return mapping.get(first_char, "Empresa/Otros")
+    return mapping.get(first_char, "Otras sociedades")
 
 
 def clean_tipo(tipo):
