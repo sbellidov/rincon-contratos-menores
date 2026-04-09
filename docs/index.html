@@ -115,7 +115,7 @@
                     <option value="">Todos los tipos</option>
                 </select>
                 <select id="filterEntidad" class="filter-select">
-                    <option value="">Tipo empresa</option>
+                    <option value="">Tipo de entidad</option>
                 </select>
                 <div class="slicer-group" id="slicerFecha" title="Rango de fechas">
                     <input type="date" id="filterFechaDesde" class="slicer-input" title="Fecha desde">
@@ -153,9 +153,14 @@
 
         <!-- ══ TAB: CONTRATISTAS ═══════════════════════════════════════ -->
         <div id="contractorsView" class="view-content">
-            <div class="contractors-search">
-                <i data-lucide="search" class="search-icon"></i>
-                <input type="text" id="contractorSearch" placeholder="Filtrar por nombre o NIF…" autocomplete="off">
+            <div class="contractors-filters">
+                <div class="contractors-search">
+                    <i data-lucide="search" class="search-icon"></i>
+                    <input type="text" id="contractorSearch" placeholder="Filtrar por nombre o NIF…" autocomplete="off">
+                </div>
+                <select id="contractorFilterEntidad" class="filter-select">
+                    <option value="">Tipo de entidad</option>
+                </select>
             </div>
             <div id="contractorsList" class="contractors-list"></div>
         </div>

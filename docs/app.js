@@ -693,6 +693,16 @@ function populateFilters() {
         opt.textContent = e;
         entidadSel.appendChild(opt);
     });
+
+    // Filtro tipo de entidad en la pestaña Contratistas
+    const entidadesCtors = [...new Set(contractorsSummary.map(c => c.tipo_entidad).filter(e => e && e !== 'Desconocido'))].sort((a, b) => a.localeCompare(b, 'es'));
+    const entidadCtorSel = document.getElementById('contractorFilterEntidad');
+    entidadesCtors.forEach(e => {
+        const opt = document.createElement('option');
+        opt.value = e;
+        opt.textContent = e;
+        entidadCtorSel.appendChild(opt);
+    });
 }
 
 function applyFilters() {
@@ -827,16 +837,25 @@ function setupSearch() {
 
     document.getElementById('downloadCsv').addEventListener('click', downloadCSV);
 
-    // Búsqueda en la pestaña Contratistas (filtra por nombre o CIF)
-    const contractorSearch = document.getElementById('contractorSearch');
-    contractorSearch.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase();
-        filteredContractors = contractorsSummary.filter(c =>
-            (c.nombre && c.nombre.toLowerCase().includes(query)) ||
-            (c.cif && c.cif.toLowerCase().includes(query))
-        );
+    // Búsqueda en la pestaña Contratistas (filtra por nombre, NIF y tipo de entidad)
+    function applyContractorFilters() {
+        const query = document.getElementById('contractorSearch').value.toLowerCase();
+        const entidad = document.getElementById('contractorFilterEntidad').value;
+        filteredContractors = contractorsSummary.filter(c => {
+            if (entidad && c.tipo_entidad !== entidad) return false;
+            if (query) {
+                return (
+                    (c.nombre && c.nombre.toLowerCase().includes(query)) ||
+                    (c.cif && c.cif.toLowerCase().includes(query))
+                );
+            }
+            return true;
+        });
         renderContractors();
-    });
+    }
+
+    document.getElementById('contractorSearch').addEventListener('input', applyContractorFilters);
+    document.getElementById('contractorFilterEntidad').addEventListener('change', applyContractorFilters);
 }
 
 
