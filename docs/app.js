@@ -754,8 +754,10 @@ function setupSearch() {
     });
 
     // Helper: marca el elemento con fondo amarillo si tiene valor activo
+    // y gestiona has-value en el .filter-wrap padre (muestra/oculta el botón ×)
     function setFilterActive(el, active) {
         el.classList.toggle('filter-active', active);
+        el.closest('.filter-wrap')?.classList.toggle('has-value', active);
     }
     // Para slicers: activo si cualquiera de sus inputs tiene valor
     function updateSlicerActive(groupId) {
@@ -824,6 +826,7 @@ function setupSearch() {
             const el = document.getElementById(id);
             el.value = '';
             el.classList.remove('filter-active');
+            el.closest('.filter-wrap')?.classList.remove('has-value');
         });
         ['filterFechaDesde','filterFechaHasta','filterImporteMin','filterImporteMax'].forEach(id => {
             document.getElementById(id).value = '';
@@ -835,12 +838,42 @@ function setupSearch() {
         applyFilters();
     });
 
+    // Botones × en selects de contratos: resetean el filtro disparando change
+    document.querySelectorAll('#filtersPanel .filter-clear-btn[data-clear]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = document.getElementById(btn.dataset.clear);
+            if (!target) return;
+            target.value = '';
+            target.dispatchEvent(new Event('change'));
+        });
+    });
+
+    // Botones × en slicers de fecha e importe
+    document.getElementById('clearSlicerFecha').addEventListener('click', () => {
+        ['filterFechaDesde', 'filterFechaHasta'].forEach(id => { document.getElementById(id).value = ''; });
+        activeFilters.fechaDesde = '';
+        activeFilters.fechaHasta = '';
+        updateSlicerActive('slicerFecha');
+        applyFilters();
+    });
+    document.getElementById('clearSlicerImporte').addEventListener('click', () => {
+        ['filterImporteMin', 'filterImporteMax'].forEach(id => { document.getElementById(id).value = ''; });
+        activeFilters.importeMin = '';
+        activeFilters.importeMax = '';
+        updateSlicerActive('slicerImporte');
+        applyFilters();
+    });
+
     document.getElementById('downloadCsv').addEventListener('click', downloadCSV);
 
     // Búsqueda en la pestaña Contratistas (filtra por nombre, NIF y tipo de entidad)
     function applyContractorFilters() {
         const query = document.getElementById('contractorSearch').value.toLowerCase();
-        const entidad = document.getElementById('contractorFilterEntidad').value;
+        const entidadEl = document.getElementById('contractorFilterEntidad');
+        const entidad = entidadEl.value;
+        // Resaltar filtro activo + mostrar botón ×
+        entidadEl.classList.toggle('filter-active', entidad !== '');
+        entidadEl.closest('.filter-wrap')?.classList.toggle('has-value', entidad !== '');
         filteredContractors = contractorsSummary.filter(c => {
             if (entidad && c.tipo_entidad !== entidad) return false;
             if (query) {
@@ -856,6 +889,13 @@ function setupSearch() {
 
     document.getElementById('contractorSearch').addEventListener('input', applyContractorFilters);
     document.getElementById('contractorFilterEntidad').addEventListener('change', applyContractorFilters);
+
+    // Botón × del filtro de tipo de entidad en contratistas
+    document.querySelector('#contractorsView .filter-clear-btn[data-clear="contractorFilterEntidad"]')
+        ?.addEventListener('click', () => {
+            document.getElementById('contractorFilterEntidad').value = '';
+            applyContractorFilters();
+        });
 }
 
 

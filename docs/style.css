@@ -437,6 +437,9 @@ a:hover { text-decoration: underline; }
 .filters-panel::-webkit-scrollbar { display: none; }
 .filters-panel .filter-select { flex-shrink: 1; min-width: 0; }
 .filters-panel .filter-select--wide { flex: 1 1 auto; min-width: 130px; }
+/* filter-wrap: contiene el select + botón × */
+.filters-panel .filter-wrap { flex-shrink: 1; min-width: 0; }
+.filters-panel .filter-wrap--wide { flex: 1 1 auto; min-width: 130px; }
 
 .filter-select {
     background: var(--surface);
@@ -481,6 +484,60 @@ a:hover { text-decoration: underline; }
     }
 }
 .filter-select--wide { min-width: 170px; }
+
+/* Wrapper con botón × para limpiar filtro */
+.filter-wrap {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+}
+.filter-wrap .filter-select { flex: 1; min-width: 0; }
+.filter-wrap.has-value .filter-select { padding-right: 3.5rem; }
+
+.filter-clear-btn {
+    position: absolute;
+    right: 1.55rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--border-strong);
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.6rem;
+    line-height: 1;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background .15s, color .15s;
+    z-index: 1;
+}
+.filter-clear-btn:hover { background: var(--text-light); color: var(--surface); }
+.filter-wrap.has-value .filter-clear-btn { display: flex; }
+
+/* Botón × dentro de slicer-group */
+.slicer-clear-btn {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 0.75rem;
+    line-height: 1;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+    transition: color .15s;
+}
+.slicer-clear-btn:hover { color: var(--text); }
+.slicer-group.filter-active .slicer-clear-btn { display: flex; }
 
 /* Slicer groups: dos inputs con separador "–" (fecha y importe) */
 .slicer-group {
@@ -915,6 +972,7 @@ td { color: var(--text); }
         overflow-x: visible;
     }
     .filters-panel.open { display: flex; animation: fadeIn .15s ease; }
+    .filters-panel .filter-wrap,
     .filters-panel .filter-select,
     .filters-panel .slicer-group { width: 100%; }
     .filters-panel .slicer-input[type="date"],

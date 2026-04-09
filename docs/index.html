@@ -98,34 +98,51 @@
             </div>
 
             <div class="filters-panel" id="filtersPanel">
-                <select id="filterAnio" class="filter-select">
-                    <option value="">Todos los años</option>
-                </select>
-                <select id="filterTrimestre" class="filter-select">
-                    <option value="">Trimestre</option>
-                    <option value="1">T1 · Ene–Mar</option>
-                    <option value="2">T2 · Abr–Jun</option>
-                    <option value="3">T3 · Jul–Sep</option>
-                    <option value="4">T4 · Oct–Dic</option>
-                </select>
-                <select id="filterArea" class="filter-select filter-select--wide">
-                    <option value="">Todas las áreas</option>
-                </select>
-                <select id="filterTipo" class="filter-select">
-                    <option value="">Todos los tipos</option>
-                </select>
-                <select id="filterEntidad" class="filter-select">
-                    <option value="">Tipo de entidad</option>
-                </select>
+                <div class="filter-wrap">
+                    <select id="filterAnio" class="filter-select">
+                        <option value="">Todos los años</option>
+                    </select>
+                    <button class="filter-clear-btn" data-clear="filterAnio" title="Limpiar" aria-label="Limpiar filtro">×</button>
+                </div>
+                <div class="filter-wrap">
+                    <select id="filterTrimestre" class="filter-select">
+                        <option value="">Trimestre</option>
+                        <option value="1">T1 · Ene–Mar</option>
+                        <option value="2">T2 · Abr–Jun</option>
+                        <option value="3">T3 · Jul–Sep</option>
+                        <option value="4">T4 · Oct–Dic</option>
+                    </select>
+                    <button class="filter-clear-btn" data-clear="filterTrimestre" title="Limpiar" aria-label="Limpiar filtro">×</button>
+                </div>
+                <div class="filter-wrap filter-wrap--wide">
+                    <select id="filterArea" class="filter-select filter-select--wide">
+                        <option value="">Todas las áreas</option>
+                    </select>
+                    <button class="filter-clear-btn" data-clear="filterArea" title="Limpiar" aria-label="Limpiar filtro">×</button>
+                </div>
+                <div class="filter-wrap">
+                    <select id="filterTipo" class="filter-select">
+                        <option value="">Todos los tipos</option>
+                    </select>
+                    <button class="filter-clear-btn" data-clear="filterTipo" title="Limpiar" aria-label="Limpiar filtro">×</button>
+                </div>
+                <div class="filter-wrap">
+                    <select id="filterEntidad" class="filter-select">
+                        <option value="">Tipo de entidad</option>
+                    </select>
+                    <button class="filter-clear-btn" data-clear="filterEntidad" title="Limpiar" aria-label="Limpiar filtro">×</button>
+                </div>
                 <div class="slicer-group" id="slicerFecha" title="Rango de fechas">
                     <input type="date" id="filterFechaDesde" class="slicer-input" title="Fecha desde">
                     <span class="slicer-sep">–</span>
                     <input type="date" id="filterFechaHasta" class="slicer-input" title="Fecha hasta">
+                    <button class="slicer-clear-btn" id="clearSlicerFecha" title="Limpiar fechas" aria-label="Limpiar fechas">×</button>
                 </div>
                 <div class="slicer-group" id="slicerImporte" title="Rango de importe">
                     <input type="number" id="filterImporteMin" class="slicer-input" placeholder="Min €" min="0" step="100">
                     <span class="slicer-sep">–</span>
                     <input type="number" id="filterImporteMax" class="slicer-input" placeholder="Max €" min="0" step="100">
+                    <button class="slicer-clear-btn" id="clearSlicerImporte" title="Limpiar importe" aria-label="Limpiar importe">×</button>
                 </div>
             </div>
 
@@ -158,9 +175,12 @@
                     <i data-lucide="search" class="search-icon"></i>
                     <input type="text" id="contractorSearch" placeholder="Filtrar por nombre o NIF…" autocomplete="off">
                 </div>
-                <select id="contractorFilterEntidad" class="filter-select">
-                    <option value="">Tipo de entidad</option>
-                </select>
+                <div class="filter-wrap">
+                    <select id="contractorFilterEntidad" class="filter-select">
+                        <option value="">Tipo de entidad</option>
+                    </select>
+                    <button class="filter-clear-btn" data-clear="contractorFilterEntidad" title="Limpiar" aria-label="Limpiar filtro">×</button>
+                </div>
             </div>
             <div id="contractorsList" class="contractors-list"></div>
         </div>
