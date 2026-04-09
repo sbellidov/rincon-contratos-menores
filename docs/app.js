@@ -312,8 +312,10 @@ function renderCharts() {
     };
 
     // Utilidades compartidas entre gráficos
-    const fmtK   = v => (v / 1000).toLocaleString('es-ES', { maximumFractionDigits: 0 }) + 'K€';
-    const fmtEur = v => formatCurrency(v);
+    const fmtK     = v => (v / 1000).toLocaleString('es-ES', { maximumFractionDigits: 0 }) + 'K€';
+    const fmtM     = v => (v / 1_000_000).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + 'M€';
+    const fmtSmart = v => v >= 1_000_000 ? fmtM(v) : fmtK(v);
+    const fmtEur   = v => formatCurrency(v);
 
     // ── Gasto anual ──────────────────────────────────────────────────────
     const yearCtx = document.getElementById('yearChart').getContext('2d');
@@ -340,12 +342,12 @@ function renderCharts() {
             layout: { padding: { top: 24 } },
             plugins: {
                 legend: { display: false },
-                tooltip: { callbacks: { label: ctx => ' ' + fmtEur(ctx.parsed.y) } },
+                tooltip: { callbacks: { label: ctx => ' ' + fmtM(ctx.parsed.y) } },
                 datalabels: {
                     anchor: 'end', align: 'end',
                     color: chartDefaults.ticks,
                     font: { size: 11, family: "'Inter', sans-serif" },
-                    formatter: fmtK,
+                    formatter: fmtM,
                 },
             },
             scales: {
@@ -353,7 +355,7 @@ function renderCharts() {
                 y: {
                     grid: { color: chartDefaults.grid },
                     ticks: { color: chartDefaults.ticks, font: chartDefaults.font,
-                             callback: v => fmtK(v) }
+                             callback: v => fmtM(v) }
                 }
             }
         }
@@ -395,7 +397,7 @@ function renderCharts() {
                     callbacks: {
                         label: ctx => {
                             const pct = Math.round(ctx.raw / typeTotal * 100);
-                            return ` ${ctx.label}: ${fmtEur(ctx.raw)} (${pct}%)`;
+                            return ` ${ctx.label}: ${fmtM(ctx.raw)} (${pct}%)`;
                         },
                     }
                 },
@@ -438,19 +440,19 @@ function renderCharts() {
             layout: { padding: { right: 56 } },
             plugins: {
                 legend: { display: false },
-                tooltip: { callbacks: { label: ctx => ' ' + fmtEur(ctx.parsed.x) } },
+                tooltip: { callbacks: { label: ctx => ' ' + fmtSmart(ctx.parsed.x) } },
                 datalabels: {
                     anchor: 'end', align: 'end', clamp: false,
                     color: chartDefaults.ticks,
                     font: { size: 10, family: "'Inter', sans-serif" },
-                    formatter: fmtK,
+                    formatter: fmtSmart,
                 },
             },
             scales: {
                 x: {
                     grid: { color: chartDefaults.grid },
                     ticks: { color: chartDefaults.ticks, font: chartDefaults.font,
-                             callback: v => fmtK(v) }
+                             callback: v => fmtSmart(v) }
                 },
                 y: { grid: { display: false }, ticks: { color: chartDefaults.ticks, font: { size: 11, family: "'Inter', sans-serif" } } }
             }
@@ -492,7 +494,7 @@ function renderCharts() {
                         generateLabels: (chart) => {
                             const data = chart.data;
                             return data.labels.map((label, i) => ({
-                                text: `${label}  ${formatCurrency(data.datasets[0].data[i])}`,
+                                text: `${label}  ${fmtSmart(data.datasets[0].data[i])}`,
                                 fillStyle: data.datasets[0].backgroundColor[i],
                                 strokeStyle: data.datasets[0].backgroundColor[i],
                                 pointStyle: 'circle',
@@ -505,7 +507,7 @@ function renderCharts() {
                     callbacks: {
                         label: ctx => {
                             const pct = Math.round(ctx.raw / entityTotal * 100);
-                            return ` ${ctx.label}: ${fmtEur(ctx.raw)} (${pct}%)`;
+                            return ` ${ctx.label}: ${fmtSmart(ctx.raw)} (${pct}%)`;
                         },
                     }
                 },
