@@ -697,6 +697,7 @@ td { color: var(--text); }
     padding: 0.1rem 0.4rem;
     border-radius: 3px;
     letter-spacing: .03em;
+    text-align: center;
 }
 .type-sl         { background: #dbeafe; color: #1d4ed8; }
 .type-sa         { background: #dcfce7; color: #15803d; }
