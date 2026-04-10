@@ -25,25 +25,36 @@ def clean_amount(val):
     """Convierte un importe en texto (formato europeo) a float.
     Maneja variantes como '1.234,56 €', '1234.56', celdas vacías, etc.
 
-    Devuelve None (→ NaN) si detecta múltiples puntos con dígitos finales ≠ 3,
-    lo que indica un separador decimal mal escrito (ej: "6.705.88" en vez de
-    "6.705,88"). Valores como "1.234.567" (separadores de miles correctos) se
-    procesan con normalidad.
+    Regla para múltiples puntos sin coma (errores de input humano):
+      - Último grupo 1-2 dígitos → el último punto es decimal mal escrito
+        (ej: "6.705.88" → 6705.88, corrección automática)
+      - Último grupo 3 dígitos   → todos son separadores de miles (correcto)
+        (ej: "1.234.567" → 1234567)
+      - Último grupo ≥ 4 dígitos → ambiguo, se nullifica y se avisa
     """
     if pd.isna(val): return 0.0
     if isinstance(val, (int, float)): return float(val)
     raw = str(val).replace('€', '').strip()
     if not raw: return 0.0
 
-    # Detectar separador decimal erróneo: 2+ puntos sin coma y dígitos
-    # finales ≠ 3 (si fueran 3, serían separadores de miles válidos)
     if raw.count('.') >= 2 and ',' not in raw:
         last_segment = raw.rsplit('.', 1)[1]
         m = re.match(r'^\d+', last_segment)
-        if m and len(m.group()) != 3:
-            print(f"  ⚠ Importe con formato inválido (múltiples puntos): "
-                  f"{repr(val)} → nullificado")
-            return None
+        if m:
+            n = len(m.group())
+            if n <= 2:
+                # Último punto es separador decimal mal escrito → corregir
+                integer_str = raw.rsplit('.', 1)[0].replace('.', '')
+                try:
+                    return float(f"{integer_str}.{last_segment}")
+                except:
+                    return 0.0
+            elif n >= 4:
+                # Ambiguo → nullificar
+                print(f"  ⚠ Importe ambiguo (múltiples puntos, {n} dígitos finales): "
+                      f"{repr(val)} → nullificado")
+                return None
+            # n == 3: separadores de miles válidos → flujo normal
 
     # Formato europeo: punto como separador de miles, coma como decimal
     cleaned = raw.replace('.', '').replace(',', '.')

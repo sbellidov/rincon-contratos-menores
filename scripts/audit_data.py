@@ -43,8 +43,8 @@ def audit_data():
     invalid_format = df[df['importe'].isna()]
     for _, row in invalid_format.iterrows():
         add_anomaly(row, 'Importe con Formato Inválido',
-                    "El importe tenía múltiples puntos con dígitos decimales ≠ 3 "
-                    "(ej: '6.705.88' en vez de '6.705,88') y fue nullificado")
+                    "El importe tenía múltiples puntos con grupo final ≥ 4 dígitos "
+                    "(ambiguo) y fue nullificado")
 
     high_amounts = df[df['importe'] > 50000]
     for _, row in high_amounts.iterrows():
