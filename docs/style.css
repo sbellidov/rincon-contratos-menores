@@ -445,7 +445,7 @@ a:hover { text-decoration: underline; }
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--r-sm);
-    color: var(--text);
+    color: var(--text-light);
     padding: 0.525rem 2rem 0.525rem 0.75rem;
     font-family: var(--font);
     font-size: 0.85rem;
@@ -462,6 +462,9 @@ a:hover { text-decoration: underline; }
     box-shadow: 0 0 0 3px rgba(37,99,235,.1);
 }
 .filter-select option { background: var(--surface); color: var(--text); }
+
+/* Cuando tiene valor seleccionado: texto normal */
+.filter-select.filter-active { color: var(--text); }
 
 /* Filtro activo: fondo amarillo suave */
 .filter-select.filter-active,
