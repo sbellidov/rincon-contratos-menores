@@ -800,12 +800,14 @@ function setupSearch() {
 
     document.getElementById('filterFechaDesde').addEventListener('change', e => {
         activeFilters.fechaDesde = e.target.value;
+        e.target.classList.toggle('has-value', !!e.target.value);
         updateSlicerActive('slicerFecha');
         applyFilters();
     });
 
     document.getElementById('filterFechaHasta').addEventListener('change', e => {
         activeFilters.fechaHasta = e.target.value;
+        e.target.classList.toggle('has-value', !!e.target.value);
         updateSlicerActive('slicerFecha');
         applyFilters();
     });
@@ -831,7 +833,9 @@ function setupSearch() {
             el.closest('.filter-wrap')?.classList.remove('has-value');
         });
         ['filterFechaDesde','filterFechaHasta','filterImporteMin','filterImporteMax'].forEach(id => {
-            document.getElementById(id).value = '';
+            const el = document.getElementById(id);
+            el.value = '';
+            el.classList.remove('has-value');
         });
         ['slicerFecha','slicerImporte'].forEach(id => {
             document.getElementById(id).classList.remove('filter-active');
@@ -852,7 +856,11 @@ function setupSearch() {
 
     // Botones × en slicers de fecha e importe
     document.getElementById('clearSlicerFecha').addEventListener('click', () => {
-        ['filterFechaDesde', 'filterFechaHasta'].forEach(id => { document.getElementById(id).value = ''; });
+        ['filterFechaDesde', 'filterFechaHasta'].forEach(id => {
+            const el = document.getElementById(id);
+            el.value = '';
+            el.classList.remove('has-value');
+        });
         activeFilters.fechaDesde = '';
         activeFilters.fechaHasta = '';
         updateSlicerActive('slicerFecha');

@@ -576,6 +576,34 @@ a:hover { text-decoration: underline; }
 .slicer-input[type="number"] { width: 80px; }
 .slicer-input::placeholder { color: var(--text-light); }
 
+/* Date picker: placeholder personalizado "dd/mm/aaaa" al mismo color que Min €/Max € */
+.date-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+.date-wrap::before {
+    content: 'dd/mm/aaaa';
+    position: absolute;
+    left: 0;
+    pointer-events: none;
+    color: var(--text-light);
+    font-size: 0.83rem;
+    font-family: var(--font);
+}
+.date-wrap:has(input:focus)::before,
+.date-wrap:has(input.has-value)::before { display: none; }
+/* Webkit: oculta texto nativo (no el icono calendario) cuando vacío y sin foco */
+.slicer-input[type="date"]:not(.has-value):not(:focus) {
+    -webkit-text-fill-color: transparent;
+    color: var(--text-light);
+}
+.slicer-input[type="date"]:focus,
+.slicer-input[type="date"].has-value {
+    -webkit-text-fill-color: var(--text);
+    color: var(--text);
+}
+
 .results-count {
     font-size: 0.82rem;
     color: var(--text-muted);
@@ -975,7 +1003,8 @@ td { color: var(--text); }
     .filters-panel .filter-wrap,
     .filters-panel .filter-select,
     .filters-panel .slicer-group { width: 100%; }
-    .filters-panel .slicer-input[type="date"],
+    .filters-panel .date-wrap { flex: 1; }
+    .filters-panel .slicer-input[type="date"] { width: 100%; }
     .filters-panel .slicer-input[type="number"] { flex: 1; width: auto; }
 
     /* Hide non-essential table cols */

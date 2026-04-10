@@ -133,9 +133,13 @@
                     <button class="filter-clear-btn" data-clear="filterEntidad" title="Limpiar" aria-label="Limpiar filtro">×</button>
                 </div>
                 <div class="slicer-group" id="slicerFecha" title="Rango de fechas">
-                    <input type="date" id="filterFechaDesde" class="slicer-input" title="Fecha desde">
+                    <span class="date-wrap">
+                        <input type="date" id="filterFechaDesde" class="slicer-input" title="Fecha desde">
+                    </span>
                     <span class="slicer-sep">–</span>
-                    <input type="date" id="filterFechaHasta" class="slicer-input" title="Fecha hasta">
+                    <span class="date-wrap">
+                        <input type="date" id="filterFechaHasta" class="slicer-input" title="Fecha hasta">
+                    </span>
                     <button class="slicer-clear-btn" id="clearSlicerFecha" title="Limpiar fechas" aria-label="Limpiar fechas">×</button>
                 </div>
                 <div class="slicer-group" id="slicerImporte" title="Rango de importe">
