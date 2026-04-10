@@ -54,7 +54,7 @@ python scripts/download_data.py   # Descarga los Excel trimestrales
 python scripts/process_data.py    # Genera contracts.json y derivados
 python scripts/analyze_data.py    # Genera analysis.json
 python scripts/audit_data.py      # Genera audit_summary.json
-cp data/processed/*.json docs/data/  # Sincroniza al frontend
+python scripts/publish_data.py        # Publica al frontend (autónomos enmascarados)
 ```
 
 ## Flujo para contribuir

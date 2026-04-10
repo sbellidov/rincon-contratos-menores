@@ -95,8 +95,8 @@ python scripts/analyze_data.py
 # 4. Detecta anomalías → audit_summary.json con desglose por año
 python scripts/audit_data.py
 
-# 5. Sincroniza JSONs al frontend
-cp data/processed/*.json docs/data/
+# 5. Publica JSONs al frontend (con datos de autónomos enmascarados)
+python scripts/publish_data.py
 ```
 
 El pipeline completo se ejecuta automáticamente cada sábado a las 03:00 UTC

@@ -35,8 +35,8 @@ jobs:
           python scripts/analyze_data.py
           python scripts/audit_data.py
 
-      - name: Sincronizar JSONs a docs/data/
-        run: cp data/processed/*.json docs/data/
+      - name: Publicar JSONs a docs/data/ (autónomos enmascarados)
+        run: python scripts/publish_data.py
 
       - name: Commit y push si hay datos nuevos
         run: |
