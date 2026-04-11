@@ -1,8 +1,8 @@
 {
   "summary": {
-    "total_contracts": 6116,
+    "total_contracts": 6090,
     "total_amount": 20876393.200000003,
-    "avg_amount": 3413.406344015697,
+    "avg_amount": 3427.9791789819383,
     "min_date": "2023-01-04T00:00:00",
     "max_date": "2025-12-30T00:00:00",
     "last_updated": "30/12/2025"
@@ -10,7 +10,7 @@
   "by_area": {
     "Deportes (APAL)": {
       "sum": 3200242.43,
-      "count": 1389
+      "count": 1386
     },
     "Obras y Servicios Generales": {
       "sum": 1897078.2,
@@ -198,11 +198,11 @@
   "by_year": {
     "2022": {
       "sum": 4968138.36,
-      "count": 1504
+      "count": 1502
     },
     "2023": {
       "sum": 5547471.22,
-      "count": 1591
+      "count": 1568
     },
     "2024": {
       "sum": 5659270.88,
@@ -210,7 +210,7 @@
     },
     "2025": {
       "sum": 4701512.74,
-      "count": 1410
+      "count": 1409
     }
   },
   "by_quarter": [
@@ -233,21 +233,21 @@
       "quarter": 3,
       "periodo": "2022 T3",
       "importe": 1397104.32,
-      "contratos": 361
+      "contratos": 360
     },
     {
       "year": 2022,
       "quarter": 4,
       "periodo": "2022 T4",
       "importe": 1180261.8,
-      "contratos": 352
+      "contratos": 351
     },
     {
       "year": 2023,
       "quarter": 1,
       "periodo": "2023 T1",
       "importe": 1653502.14,
-      "contratos": 526
+      "contratos": 503
     },
     {
       "year": 2023,
@@ -317,7 +317,7 @@
       "quarter": 3,
       "periodo": "2025 T3",
       "importe": 1026949.74,
-      "contratos": 270
+      "contratos": 269
     },
     {
       "year": 2025,
@@ -334,7 +334,7 @@
     },
     "Otros": {
       "sum": 100183.9,
-      "count": 63
+      "count": 37
     },
     "Servicio": {
       "sum": 11898475.79,
@@ -347,12 +347,12 @@
   },
   "by_entity_type": {
     "SL": {
-      "sum": 13024148.73,
-      "count": 3417
+      "sum": 13025336.73,
+      "count": 3418
     },
     "Autónomo": {
-      "sum": 4356158.74,
-      "count": 1647
+      "sum": 4354970.74,
+      "count": 1646
     },
     "SA": {
       "sum": 1552252.2,
@@ -370,21 +370,21 @@
       "sum": 262622.48,
       "count": 98
     },
-    "Sociedad Civil": {
-      "sum": 144323.32,
-      "count": 37
-    },
     "Desconocido": {
-      "sum": 136475.32,
-      "count": 80
+      "sum": 145923.54,
+      "count": 57
+    },
+    "Sociedad Civil": {
+      "sum": 137997.44,
+      "count": 36
     },
     "Adm. Pública": {
       "sum": 113952.22,
       "count": 47
     },
     "Otras sociedades": {
-      "sum": 72562.48,
-      "count": 15
+      "sum": 70965.28,
+      "count": 14
     },
     "Entidad extranjera": {
       "sum": 27362.86,
@@ -395,8 +395,8 @@
       "count": 8
     },
     "Entidad religiosa": {
-      "sum": 2225.1400000000003,
-      "count": 2
+      "sum": 700.0,
+      "count": 1
     }
   }
 }

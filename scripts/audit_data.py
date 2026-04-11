@@ -46,13 +46,18 @@ def audit_data():
                     "El importe tenía múltiples puntos con grupo final ≥ 4 dígitos "
                     "(ambiguo) y fue nullificado")
 
-    high_amounts = df[df['importe'] > 50000]
+    high_amounts = df[df['importe'].notna() & (df['importe'] > 50000)]
     for _, row in high_amounts.iterrows():
         add_anomaly(row, 'Importe Elevado', f"Importe de {row['importe']}€ supera el umbral común de contratos menores")
 
-    zero_amounts = df[df['importe'] <= 0]
+    zero_amounts = df[df['importe'].notna() & (df['importe'] <= 0)]
     for _, row in zero_amounts.iterrows():
         add_anomaly(row, 'Importe Cero/Negativo', "El importe registrado es 0 o menor")
+
+    # 3b. Adjudicatario en blanco (el objeto existía pero falta el nombre)
+    missing_adj = df[df['adjudicatario'].isna() | (df['adjudicatario'] == '')]
+    for _, row in missing_adj.iterrows():
+        add_anomaly(row, 'Adjudicatario Faltante', "El nombre del adjudicatario está en blanco")
 
     # 4. Missing Object
     missing_object = df[df['objeto'].isna() | (df['objeto'] == '')]
@@ -86,8 +91,9 @@ def audit_data():
     df['_sin_nif']          = df['cif'].isna() | (df['cif'] == '')
     df['_nif_mal_formulado'] = (~df['cif'].isna()) & (df['cif'] != '') & (df['check_cif'] == False)
     df['_sin_fecha']         = df['fecha_adjudicacion'].isna()
-    df['_imp_cero']          = df['importe'] <= 0
-    df['_imp_alto']          = df['importe'] > 50000
+    df['_imp_cero']          = df['importe'].notna() & (df['importe'] <= 0)
+    df['_imp_alto']          = df['importe'].notna() & (df['importe'] > 50000)
+    df['_sin_adj']           = df['adjudicatario'].isna() | (df['adjudicatario'] == '')
     # D7: marcar filas con expediente duplicado dentro del mismo fichero
     if 'expediente' in df.columns:
         exp_not_null = df['expediente'].notna() & (df['expediente'] != '')
@@ -106,13 +112,14 @@ def audit_data():
             importe_cero=('_imp_cero', 'sum'),
             importe_alto=('_imp_alto', 'sum'),
             exp_duplicado=('_exp_dup', 'sum'),
+            sin_adjudicatario=('_sin_adj', 'sum'),
         )
         .reset_index()
         .sort_values('year')
         .assign(year=lambda d: d['year'].astype(int))
         .assign(importe_total=lambda d: d['importe_total'].round(2))
     )
-    for col in ['sin_nif', 'nif_mal_formulado', 'sin_fecha', 'importe_cero', 'importe_alto', 'exp_duplicado']:
+    for col in ['sin_nif', 'nif_mal_formulado', 'sin_fecha', 'importe_cero', 'importe_alto', 'exp_duplicado', 'sin_adjudicatario']:
         by_year[col] = by_year[col].astype(int)
 
     summary = {

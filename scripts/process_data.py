@@ -150,15 +150,25 @@ def extract_cif_address(combined):
         cif_raw = potential_match.group(0)
         clean_cif = re.sub(r'[^A-Z0-9]', '', cif_raw)
         if len(clean_cif) == 9:
-            address = combined.replace(cif_raw, "").strip("- ").strip()
+            # Más de 3 letras → no puede ser un NIF/CIF válido (texto extraído por error)
+            if sum(1 for c in clean_cif if c.isalpha()) > 3:
+                cif_raw = None
+            else:
+                address = combined.replace(cif_raw, "").strip("- ").strip()
         else: cif_raw = None
     if not cif_raw:
         parts = re.split(r'[- ]', combined, 1)
         cif_raw = parts[0].strip().upper()
-        if len(re.sub(r'[^A-Z0-9]', '', cif_raw)) < 8:
+        clean_candidate = re.sub(r'[^A-Z0-9]', '', cif_raw)
+        if len(clean_candidate) < 8:
             cif_raw = None
             address = combined
-        else: address = parts[1].strip() if len(parts) > 1 else ""
+        elif sum(1 for c in clean_candidate if c.isalpha()) > 3:
+            # También descartar candidatos con demasiadas letras en el fallback
+            cif_raw = None
+            address = combined
+        else:
+            address = parts[1].strip() if len(parts) > 1 else ""
     if cif_raw:
         is_valid, normalized, id_type = validate_spanish_id(cif_raw)
         return normalized, address, is_valid, id_type
@@ -595,7 +605,13 @@ def process_files(raw_dir='data/raw', processed_dir='data/processed'):
 
     if all_data:
         final_df = pd.concat(all_data, ignore_index=True)
-        final_df = final_df.dropna(subset=['adjudicatario', 'objeto'], how='all')
+        # Eliminar filas ruido: adjudicatario Y objeto en blanco → no es un contrato
+        _blank = lambda s: s.isna() | (s.astype(str).str.strip() == '')
+        noise = _blank(final_df['adjudicatario']) & _blank(final_df['objeto'])
+        dropped = noise.sum()
+        if dropped:
+            print(f"  ⚠ Eliminadas {dropped} filas sin adjudicatario ni objeto (ruido)")
+        final_df = final_df[~noise]
         final_df['area'] = final_df['area'].apply(normalize_area)
 
         # Propagación de CIFs: si el mismo nombre aparece sin CIF en algún registro,

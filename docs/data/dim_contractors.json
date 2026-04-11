@@ -3752,13 +3752,6 @@
     "tipo_id": "NIF"
   },
   {
-    "cif": "DELMEDITE",
-    "nombre": "Suministro de Hostelería El Gato",
-    "direccion": "Avda. del Mediterráneo, 203-I. 29730 Rincón de la Victoria, Málaga",
-    "tipo_entidad": "Otras sociedades",
-    "tipo_id": "CIF"
-  },
-  {
     "cif": "G02786556",
     "nombre": "Asociación Músico-Cultural Banda de Música de Rincón de la Victoria",
     "direccion": "Cmno. Viejo de Vélez, 1 , Bloque 1, 3º F, 29730 Rincón de la Victoria (Málaga)",
@@ -6769,11 +6762,11 @@
     "tipo_id": "CIF"
   },
   {
-    "cif": "ME****ILL",
+    "cif": "B92947902",
     "nombre": "Byefile Málaga S.L.",
-    "direccion": "B92.947.902-C/ ***************",
-    "tipo_entidad": "Autónomo",
-    "tipo_id": "Unknown"
+    "direccion": "C/ Mercecillas, nº 17-A, 29200 Antequera (Málaga)",
+    "tipo_entidad": "SL",
+    "tipo_id": "CIF"
   },
   {
     "cif": "B93488757",
@@ -7266,13 +7259,6 @@
     "tipo_id": "CIF"
   },
   {
-    "cif": "RESCINDID",
-    "nombre": "Occident GCO, S.A.U. de Seguros y Reaseguros",
-    "direccion": "O A28119220-C/ Méndez Alvaro, 31, 28045 Madrid",
-    "tipo_entidad": "Entidad religiosa",
-    "tipo_id": "CIF"
-  },
-  {
     "cif": "B93662898",
     "nombre": "Moon Dreams Rincón, S.L.",
     "direccion": "C/ Manuel Fernández Moreno, 6-7, 29720 La Cala del Moral",
@@ -7333,13 +7319,6 @@
     "nombre": "Servicios Integrales M-3, S.L.",
     "direccion": "Ctra. Valle Abdalajís, 3,29510 Álora (Málaga)",
     "tipo_entidad": "SL",
-    "tipo_id": "CIF"
-  },
-  {
-    "cif": "JUANCARVA",
-    "nombre": "Tradesegur",
-    "direccion": "C/ Juan Carvallo, 9, 41006 Sevilla",
-    "tipo_entidad": "Sociedad Civil",
     "tipo_id": "CIF"
   },
   {

@@ -16,6 +16,7 @@ from process_data import (
     parse_adj_dom_cif,
     find_header_row,
     preprocess_date,
+    extract_cif_address,
 )
 
 
@@ -288,6 +289,31 @@ class TestPreprocessDate:
     def test_nan(self):
         import math
         assert pd.isna(preprocess_date(float('nan')))
+
+
+# ── extract_cif_address ──────────────────────────────────────────────────────
+
+class TestExtractCifAddress:
+
+    def test_cif_valido_con_direccion(self):
+        cif, addr, valid, _ = extract_cif_address('B12345674 CALLE FALSA 123')
+        assert cif == 'B12345674'
+        assert valid is True
+
+    def test_nif_con_muchas_letras_nullificado(self):
+        # 'ABCDEFG12' tiene 7 letras → no puede ser NIF → cif debe ser None
+        cif, _, valid, _ = extract_cif_address('ABCDEFG12 CALLE ALGO 5')
+        assert cif is None
+        assert valid is False
+
+    def test_texto_direccion_sin_nif(self):
+        cif, addr, valid, _ = extract_cif_address('CALLE DE LOS OLIVOS 22')
+        assert valid is False
+
+    def test_nulo(self):
+        cif, addr, valid, _ = extract_cif_address(None)
+        assert cif is None
+        assert valid is False
 
 
 # ── parse_adj_dom_cif ────────────────────────────────────────────────────────

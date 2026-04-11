@@ -44217,25 +44217,6 @@
     ]
   },
   {
-    "cif": "JUANCARVA",
-    "nombre": "Tradesegur",
-    "direccion": "C/ Juan Carvallo, 9, 41006 Sevilla",
-    "tipo_entidad": "Sociedad Civil",
-    "tipo_id": "CIF",
-    "total_importe": 6325.88,
-    "num_contratos": 1,
-    "contratos": [
-      {
-        "fecha_adjudicacion": "2025-05-09T00:00:00",
-        "objeto": "Materiales fungibles y elementos auxiliares para pruebas detección alcohol y drogas, transporte y custodia de muestras biológicas",
-        "expediente": "05246/25",
-        "importe": 6325.88,
-        "area": "Deportes (APAL)",
-        "tipo_contrato_limpio": "Suministro"
-      }
-    ]
-  },
-  {
     "cif": "B93436814",
     "nombre": "Costa del Sol Formación SL",
     "direccion": ". Avda, de la Candelaria, nº2, 2ºC. 29730, Rincón de la Victoria, Málaga",
@@ -54375,25 +54356,6 @@
     ]
   },
   {
-    "cif": "DELMEDITE",
-    "nombre": "Suministro de Hostelería El Gato",
-    "direccion": "Avda. del Mediterráneo, 203-I. 29730 Rincón de la Victoria, Málaga",
-    "tipo_entidad": "Otras sociedades",
-    "tipo_id": "CIF",
-    "total_importe": 1597.2,
-    "num_contratos": 1,
-    "contratos": [
-      {
-        "fecha_adjudicacion": "2023-01-06T00:00:00",
-        "objeto": "Alquiler de tableros para los participantes en el Campeonato Provincial de ajedrez por edades 2023",
-        "expediente": "18928/22",
-        "importe": 1597.2,
-        "area": "Deportes (APAL)",
-        "tipo_contrato_limpio": "Suministro"
-      }
-    ]
-  },
-  {
     "cif": "25****94W",
     "nombre": "José Antonio Jiménez Jiménez",
     "direccion": "Cº Suárez, 30, ***************",
@@ -54497,25 +54459,6 @@
         "expediente": "12659/24",
         "importe": 338.8,
         "area": "Cultura",
-        "tipo_contrato_limpio": "Servicio"
-      }
-    ]
-  },
-  {
-    "cif": "RESCINDID",
-    "nombre": "Occident GCO, S.A.U. de Seguros y Reaseguros",
-    "direccion": "O A28119220-C/ Méndez Alvaro, 31, 28045 Madrid",
-    "tipo_entidad": "Entidad religiosa",
-    "tipo_id": "CIF",
-    "total_importe": 1525.14,
-    "num_contratos": 1,
-    "contratos": [
-      {
-        "fecha_adjudicacion": "2025-06-11T00:00:00",
-        "objeto": "Seguro de Responsabilidad Civil para Feria de La Cala del Moral",
-        "expediente": "6035/25",
-        "importe": 1525.14,
-        "area": "Ferias y Fiestas",
         "tipo_contrato_limpio": "Servicio"
       }
     ]
@@ -55813,11 +55756,11 @@
     ]
   },
   {
-    "cif": "ME****ILL",
+    "cif": "B92947902",
     "nombre": "Byefile Málaga S.L.",
-    "direccion": "B92.947.902-C/ ***************",
-    "tipo_entidad": "Autónomo",
-    "tipo_id": "Unknown",
+    "direccion": "C/ Mercecillas, nº 17-A, 29200 Antequera (Málaga)",
+    "tipo_entidad": "SL",
+    "tipo_id": "CIF",
     "total_importe": 1188.0,
     "num_contratos": 1,
     "contratos": [
