@@ -1,13 +1,13 @@
 {
   "total_checked": 6116,
-  "total_anomalies": 1748,
+  "total_anomalies": 3663,
   "by_type": {
+    "Expediente Duplicado": 1916,
     "Fecha Inválida/Faltante": 1559,
     "NIF Faltante": 80,
     "NIF Mal Formulado": 47,
     "Importe Cero/Negativo": 35,
-    "Objeto Faltante": 26,
-    "Importe Elevado": 1
+    "Objeto Faltante": 26
   },
   "by_year": [
     {
@@ -18,7 +18,8 @@
       "nif_mal_formulado": 6,
       "sin_fecha": 1504,
       "importe_cero": 8,
-      "importe_alto": 0
+      "importe_alto": 0,
+      "exp_duplicado": 418
     },
     {
       "year": 2023,
@@ -28,17 +29,19 @@
       "nif_mal_formulado": 14,
       "sin_fecha": 31,
       "importe_cero": 25,
-      "importe_alto": 0
+      "importe_alto": 0,
+      "exp_duplicado": 476
     },
     {
       "year": 2024,
       "total": 1611,
-      "importe_total": 6323153.0,
+      "importe_total": 5659270.88,
       "sin_nif": 0,
       "nif_mal_formulado": 13,
       "sin_fecha": 11,
       "importe_cero": 1,
-      "importe_alto": 1
+      "importe_alto": 0,
+      "exp_duplicado": 538
     },
     {
       "year": 2025,
@@ -48,7 +51,8 @@
       "nif_mal_formulado": 14,
       "sin_fecha": 13,
       "importe_cero": 1,
-      "importe_alto": 0
+      "importe_alto": 0,
+      "exp_duplicado": 484
     }
   ]
 }

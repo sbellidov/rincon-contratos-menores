@@ -1,8 +1,8 @@
 {
   "summary": {
     "total_contracts": 6116,
-    "total_amount": 21540275.32,
-    "avg_amount": 3521.9547612818837,
+    "total_amount": 20876393.200000003,
+    "avg_amount": 3413.406344015697,
     "min_date": "2023-01-04T00:00:00",
     "max_date": "2025-12-30T00:00:00",
     "last_updated": "30/12/2025"
@@ -16,10 +16,6 @@
       "sum": 1897078.2,
       "count": 319
     },
-    "Ferias y Fiestas": {
-      "sum": 1713690.0,
-      "count": 340
-    },
     "Bienestar Social": {
       "sum": 1505252.74,
       "count": 428
@@ -27,6 +23,10 @@
     "Cultura": {
       "sum": 1072009.57,
       "count": 480
+    },
+    "Ferias y Fiestas": {
+      "sum": 1049807.88,
+      "count": 340
     },
     "Turismo": {
       "sum": 1027339.96,
@@ -134,10 +134,6 @@
     }
   },
   "top_adjudicatarios": {
-    "María del Mar Martín Castillo": {
-      "sum": 688259.3999999999,
-      "count": 4
-    },
     "Leyna 2018 SL": {
       "sum": 269016.56,
       "count": 12
@@ -193,6 +189,10 @@
     "ESTREMASOL SL": {
       "sum": 118163.76000000001,
       "count": 20
+    },
+    "Pinturas Manuel Arévalo SL": {
+      "sum": 117677.04,
+      "count": 6
     }
   },
   "by_year": {
@@ -205,7 +205,7 @@
       "count": 1591
     },
     "2024": {
-      "sum": 6323153.0,
+      "sum": 5659270.88,
       "count": 1611
     },
     "2025": {
@@ -295,7 +295,7 @@
       "year": 2024,
       "quarter": 4,
       "periodo": "2024 T4",
-      "importe": 2483678.78,
+      "importe": 1819796.66,
       "contratos": 473
     },
     {
@@ -337,7 +337,7 @@
       "count": 63
     },
     "Servicio": {
-      "sum": 12562357.91,
+      "sum": 11898475.79,
       "count": 3581
     },
     "Suministro": {
@@ -351,7 +351,7 @@
       "count": 3417
     },
     "Autónomo": {
-      "sum": 5020040.86,
+      "sum": 4356158.74,
       "count": 1647
     },
     "SA": {
