@@ -14,6 +14,7 @@ Reglas de enmascaramiento (solo para tipo_entidad == 'Autónomo'):
 import json
 import os
 import shutil
+from datetime import datetime
 from pathlib import Path
 
 PROCESSED_DIR = Path('data/processed')
@@ -63,6 +64,39 @@ def load_json(path: Path):
 def save_json(path: Path, data):
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+SITEMAP_PATH = Path('docs/sitemap.xml')
+SITEMAP_TEMPLATE = """\
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://rincontransparente.com/</loc>
+    <lastmod>{lastmod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+"""
+
+
+def _update_sitemap(analysis_path: Path) -> None:
+    """Regenera docs/sitemap.xml con el lastmod del último dato publicado."""
+    lastmod = None
+    if analysis_path.exists():
+        try:
+            data = load_json(analysis_path)
+            raw = data.get('summary', {}).get('last_updated', '')
+            # Formato origen: dd/mm/yyyy → W3C: yyyy-mm-dd
+            lastmod = datetime.strptime(raw, '%d/%m/%Y').strftime('%Y-%m-%d')
+        except (ValueError, KeyError):
+            pass
+
+    if not lastmod:
+        lastmod = datetime.utcnow().strftime('%Y-%m-%d')
+
+    SITEMAP_PATH.write_text(SITEMAP_TEMPLATE.format(lastmod=lastmod), encoding='utf-8')
+    print(f'  sitemap.xml  lastmod={lastmod}')
 
 
 def publish():
@@ -128,6 +162,9 @@ def publish():
             masked.append(r)
         save_json(PUBLIC_DIR / 'fact_contracts.json', masked)
         print(f'  enmascarado  fact_contracts.json')
+
+    # --- sitemap.xml: actualizar lastmod con la fecha del último dato ---
+    _update_sitemap(PROCESSED_DIR / 'analysis.json')
 
     print('\nPublicación completada. Datos completos conservados en data/processed/')
 
