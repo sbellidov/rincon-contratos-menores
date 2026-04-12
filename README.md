@@ -33,12 +33,15 @@ Los contratos menores son adjudicaciones directas sin concurso público, con un 
 rincon-contratos-menores/
 ├── data/
 │   ├── raw/                  # Excel originales descargados (gitignored)
-│   └── processed/            # JSONs intermedios del ETL (gitignored)
+│   ├── processed/            # JSONs intermedios del ETL (gitignored)
+│   └── catalog.json          # Catálogo de URLs de los Excel por trimestre
 ├── scripts/
-│   ├── download_data.py      # Descarga los XLS trimestrales del portal municipal
+│   ├── discover_data.py      # Rasca el portal municipal y actualiza catalog.json
+│   ├── download_data.py      # Lee catalog.json y descarga los XLS con validación
 │   ├── process_data.py       # ETL: limpieza, normalización, validación de NIFs
 │   ├── analyze_data.py       # Agrega por área, año, trimestre y tipo
 │   ├── audit_data.py         # Detecta anomalías y genera audit_summary.json
+│   ├── publish_data.py       # Publica JSONs a docs/data/ enmascarando datos de autónomos
 │   └── serve_web.py          # Servidor HTTP local para desarrollo
 ├── docs/                     # Frontend estático servido por GitHub Pages
 │   ├── index.html
@@ -53,7 +56,7 @@ rincon-contratos-menores/
 
 ## Stack
 
-- **ETL**: Python 3.9 + pandas + xlrd
+- **ETL**: Python 3.10 + pandas + xlrd
 - **Frontend**: HTML + CSS + JavaScript (vanilla) + Chart.js + Lucide icons · tipografía Inter · modo claro/oscuro
 - **Despliegue**: GitHub Pages (rama `main`, carpeta `/docs`)
 - **CDN / DNS**: Cloudflare (proxy activo, SSL Full, Bot Fight Mode ON)
@@ -83,7 +86,10 @@ pip install -r requirements.txt
 ## Pipeline ETL
 
 ```bash
-# 1. Descarga los Excel del portal municipal a data/raw/
+# 0. (Opcional) Descubre nuevos trimestres y actualiza data/catalog.json
+python scripts/discover_data.py
+
+# 1. Lee catalog.json y descarga los XLS con validación de magic bytes
 python scripts/download_data.py
 
 # 2. Limpia, normaliza y valida → genera contracts.csv + star schema JSON
@@ -95,7 +101,7 @@ python scripts/analyze_data.py
 # 4. Detecta anomalías → audit_summary.json con desglose por año
 python scripts/audit_data.py
 
-# 5. Publica JSONs al frontend (con datos de autónomos enmascarados)
+# 5. Publica JSONs a docs/data/ enmascarando NIF y dirección de autónomos
 python scripts/publish_data.py
 ```
 
@@ -127,10 +133,10 @@ El ETL aplica correcciones automáticas:
 
 ## Añadir un nuevo trimestre
 
-Cuando el ayuntamiento publique datos de un nuevo trimestre, añadir la URL al catálogo en `scripts/download_data.py`:
+El script `discover_data.py` intenta detectar automáticamente nuevos trimestres rastreando el portal municipal. Si la detección automática no funciona, se puede añadir la URL manualmente al catálogo en `data/catalog.json`:
 
-```python
-"2026_Q1": f"{BASE}/YYYY-MM/CONTRATOS%20MENORES%201%20TRIMESTRE%202026.xls",
+```json
+"2026_Q2": "https://www.rincondelavictoria.es/.../CONTRATOS%20MENORES%202%20TRIMESTRE%202026.xls"
 ```
 
 La URL exacta está en el [portal de contratación municipal](https://www.rincondelavictoria.es/areas/contratacion/relaciones-de-contratos-menores).
