@@ -28,10 +28,13 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Ejecutar pipeline ETL
+        env:
+          APIEMPRESAS_KEY: ${{ secrets.APIEMPRESAS_KEY }}
         run: |
           python scripts/discover_data.py
           python scripts/download_data.py
           python scripts/process_data.py
+          python scripts/enrich_data.py
           python scripts/analyze_data.py
           python scripts/audit_data.py
 
@@ -42,7 +45,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/data/ data/catalog.json
+          git add docs/data/ data/catalog.json data/enriched/companies_cache.json
           if git diff --cached --quiet; then
             echo "Sin cambios en los datos. Nada que commitear."
           else
