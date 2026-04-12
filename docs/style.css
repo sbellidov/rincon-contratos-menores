@@ -836,6 +836,43 @@ td { color: var(--text); }
     flex-wrap: wrap;
 }
 
+/* Badges de enriquecimiento (sector CNAE, año constitución, baja) */
+.badge-sector {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--r-sm);
+    white-space: nowrap;
+}
+.badge-meta {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--r-sm);
+    white-space: nowrap;
+}
+.badge-baja {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(220,38,38,.08);
+    border: 1px solid rgba(220,38,38,.25);
+    color: var(--red);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.1rem 0.45rem;
+    border-radius: var(--r-sm);
+    letter-spacing: .04em;
+}
+
 .contractor-stats { text-align: right; flex-shrink: 0; }
 
 .total-amount {

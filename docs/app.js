@@ -211,6 +211,9 @@ function renderContractors() {
                         <div class="contractor-meta">
                             <span><i data-lucide="hash" style="width:12px"></i> ${c.cif}</span>
                             <span><i data-lucide="map-pin" style="width:12px"></i> ${c.direccion || 'No disponible'}</span>
+                            ${c.sector ? `<span class="badge-sector"><i data-lucide="tag" style="width:11px"></i> ${c.sector}</span>` : ''}
+                            ${c.fecha_constitucion ? `<span class="badge-meta">Est. ${c.fecha_constitucion}</span>` : ''}
+                            ${c.estado_registral === 'BAJA' ? `<span class="badge-baja">BAJA</span>` : ''}
                         </div>
                     </div>
                 </div>
