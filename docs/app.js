@@ -276,6 +276,8 @@ function renderQuality() {
             <td class="text-right ${row.sin_fecha > 0 ? 'quality-warn-cell' : ''}">${row.sin_fecha}</td>
             <td class="text-right ${row.importe_cero > 0 ? 'quality-warn-cell' : ''}">${row.importe_cero}</td>
             <td class="text-right ${row.importe_alto > 0 ? 'quality-warn-cell' : ''}">${row.importe_alto}</td>
+            <td class="text-right ${(row.exp_duplicado ?? 0) > 0 ? 'quality-warn-cell' : ''}">${row.exp_duplicado ?? 0}</td>
+            <td class="text-right ${(row.sin_adjudicatario ?? 0) > 0 ? 'quality-warn-cell' : ''}">${row.sin_adjudicatario ?? 0}</td>
         </tr>
     `).join('');
 }
