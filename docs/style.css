@@ -636,6 +636,10 @@ a:hover { text-decoration: underline; }
 
 .table-scroll { overflow-x: auto; }
 
+/* Tabla de calidad por año: más compacta para caber sin scroll horizontal */
+#qualityTable th, #qualityTable td { padding: 0.45rem 0.55rem; font-size: 0.78rem; }
+#qualityTable th { font-size: 0.67rem; }
+
 table { width: 100%; border-collapse: collapse; }
 
 th, td {

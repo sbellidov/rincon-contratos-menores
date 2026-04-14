@@ -418,6 +418,8 @@ function renderCharts() {
                 data: typeValues,
                 backgroundColor: COLORS_MAIN,
                 borderWidth: 0,
+                spacing: 3,
+                hoverOffset: 8,
             }]
         },
         options: {
@@ -519,6 +521,8 @@ function renderCharts() {
                 data: entityValues,
                 backgroundColor: COLORS_ENTITY,
                 borderWidth: 0,
+                spacing: 3,
+                hoverOffset: 8,
             }]
         },
         options: {
@@ -527,6 +531,10 @@ function renderCharts() {
             plugins: {
                 legend: {
                     position: 'right',
+                    onClick: (e, legendItem, legend) => {
+                        legend.chart.toggleDataVisibility(legendItem.index);
+                        legend.chart.update();
+                    },
                     labels: {
                         color: legendColor(),
                         font: { size: 13, family: "'Inter', sans-serif" },
@@ -539,12 +547,15 @@ function renderCharts() {
                         // Leyenda personalizada: muestra el importe total junto al nombre del tipo
                         generateLabels: (chart) => {
                             const data = chart.data;
+                            const textColor = chart.options.plugins.legend.labels.color;
                             return data.labels.map((label, i) => ({
                                 text: `${label}  ${fmtSmart(data.datasets[0].data[i])}`,
                                 fillStyle: data.datasets[0].backgroundColor[i],
                                 strokeStyle: 'transparent',
                                 lineWidth: 0,
+                                fontColor: textColor,
                                 pointStyle: 'circle',
+                                hidden: !chart.getDataVisibility(i),
                                 index: i,
                             }));
                         },
