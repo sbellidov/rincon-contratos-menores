@@ -23475,7 +23475,7 @@
   },
   {
     "cif": "A29680790",
-    "nombre": "Málaga CF, SAD",
+    "nombre": "MALAGA CLUB DE FUTBOL SAD",
     "direccion": "Pº Martiricos, s/n, Estadio La Rosaleda, 29011 Málaga",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -23514,11 +23514,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de los clubes deportivos",
+    "sector_cnae": "9312",
+    "fecha_constitucion": "1994",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B23592181",
-    "nombre": "Innovaciones Tecnológicas del Sur, S.L.",
+    "nombre": "INNOVACIONES TECNOLOGICAS DEL SUR SL",
     "direccion": "Calle Sierra Morena, 12, PT Geolit, Menjibar (Jaén)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -23565,7 +23569,11 @@
         "area": "Nuevas Tecnologías y Transparencia",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Comercio al por menor de equipos para las tecnologías de la información y las comunicaciones",
+    "sector_cnae": "4741",
+    "fecha_constitucion": "2007",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "G29831187",
@@ -23620,7 +23628,7 @@
   },
   {
     "cif": "B93489169",
-    "nombre": "Excavaciones Lagosol, S.L.",
+    "nombre": "EXCAVACIONES LAGOSOL SL",
     "direccion": "Cortijo Taramilla, s/n, 29740 Torre del Mar (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -23659,11 +23667,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Preparación de terrenos",
+    "sector_cnae": "4312",
+    "fecha_constitucion": null,
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B29085198",
-    "nombre": "Cano Materiales de Construcción, S.L.",
+    "nombre": "CANO MATERIALES DE CONSTRUCCION SL",
     "direccion": "Ctra. Benagalbón, Km. 1,5, 29730 Rincón de la Victoria (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -23974,7 +23986,11 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Comercio al por mayor de madera, materiales de construcción y aparatos sanitarios",
+    "sector_cnae": "4673",
+    "fecha_constitucion": "1982",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "52****15T",
@@ -24416,7 +24432,7 @@
   },
   {
     "cif": "A28281368",
-    "nombre": "Radio Popular, S.A.",
+    "nombre": "RADIO POPULAR SOCIEDAD ANONIMA CADENA DE ONDAS POPULARES ESPAÑOLAS",
     "direccion": "C/ Linaje, 2, 29001 Málaga",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -24543,7 +24559,11 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de radiodifusión y distribución de audio",
+    "sector_cnae": "6010",
+    "fecha_constitucion": "1971",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "33****61Y",
@@ -24745,7 +24765,7 @@
   },
   {
     "cif": "A28002335",
-    "nombre": "Sociedad Ibérica de Construcciones Eléctricas SA (SICE)",
+    "nombre": "SOCIEDAD IBERICA DE CONSTRUCCIONES ELECTRICAS SA",
     "direccion": "Pol. Ind. Guadalhorce, Ctra Azucarera-Intelhorce, 94, 29004 Málaga",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -24800,11 +24820,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Servicios técnicos de ingeniería y otras actividades relacionadas con el asesoramiento técnico",
+    "sector_cnae": "7112",
+    "fecha_constitucion": "1921",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B92285030",
-    "nombre": "Excavaciones El Quino SL",
+    "nombre": "EXCAVACIONES EL QUINO SL",
     "direccion": "C/ Bonilla Baja, 37. Torre de Benagalbón (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -24891,11 +24915,15 @@
         "area": "Comercio",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Preparación de terrenos",
+    "sector_cnae": "4312",
+    "fecha_constitucion": "2001",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93279859",
-    "nombre": "Noaplast Distribuciones, S.L.U.",
+    "nombre": "NOAPLAST DISTRIBUCIONES SL",
     "direccion": "C/ Lavadero, 2, 29738 Benagalbón (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -25214,11 +25242,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Otro comercio al por mayor especializado n.c.o.p.",
+    "sector_cnae": "4690",
+    "fecha_constitucion": "2013",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93609196",
-    "nombre": "Coloso Ibérica, S.L.",
+    "nombre": "COLOSA IBERICA SL",
     "direccion": "Avda. Vega de Aca, 123, 3ºD, 04007 Almería",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -25257,11 +25289,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": null,
+    "sector_cnae": null,
+    "fecha_constitucion": "2018",
+    "estado_registral": null
   },
   {
     "cif": "B04563169",
-    "nombre": "Grupo Renta Todo Expoferias, S.L.",
+    "nombre": "GRUPO RENTA TODO EXPOFERIAS SL",
     "direccion": "Pje. Haza Tableada, s/n, 04120 Almería",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -25300,11 +25336,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Alquiler de automóviles y vehículos de motor ligeros",
+    "sector_cnae": "7739",
+    "fecha_constitucion": "2006",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93186559",
-    "nombre": "Trompecoco, S.L.",
+    "nombre": "TROMPECOCO SL",
     "direccion": "C/ Alpechín, 42, 29738 Benagalbón",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -25351,7 +25391,11 @@
         "area": "Cultura",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Gestión de instalaciones para actividades artísticas y artes escénicas",
+    "sector_cnae": "9004",
+    "fecha_constitucion": "2012",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "24****07V",
@@ -25430,7 +25474,7 @@
   },
   {
     "cif": "F16977985",
-    "nombre": "Nadir Producciones SCA",
+    "nombre": "NADIR PRODUCCIONES SCOOP",
     "direccion": ". Calle Tres de Abril de 1979, nº18. 29004 Málaga",
     "tipo_entidad": "Cooperativa",
     "tipo_id": "CIF",
@@ -25581,11 +25625,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Actividades de producción cinematográfica y de vídeo",
+    "sector_cnae": "5915",
+    "fecha_constitucion": null,
+    "estado_registral": null
   },
   {
     "cif": "B93536977",
-    "nombre": "Coolaboro Servicios de Intrgración de Andalucía SL",
+    "nombre": "SERVICIOS DE INTEGRACION DE ANDALUCIA SL",
     "direccion": "Avda de las Américas 3, 5º-E. Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -25624,11 +25672,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de intermediación para servicios de construcción especializada",
+    "sector_cnae": "8299",
+    "fecha_constitucion": "2017",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "A09373861",
-    "nombre": "Alquiber Quality SA",
+    "nombre": "ALQUIBER QUALITY SA",
     "direccion": "Calle Almendro, 6, 28942 Madrid",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -25659,7 +25711,11 @@
         "area": "Infraestructuras",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Actividades de intermediación para servicios de construcción especializada",
+    "sector_cnae": "8299",
+    "fecha_constitucion": "2000",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "J29888096",
@@ -25808,7 +25864,7 @@
   },
   {
     "cif": "B21049861",
-    "nombre": "Menta Limón, S.L.",
+    "nombre": "MENTA LIMON SL",
     "direccion": "Avda. Adelfas, 10, 21760 Matalascañas (Huelva)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -25847,11 +25903,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Comercio al por menor de artículos deportivos",
+    "sector_cnae": "4764",
+    "fecha_constitucion": null,
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B29899432",
-    "nombre": "Grupo Solude",
+    "nombre": "SOLUDE SL",
     "direccion": "Calle Lisboa, 37, Pol. Ind. San Luis, Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26082,11 +26142,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Otro comercio al por mayor especializado n.c.o.p.",
+    "sector_cnae": "4690",
+    "fecha_constitucion": "1998",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "A29238599",
-    "nombre": "ACF Pinturs Andalucía, S.A.",
+    "nombre": "ACF PINTURAS ANDALUCIA SA",
     "direccion": "C/ Santa Teresa, 5, 29651 Mijas Costa (Málaga)",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -26309,7 +26373,11 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Comercio al por menor de ferretería, materiales de construcción, pinturas y vidrio",
+    "sector_cnae": "4752",
+    "fecha_constitucion": null,
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "A85269496",

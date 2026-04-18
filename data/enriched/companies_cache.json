@@ -354,5 +354,178 @@
     "cnae_label": "Construcción de edificios residenciales",
     "cnae_2025_label": "Construcción de edificios residenciales",
     "province": "Málaga"
+  },
+  "A29680790": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "MALAGA CLUB DE FUTBOL SAD",
+    "status": "ACTIVA",
+    "founded": "1994-06-29",
+    "cnae": "9312",
+    "cnae_label": "Actividades de los clubes deportivos",
+    "cnae_2025_label": "Actividades de los clubes deportivos",
+    "province": "Málaga"
+  },
+  "B23592181": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "INNOVACIONES TECNOLOGICAS DEL SUR SL",
+    "status": "ACTIVA",
+    "founded": "2007-02-13",
+    "cnae": "4741",
+    "cnae_label": "Comercio al por menor de ordenadores, equipos periféricos y programas informáticos en establecimientos especializados",
+    "cnae_2025_label": "Comercio al por menor de equipos para las tecnologías de la información y las comunicaciones",
+    "province": "Jaén"
+  },
+  "G29831187": null,
+  "B93489169": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "EXCAVACIONES LAGOSOL SL",
+    "status": "ACTIVA",
+    "founded": null,
+    "cnae": "4312",
+    "cnae_label": "PREPARACIÓN DE TERRENOS",
+    "cnae_2025_label": "Preparación de terrenos",
+    "province": "Málaga"
+  },
+  "B29085198": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "CANO MATERIALES DE CONSTRUCCION SL",
+    "status": "ACTIVA",
+    "founded": "1982-03-25",
+    "cnae": "4673",
+    "cnae_label": "Comercio al por mayor de madera, materiales de construcción y aparatos sanitarios",
+    "cnae_2025_label": "Comercio al por mayor de madera, materiales de construcción y aparatos sanitarios",
+    "province": "MALAGA"
+  },
+  "A28281368": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "RADIO POPULAR SOCIEDAD ANONIMA CADENA DE ONDAS POPULARES ESPAÑOLAS",
+    "status": "ACTIVA",
+    "founded": "1971-06-09",
+    "cnae": "6010",
+    "cnae_label": "Actividades de radiodifusión",
+    "cnae_2025_label": "Actividades de radiodifusión y distribución de audio",
+    "province": "Madrid"
+  },
+  "A28002335": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "SOCIEDAD IBERICA DE CONSTRUCCIONES ELECTRICAS SA",
+    "status": "ACTIVA",
+    "founded": "1921-01-08",
+    "cnae": "7112",
+    "cnae_label": "SERVICIOS TÉCNICOS DE INGENIERÍA Y OTRAS ACTIVIDADES RELACIONADAS CON EL ASESORAMIENTO TÉCNICO",
+    "cnae_2025_label": "Servicios técnicos de ingeniería y otras actividades relacionadas con el asesoramiento técnico",
+    "province": "MADRID"
+  },
+  "B92285030": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "EXCAVACIONES EL QUINO SL",
+    "status": "ACTIVA",
+    "founded": "2001-11-23",
+    "cnae": "4312",
+    "cnae_label": "Preparación de terrenos",
+    "cnae_2025_label": "Preparación de terrenos",
+    "province": "Málaga"
+  },
+  "B93279859": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "NOAPLAST DISTRIBUCIONES SL",
+    "status": "ACTIVA",
+    "founded": "2013-09-12",
+    "cnae": "4690",
+    "cnae_label": "Comercio al por mayor no especializado",
+    "cnae_2025_label": "Otro comercio al por mayor especializado n.c.o.p.",
+    "province": "MÁLAGA"
+  },
+  "B93609196": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "COLOSA IBERICA SL",
+    "status": null,
+    "founded": "2018-03-27",
+    "cnae": null,
+    "cnae_label": null,
+    "cnae_2025_label": null,
+    "province": "Málaga"
+  },
+  "B04563169": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "GRUPO RENTA TODO EXPOFERIAS SL",
+    "status": "ACTIVA",
+    "founded": "2006-04-28",
+    "cnae": "7739",
+    "cnae_label": "ALQUILER DE OTRA MAQUINARIA, EQUIPOS Y BIENES TANGIBLES N.C.O.P.",
+    "cnae_2025_label": "Alquiler de automóviles y vehículos de motor ligeros",
+    "province": "Almería"
+  },
+  "B93186559": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "TROMPECOCO SL",
+    "status": "ACTIVA",
+    "founded": "2012-03-20",
+    "cnae": "9004",
+    "cnae_label": "Gestión de salas de espectáculos",
+    "cnae_2025_label": "Gestión de instalaciones para actividades artísticas y artes escénicas",
+    "province": "Málaga"
+  },
+  "F16977985": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "NADIR PRODUCCIONES SCOOP",
+    "status": null,
+    "founded": null,
+    "cnae": "5915",
+    "cnae_label": "ACTIVIDADES DE PRODUCCIÓN CINEMATOGRÁFICA Y DE VÍDEO",
+    "cnae_2025_label": "Actividades de producción cinematográfica y de vídeo",
+    "province": "Málaga"
+  },
+  "B93536977": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "SERVICIOS DE INTEGRACION DE ANDALUCIA SL",
+    "status": "ACTIVA",
+    "founded": "2017-03-10",
+    "cnae": "8299",
+    "cnae_label": "OTRAS ACTIVIDADES DE APOYO A LAS EMPRESAS N.C.O.P.",
+    "cnae_2025_label": "Actividades de intermediación para servicios de construcción especializada",
+    "province": "MÁLAGA"
+  },
+  "A09373861": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "ALQUIBER QUALITY SA",
+    "status": "ACTIVA",
+    "founded": "2000-07-17",
+    "cnae": "8299",
+    "cnae_label": "Otras actividades de apoyo a las empresas n.c.o.p.",
+    "cnae_2025_label": "Actividades de intermediación para servicios de construcción especializada",
+    "province": "Zaragoza"
+  },
+  "J29888096": null,
+  "U01616713": null,
+  "B21049861": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "MENTA LIMON SL",
+    "status": "ACTIVA",
+    "founded": null,
+    "cnae": "4764",
+    "cnae_label": "COMERCIO AL POR MENOR DE JUEGOS Y JUGUETES",
+    "cnae_2025_label": "Comercio al por menor de artículos deportivos",
+    "province": "HUELVA"
+  },
+  "B29899432": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "SOLUDE SL",
+    "status": "ACTIVA",
+    "founded": "1998-04-16",
+    "cnae": "4690",
+    "cnae_label": "Comercio al por mayor no especializado",
+    "cnae_2025_label": "Otro comercio al por mayor especializado n.c.o.p.",
+    "province": "MÁLAGA"
+  },
+  "A29238599": {
+    "fetched_at": "2026-04-18",
+    "nombre_api": "ACF PINTURAS ANDALUCIA SA",
+    "status": "ACTIVA",
+    "founded": null,
+    "cnae": "4752",
+    "cnae_label": "Comercio al por menor de ferretería, pintura y vidrio en establecimientos especializados",
+    "cnae_2025_label": "Comercio al por menor de ferretería, materiales de construcción, pinturas y vidrio",
+    "province": "Málaga"
   }
 }
