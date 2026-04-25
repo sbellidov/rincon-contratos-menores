@@ -26381,7 +26381,7 @@
   },
   {
     "cif": "A85269496",
-    "nombre": "Colin Buchanan Consultores, S.A.",
+    "nombre": "COLIN BUCHANAN CONSULTORES SA",
     "direccion": "C/ Miguel Yuste, 12, 3ºB, 28037 Madrid",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -26420,11 +26420,15 @@
         "area": "Movilidad y Transportes",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de los agentes de patentes y de los servicios de marketing",
+    "sector_cnae": "7490",
+    "fecha_constitucion": "2007",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93102630",
-    "nombre": "Mac Merchan Jiménez SL",
+    "nombre": "M. A. C. MERCHAN JIMENEZ SL (EXTINGUIDA)",
     "direccion": "Avda de la Constitución, s/n, Conjunto Conjunto La Pimienta 4, Local 38. Benalmádena (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26487,11 +26491,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de programación de televisión, emisión y distribución de vídeos",
+    "sector_cnae": "6020",
+    "fecha_constitucion": "2010",
+    "estado_registral": "EXTINGUIDA"
   },
   {
     "cif": "B93520997",
-    "nombre": "Rentadaptados, S.L.",
+    "nombre": "RENTADAPTADOS SL",
     "direccion": "C/ Benadalid, 65, 29006 Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26538,7 +26546,11 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Otros"
       }
-    ]
+    ],
+    "sector": "Alquiler de automóviles y vehículos de motor ligeros",
+    "sector_cnae": "7711",
+    "fecha_constitucion": "2017",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "77****17A",
@@ -26601,7 +26613,7 @@
   },
   {
     "cif": "B91333252",
-    "nombre": "Ferias y Eventos SL",
+    "nombre": "FERIAS Y EVENTOS SL",
     "direccion": "C/ Comunidad de Madrid, 5. Écija (Sevilla)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26656,11 +26668,15 @@
         "area": "Cultura",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Alquiler de automóviles y vehículos de motor ligeros",
+    "sector_cnae": "7739",
+    "fecha_constitucion": "2003",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B16853632",
-    "nombre": "Alquileres Montalvo, S.L.",
+    "nombre": "ALQUILERES MONTALVO SL",
     "direccion": "Avda. Carlota Alessandri, 258, 29620 Torremolinos (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26691,11 +26707,15 @@
         "area": "Bienestar Social",
         "tipo_contrato_limpio": "Obras"
       }
-    ]
+    ],
+    "sector": "Alojamientos turísticos y otros alojamientos de corta estancia",
+    "sector_cnae": "5520",
+    "fecha_constitucion": "2021",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B92109651",
-    "nombre": "Novaschool Añoreta, S.L.",
+    "nombre": "COLEGIO NOVASCHOOL AÑORETA SL",
     "direccion": "Ctra. Macharaviaya, Urb. Añoreta Golf II Fase, 29738 Torre de Benagalbón (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26726,7 +26746,11 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Educación secundaria general",
+    "sector_cnae": "8531",
+    "fecha_constitucion": "1999",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "44****81S",
@@ -26837,7 +26861,7 @@
   },
   {
     "cif": "B92881754",
-    "nombre": "OASIS URBANO MEDIAMBIENTE SLNE",
+    "nombre": "OASIS URBANO MEDIOAMBIENTE SLNE",
     "direccion": "",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26900,7 +26924,11 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de jardinería",
+    "sector_cnae": "8130",
+    "fecha_constitucion": "2007",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "74****96V",
@@ -26947,7 +26975,7 @@
   },
   {
     "cif": "B92521939",
-    "nombre": "Chapitel Restauración y Conservación, S.L.",
+    "nombre": "CHAPITEL CONSERVACION Y RESTAURACION SL",
     "direccion": "Avda. La Legión, Parque Nueva Antequera, 4, 29200 Antequera (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -26994,11 +27022,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Construcción de otros proyectos de ingeniería civil n.c.o.p.",
+    "sector_cnae": "4399",
+    "fecha_constitucion": "2004",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B42942789",
-    "nombre": "Pol Print Rincón, S.L.",
+    "nombre": "POL PRINT RINCON SL",
     "direccion": "C/ Oleaje, s/n, 29730 Rincón de la Victoria (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -27317,11 +27349,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Servicios técnicos de ingeniería y otras actividades relacionadas con el asesoramiento técnico",
+    "sector_cnae": "7112",
+    "fecha_constitucion": "2021",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93107464",
-    "nombre": "Ius Laboral Abogados",
+    "nombre": "IUSLABORAL ABOGADOS SLP",
     "direccion": "Pasaje Noblejas, 1, 29002 Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -27360,11 +27396,15 @@
         "area": "Recursos Humanos",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades jurídicas",
+    "sector_cnae": "6910",
+    "fecha_constitucion": "2011",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B92974567",
-    "nombre": "Señalsur Málaga, S.L.",
+    "nombre": "SEÑALSUR MALAGA SL",
     "direccion": "C/ Camino Huerta Santacurz, 34, 29196 Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -27475,11 +27515,15 @@
         "area": "Obras y Servicios Generales",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Otras instalaciones en obras de construccióninforme comercial y de riesgo de \n                              señalsur malaga sl",
+    "sector_cnae": "4324",
+    "fecha_constitucion": "2008",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93589208",
-    "nombre": "Comunicación Multimedia Local Digital, S.L. (AXARQUIAPLUS)",
+    "nombre": "COMUNICACION MULTIMEDIA LOCAL DIGITAL SL",
     "direccion": "Pasaje Canasteros, 1, Bq. 4, 1ºC, 29700 Vélez Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -27638,7 +27682,11 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de las agencias de noticias",
+    "sector_cnae": "6391",
+    "fecha_constitucion": "2017",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "78****46B",
@@ -27757,7 +27805,7 @@
   },
   {
     "cif": "A29018637",
-    "nombre": "Ascensores Embarba, S.A.",
+    "nombre": "A. EMBARBA SA",
     "direccion": "Avda. de Velázquez, 327, 29004 Málaga",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -27868,11 +27916,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Otros"
       }
-    ]
+    ],
+    "sector": "Instalación de aislamientos",
+    "sector_cnae": "4329",
+    "fecha_constitucion": "1971",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B92936350",
-    "nombre": "Deportae Servicios Deportivos, S.L.",
+    "nombre": "DEPORTAE SERVICIOS DEPORTIVOS SL",
     "direccion": "C/ Juan Cabanilles, 11, Oficina 104, 29018 Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -27983,11 +28035,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Otra educación n.c.o.p.",
+    "sector_cnae": "8559",
+    "fecha_constitucion": "2008",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93489110",
-    "nombre": "Conciertos y Eventos Málaga SL",
+    "nombre": "CONCIERTOS Y EVENTOS MALAGA SL",
     "direccion": ". Avda. Alicia de Larrocha 4. 29004, Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -28018,11 +28074,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Actividades de artes escénicas",
+    "sector_cnae": "9020",
+    "fecha_constitucion": "2016",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93271567",
-    "nombre": "Funeral Asistanse Service Angels Rest SLU",
+    "nombre": "ANGELS REST SL",
     "direccion": "C/ Caudal, 58. Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -28085,11 +28145,15 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Pompas fúnebres y actividades relacionadas",
+    "sector_cnae": "9603",
+    "fecha_constitucion": "2013",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B82806738",
-    "nombre": "Contenur SL",
+    "nombre": "CONTENUR SL",
     "direccion": "C/ Torneros, 3. Getafe (Madrid)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -28120,11 +28184,15 @@
         "area": "Parques y Jardines",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Fabricación de otros productos de plástico",
+    "sector_cnae": "2226",
+    "fecha_constitucion": "1984",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B92817501",
-    "nombre": "MATENTURF (KAOKA,OBRAS Y SERVICIOS DEPORTIVOS SL)",
+    "nombre": "KAOKA OBRAS Y SERVICIOS DEPORTIVOS SL",
     "direccion": "",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -28139,11 +28207,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Obras"
       }
-    ]
+    ],
+    "sector": "Revestimiento de suelos y paredes",
+    "sector_cnae": "4333",
+    "fecha_constitucion": "2007",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B29887874",
-    "nombre": "Áridos La Montasa",
+    "nombre": "ARIDOS LA MONTASA SL",
     "direccion": "C/ Leopoldo Lugones, 34. Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -28174,11 +28246,15 @@
         "area": "Cueva del Tesoro",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Extracción de gravas y arenas y extracción de arcilla y caolín",
+    "sector_cnae": "0812",
+    "fecha_constitucion": "1998",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93726461",
-    "nombre": "Espectáculos Melu, SL",
+    "nombre": "EXPECTACULOS MELU SL",
     "direccion": "– C/ Vidriales, 22 29700 Vélez Málaga (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -28209,7 +28285,11 @@
         "area": "Ferias y Fiestas",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": null,
+    "sector_cnae": null,
+    "fecha_constitucion": "2019",
+    "estado_registral": null
   },
   {
     "cif": "A08171373",

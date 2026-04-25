@@ -527,5 +527,205 @@
     "cnae_label": "Comercio al por menor de ferretería, pintura y vidrio en establecimientos especializados",
     "cnae_2025_label": "Comercio al por menor de ferretería, materiales de construcción, pinturas y vidrio",
     "province": "Málaga"
+  },
+  "A85269496": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "COLIN BUCHANAN CONSULTORES SA",
+    "status": "ACTIVA",
+    "founded": "2007-11-23",
+    "cnae": "7490",
+    "cnae_label": "Otras actividades profesionales, científicas y técnicas n.c.o.p.",
+    "cnae_2025_label": "Actividades de los agentes de patentes y de los servicios de marketing",
+    "province": "Madrid"
+  },
+  "B93102630": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "M. A. C. MERCHAN JIMENEZ SL (EXTINGUIDA)",
+    "status": "EXTINGUIDA",
+    "founded": "2010-12-21",
+    "cnae": "6020",
+    "cnae_label": "Actividades de programación y emisión de televisión",
+    "cnae_2025_label": "Actividades de programación de televisión, emisión y distribución de vídeos",
+    "province": "Málaga"
+  },
+  "B93520997": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "RENTADAPTADOS SL",
+    "status": "ACTIVA",
+    "founded": "2017-01-01",
+    "cnae": "7711",
+    "cnae_label": "ALQUILER DE AUTOMÓVILES Y VEHÍCULOS DE MOTOR LIGEROS",
+    "cnae_2025_label": "Alquiler de automóviles y vehículos de motor ligeros",
+    "province": "MÁLAGA"
+  },
+  "B91333252": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "FERIAS Y EVENTOS SL",
+    "status": "ACTIVA",
+    "founded": "2003-12-23",
+    "cnae": "7739",
+    "cnae_label": "Alquiler de otra maquinaria, equipos y bienes tangibles n.c.o.p.",
+    "cnae_2025_label": "Alquiler de automóviles y vehículos de motor ligeros",
+    "province": "Sevilla"
+  },
+  "B16853632": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "ALQUILERES MONTALVO SL",
+    "status": "ACTIVA",
+    "founded": "2021-09-03",
+    "cnae": "5520",
+    "cnae_label": "ALOJAMIENTOS TURÍSTICOS Y OTROS ALOJAMIENTOS DE CORTA ESTANCIA",
+    "cnae_2025_label": "Alojamientos turísticos y otros alojamientos de corta estancia",
+    "province": "MÁLAGA"
+  },
+  "B92109651": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "COLEGIO NOVASCHOOL AÑORETA SL",
+    "status": "ACTIVA",
+    "founded": "1999-11-09",
+    "cnae": "8531",
+    "cnae_label": "Educación secundaria general",
+    "cnae_2025_label": "Educación secundaria general",
+    "province": "Málaga"
+  },
+  "B92881754": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "OASIS URBANO MEDIOAMBIENTE SLNE",
+    "status": "ACTIVA",
+    "founded": "2007-09-21",
+    "cnae": "8130",
+    "cnae_label": "Actividades de jardinería",
+    "cnae_2025_label": "Actividades de jardinería",
+    "province": "Málaga"
+  },
+  "B92521939": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "CHAPITEL CONSERVACION Y RESTAURACION SL",
+    "status": "ACTIVA",
+    "founded": "2004-03-05",
+    "cnae": "4399",
+    "cnae_label": "OTRAS ACTIVIDADES DE CONSTRUCCIÓN ESPECIALIZADA N.C.O.P.",
+    "cnae_2025_label": "Construcción de otros proyectos de ingeniería civil n.c.o.p.",
+    "province": "MÁLAGA"
+  },
+  "B42942789": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "POL PRINT RINCON SL",
+    "status": "ACTIVA",
+    "founded": "2021-02-25",
+    "cnae": "7112",
+    "cnae_label": "SERVICIOS TÉCNICOS DE INGENIERÍA Y OTRAS ACTIVIDADES RELACIONADAS CON EL ASESORAMIENTO TÉCNICO",
+    "cnae_2025_label": "Servicios técnicos de ingeniería y otras actividades relacionadas con el asesoramiento técnico",
+    "province": "MÁLAGA"
+  },
+  "B93107464": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "IUSLABORAL ABOGADOS SLP",
+    "status": "ACTIVA",
+    "founded": "2011-01-21",
+    "cnae": "6910",
+    "cnae_label": "Actividades jurídicas",
+    "cnae_2025_label": "Actividades jurídicas",
+    "province": "MÁLAGA"
+  },
+  "B92974567": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "SEÑALSUR MALAGA SL",
+    "status": "ACTIVA",
+    "founded": "2008-12-02",
+    "cnae": "4324",
+    "cnae_label": "OTRAS INSTALACIONES EN OBRAS DE CONSTRUCCIÓNINFORME COMERCIAL Y DE RIESGO DE \n                              SEÑALSUR MALAGA SL",
+    "cnae_2025_label": null,
+    "province": "Málaga"
+  },
+  "B93589208": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "COMUNICACION MULTIMEDIA LOCAL DIGITAL SL",
+    "status": "ACTIVA",
+    "founded": "2017-12-27",
+    "cnae": "6391",
+    "cnae_label": "ACTIVIDADES DE PORTALES DE BÚSQUEDA EN LA WEB",
+    "cnae_2025_label": "Actividades de las agencias de noticias",
+    "province": "MÁLAGA"
+  },
+  "A29018637": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "A. EMBARBA SA",
+    "status": "ACTIVA",
+    "founded": "1971-12-20",
+    "cnae": "4329",
+    "cnae_label": "Otras instalaciones en obras de construcción",
+    "cnae_2025_label": "Instalación de aislamientos",
+    "province": "Málaga"
+  },
+  "B92936350": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "DEPORTAE SERVICIOS DEPORTIVOS SL",
+    "status": "ACTIVA",
+    "founded": "2008-04-07",
+    "cnae": "8559",
+    "cnae_label": "Otra educación n.c.o.p.",
+    "cnae_2025_label": "Otra educación n.c.o.p.",
+    "province": "Málaga"
+  },
+  "B93489110": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "CONCIERTOS Y EVENTOS MALAGA SL",
+    "status": "ACTIVA",
+    "founded": "2016-06-20",
+    "cnae": "9020",
+    "cnae_label": "ACTIVIDADES DE ARTES ESCÉNICAS",
+    "cnae_2025_label": null,
+    "province": "MÁLAGA"
+  },
+  "B93271567": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "ANGELS REST SL",
+    "status": "ACTIVA",
+    "founded": "2013-07-18",
+    "cnae": "9603",
+    "cnae_label": "Pompas fúnebres y actividades relacionadas",
+    "cnae_2025_label": "Pompas fúnebres y actividades relacionadas",
+    "province": "Málaga"
+  },
+  "B82806738": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "CONTENUR SL",
+    "status": "ACTIVA",
+    "founded": "1984-07-27",
+    "cnae": "2226",
+    "cnae_label": "FABRICACIÓN DE OTROS PRODUCTOS DE PLÁSTICO",
+    "cnae_2025_label": null,
+    "province": "Madrid"
+  },
+  "B92817501": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "KAOKA OBRAS Y SERVICIOS DEPORTIVOS SL",
+    "status": "ACTIVA",
+    "founded": "2007-01-18",
+    "cnae": "4333",
+    "cnae_label": "Revestimiento de suelos y paredes",
+    "cnae_2025_label": "Revestimiento de suelos y paredes",
+    "province": "Málaga"
+  },
+  "B29887874": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "ARIDOS LA MONTASA SL",
+    "status": "ACTIVA",
+    "founded": "1998-02-10",
+    "cnae": "0812",
+    "cnae_label": "Extracción de gravas y arenas; extracción de arcilla y caolín",
+    "cnae_2025_label": "Extracción de gravas y arenas y extracción de arcilla y caolín",
+    "province": "Málaga"
+  },
+  "B93726461": {
+    "fetched_at": "2026-04-25",
+    "nombre_api": "EXPECTACULOS MELU SL",
+    "status": null,
+    "founded": "2019-12-03",
+    "cnae": null,
+    "cnae_label": null,
+    "cnae_2025_label": null,
+    "province": "Málaga"
   }
 }
