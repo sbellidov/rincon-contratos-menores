@@ -873,5 +873,151 @@
   "B29720430": null,
   "B46001897": null,
   "A28119220": null,
-  "B06414478": null
+  "B06414478": null,
+  "A29221801": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "TECNOSIS SA",
+    "status": "ACTIVA",
+    "founded": "1987-09-01",
+    "cnae": "4741",
+    "cnae_label": "Comercio al por menor de ordenadores, equipos periféricos y programas informáticos en establecimientos especializados",
+    "cnae_2025_label": "Comercio al por menor de equipos para las tecnologías de la información y las comunicaciones",
+    "province": "Málaga"
+  },
+  "A23068943": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "PIROTECNIA SANCHEZ SA",
+    "status": "ACTIVA",
+    "founded": "1967-04-24",
+    "cnae": "2051",
+    "cnae_label": "Fabricación de explosivos",
+    "cnae_2025_label": "Fabricación de otros productos químicos n.c.o.p.",
+    "province": "Jaén"
+  },
+  "B42785055": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "CONSULTORIA Y SERVICIOS INTEGRALES MOESGA SL",
+    "status": "ACTIVA",
+    "founded": "2021-01-22",
+    "cnae": "4101",
+    "cnae_label": "CONSTRUCCIÓN DE EDIFICIOS RESIDENCIALESINFORME COMERCIAL Y DE RIESGO DE \n                              CONSULTORIA Y SERVICIOS INTEGRALES MOESGA SL",
+    "cnae_2025_label": null,
+    "province": "Málaga"
+  },
+  "B93252963": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "PRIMAS & PRIMOS SL",
+    "status": "ACTIVA",
+    "founded": "2013-04-19",
+    "cnae": "4641",
+    "cnae_label": "COMERCIO AL POR MAYOR DE TEXTILES",
+    "cnae_2025_label": "Comercio al por mayor de textiles",
+    "province": "MÁLAGA"
+  },
+  "B15416845": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "SERVIOCIO CULTURA DEPORTE Y RECREACION SL",
+    "status": "ACTIVA",
+    "founded": "1993-04-07",
+    "cnae": "9311",
+    "cnae_label": "Gestión de instalaciones deportivas",
+    "cnae_2025_label": "Gestión de instalaciones deportivas",
+    "province": "A Coruña"
+  },
+  "B29572724": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "DAGA PORTILLO HNOS SL",
+    "status": "ACTIVA",
+    "founded": "1992-06-02",
+    "cnae": "4939",
+    "cnae_label": "tipos de transporte terrestre de pasajeros n.c.o.p.",
+    "cnae_2025_label": "Transporte regular de pasajeros por carretera",
+    "province": "Málaga"
+  },
+  "B01619089": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "OCIO Y DEPORTES TORRESOL SL",
+    "status": "ACTIVA",
+    "founded": "2020-06-12",
+    "cnae": "9319",
+    "cnae_label": "ACTIVIDADES DEPORTIVAS N.C.O.P.",
+    "cnae_2025_label": "Actividades deportivas n.c.o.p.",
+    "province": "MÁLAGA"
+  },
+  "B93260685": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "SECTOR 112 MATERIAL POLICIAL SL",
+    "status": "ACTIVA",
+    "founded": "2013-05-28",
+    "cnae": "4765",
+    "cnae_label": "Comercio al por menor de juegos y juguetes en establecimientos especializados",
+    "cnae_2025_label": "Comercio al por menor de juegos y juguetes",
+    "province": "Málaga"
+  },
+  "A28659423": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "FURGONETAS DE ALQUILER SA",
+    "status": null,
+    "founded": null,
+    "cnae": "7711",
+    "cnae_label": "ALQUILER DE AUTOMÓVILES Y VEHÍCULOS DE MOTOR LIGEROSINFORME COMERCIAL Y DE RIESGO DE \n                              NORTHGATE ESPAÑA RENTING FLEXIBLE SA",
+    "cnae_2025_label": "Alquiler de automóviles y vehículos de motor ligeros",
+    "province": "MADRID"
+  },
+  "B81958555": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "ARCO ARQUITECTURA Y CONTRATAS SL",
+    "status": "ACTIVA",
+    "founded": "1998-02-02",
+    "cnae": "4121",
+    "cnae_label": "Construcción de edificios residenciales",
+    "cnae_2025_label": "Construcción de edificios residenciales",
+    "province": "Madrid"
+  },
+  "A43501352": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "T. Q. TECNOL SA",
+    "status": "ACTIVA",
+    "founded": "1997-03-14",
+    "cnae": "2059",
+    "cnae_label": "Fabricación de otros productos químicos n.c.o.p.",
+    "cnae_2025_label": "Fabricación de biocombustibles líquidos",
+    "province": "Tarragona"
+  },
+  "A79216651": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "LEFEBVRE-EL DERECHO SA",
+    "status": "ACTIVA",
+    "founded": null,
+    "cnae": "5811",
+    "cnae_label": "Edición de libros",
+    "cnae_2025_label": "Edición de libros",
+    "province": "MADRID"
+  },
+  "B44808962": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "FIREHAWK SPORTSWEAR SL",
+    "status": "ACTIVA",
+    "founded": "2023-03-06",
+    "cnae": "4763",
+    "cnae_label": "COMERCIO AL POR MENOR DE ARTÍCULOS DEPORTIVOSINFORME COMERCIAL Y DE RIESGO DE \n                              FIREHAWK SPORTSWEAR SL",
+    "cnae_2025_label": "Comercio al por menor de artículos culturales y recreativos n.c.o.p.",
+    "province": "Alicante"
+  },
+  "B87352340": {
+    "fetched_at": "2026-05-09",
+    "nombre_api": "AUREN CONSULTORES SP SLP",
+    "status": "ACTIVA",
+    "founded": "2015-08-05",
+    "cnae": "7020",
+    "cnae_label": "OTRAS ACTIVIDADES DE CONSULTORÍA DE GESTIÓN EMPRESARIAL",
+    "cnae_2025_label": null,
+    "province": "MADRID"
+  },
+  "B93156255": null,
+  "Q2918001E": null,
+  "B62604806": null,
+  "G92217686": null,
+  "B70718309": null,
+  "B04438701": null
 }

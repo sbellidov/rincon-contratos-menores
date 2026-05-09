@@ -30392,7 +30392,7 @@
   },
   {
     "cif": "A29221801",
-    "nombre": "Tecnosis, S.A.",
+    "nombre": "TECNOSIS SA",
     "direccion": "C/ Castelao, 30, 29004 Málaga",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -30439,11 +30439,15 @@
         "area": "Movilidad y Transportes",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Comercio al por menor de equipos para las tecnologías de la información y las comunicaciones",
+    "sector_cnae": "4741",
+    "fecha_constitucion": "1987",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "A23068943",
-    "nombre": "Pirotecnia Sánchez",
+    "nombre": "PIROTECNIA SANCHEZ SA",
     "direccion": "C/ Jamilena, s/n, 23600 Martos (Jaén)",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -30498,11 +30502,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Fabricación de otros productos químicos n.c.o.p.",
+    "sector_cnae": "2051",
+    "fecha_constitucion": "1967",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B42785055",
-    "nombre": "Moesga, S.L.",
+    "nombre": "CONSULTORIA Y SERVICIOS INTEGRALES MOESGA SL",
     "direccion": "C/ Greco, 2, Casa 2, Puerta B, 29749 Almayate (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -30573,7 +30581,11 @@
         "area": "Cueva del Tesoro",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Construcción de edificios residencialesinforme comercial y de riesgo de \n                              consultoria y servicios integrales moesga sl",
+    "sector_cnae": "4101",
+    "fecha_constitucion": "2021",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "44****90A",
@@ -30628,7 +30640,7 @@
   },
   {
     "cif": "B93252963",
-    "nombre": "PRIMAS Y PRIMOS SL",
+    "nombre": "PRIMAS & PRIMOS SL",
     "direccion": "",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -30651,11 +30663,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Comercio al por mayor de textiles",
+    "sector_cnae": "4641",
+    "fecha_constitucion": "2013",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B15416845",
-    "nombre": "Serviocio, S.L.",
+    "nombre": "SERVIOCIO CULTURA DEPORTE Y RECREACION SL",
     "direccion": "C/ Vázquez de Parga, 5, 2º, 15100 Carballo (A. Coruña)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -30694,11 +30710,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Gestión de instalaciones deportivas",
+    "sector_cnae": "9311",
+    "fecha_constitucion": "1993",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B29572724",
-    "nombre": "Daga Portillo Hnos. S.L.",
+    "nombre": "DAGA PORTILLO HNOS SL",
     "direccion": "C/ Acebuche, 10, 29730 Rincón de la Victoria (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -30753,11 +30773,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Transporte regular de pasajeros por carretera",
+    "sector_cnae": "4939",
+    "fecha_constitucion": "1992",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B01619089",
-    "nombre": "Ocio y Deporte Torresol SL",
+    "nombre": "OCIO Y DEPORTES TORRESOL SL",
     "direccion": "Calle Ceuta, 6. 29730 Rincón de la Victoria (Málaga)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -30788,7 +30812,11 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Actividades deportivas n.c.o.p.",
+    "sector_cnae": "9319",
+    "fecha_constitucion": "2020",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "77****06G",
@@ -30819,7 +30847,7 @@
   },
   {
     "cif": "B93260685",
-    "nombre": "Sector 112 Material Policíal, S.L.",
+    "nombre": "SECTOR 112 MATERIAL POLICIAL SL",
     "direccion": "C/ Fiscal Luis Portero García, 3, Local 18, 29010 Málaga",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -30890,11 +30918,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Comercio al por menor de juegos y juguetes",
+    "sector_cnae": "4765",
+    "fecha_constitucion": "2013",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "A28659423",
-    "nombre": "Notrhgate España Renting Flexible SAU",
+    "nombre": "FURGONETAS DE ALQUILER SA",
     "direccion": ". Avda. de Isaac Newton 3, Pol. Ind. Carpetania de Getafe, 28906 Madrid",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -30917,11 +30949,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Alquiler de automóviles y vehículos de motor ligeros",
+    "sector_cnae": "7711",
+    "fecha_constitucion": null,
+    "estado_registral": null
   },
   {
     "cif": "B81958555",
-    "nombre": "Arco Arquitecturas y Contratas S.L.",
+    "nombre": "ARCO ARQUITECTURA Y CONTRATAS SL",
     "direccion": "Avda Sierra de Grazalema, 9 CP 28691 Villanueva de la Ceñada (Madrid)",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -30944,11 +30980,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Obras"
       }
-    ]
+    ],
+    "sector": "Construcción de edificios residenciales",
+    "sector_cnae": "4121",
+    "fecha_constitucion": "1998",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "A43501352",
-    "nombre": "T.Q. Tecnol, SAU",
+    "nombre": "T. Q. TECNOL SA",
     "direccion": "C/ Guerau de Liost, 11-13, 43206 Reus (Tarragona)",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -31091,11 +31131,15 @@
         "area": null,
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Fabricación de biocombustibles líquidos",
+    "sector_cnae": "2059",
+    "fecha_constitucion": "1997",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "A79216651",
-    "nombre": "Lefebvre",
+    "nombre": "LEFEBVRE-EL DERECHO SA",
     "direccion": "Monasterio de Suso y Yuso, 34. Madrid",
     "tipo_entidad": "SA",
     "tipo_id": "CIF",
@@ -31166,7 +31210,11 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Edición de libros",
+    "sector_cnae": "5811",
+    "fecha_constitucion": null,
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "30****47B",
@@ -31240,7 +31288,7 @@
   },
   {
     "cif": "B44808962",
-    "nombre": "Firehawk Sportswear, S.L.",
+    "nombre": "FIREHAWK SPORTSWEAR SL",
     "direccion": "Avda. Saturno, 6, Nave 11, 03007 Alicante",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -31351,11 +31399,15 @@
         "area": "Deportes (APAL)",
         "tipo_contrato_limpio": "Suministro"
       }
-    ]
+    ],
+    "sector": "Comercio al por menor de artículos culturales y recreativos n.c.o.p.",
+    "sector_cnae": "4763",
+    "fecha_constitucion": "2023",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B87352340",
-    "nombre": "Auren Consultores SP, SLP",
+    "nombre": "AUREN CONSULTORES SP SLP",
     "direccion": "Avda. General Perón, 38. Madrid",
     "tipo_entidad": "SL",
     "tipo_id": "CIF",
@@ -31402,7 +31454,11 @@
         "area": null,
         "tipo_contrato_limpio": "Servicio"
       }
-    ]
+    ],
+    "sector": "Otras actividades de consultoría de gestión empresarial",
+    "sector_cnae": "7020",
+    "fecha_constitucion": "2015",
+    "estado_registral": "ACTIVA"
   },
   {
     "cif": "B93156255",
